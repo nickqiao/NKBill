@@ -25,7 +25,27 @@
 		01E1C2081C5CDABC00EF6B5A /* NKInvestAmoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01E1C2061C5CDABC00EF6B5A /* NKInvestAmoutCell.xib */; };
 		01E1C20A1C5CDFC400EF6B5A /* NKPlatformController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C2091C5CDFC400EF6B5A /* NKPlatformController.swift */; };
 		01E1C2101C5CE1CE00EF6B5A /* p2pbank.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01E1C20F1C5CE1CE00EF6B5A /* p2pbank.plist */; };
+		01E1C2161C5CF6B900EF6B5A /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 01E1C2151C5CF6B900EF6B5A /* Cartfile */; };
+		01E1C2181C5CF73A00EF6B5A /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */; };
+		01E1C2191C5CF73A00EF6B5A /* Chameleon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01E1C21C1C5CF74C00EF6B5A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E1C21B1C5CF74C00EF6B5A /* SwiftyJSON.framework */; };
+		01E1C21D1C5CF74C00EF6B5A /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01E1C21B1C5CF74C00EF6B5A /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		01E1C21A1C5CF73B00EF6B5A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				01E1C21D1C5CF74C00EF6B5A /* SwiftyJSON.framework in Embed Frameworks */,
+				01E1C2191C5CF73A00EF6B5A /* Chameleon.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		01E1C1CB1C5CBBBB00EF6B5A /* NKBill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NKBill.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +68,9 @@
 		01E1C2061C5CDABC00EF6B5A /* NKInvestAmoutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKInvestAmoutCell.xib; sourceTree = "<group>"; };
 		01E1C2091C5CDFC400EF6B5A /* NKPlatformController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPlatformController.swift; sourceTree = "<group>"; };
 		01E1C20F1C5CE1CE00EF6B5A /* p2pbank.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = p2pbank.plist; sourceTree = "<group>"; };
+		01E1C2151C5CF6B900EF6B5A /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
+		01E1C21B1C5CF74C00EF6B5A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01E1C21C1C5CF74C00EF6B5A /* SwiftyJSON.framework in Frameworks */,
+				01E1C2181C5CF73A00EF6B5A /* Chameleon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +89,9 @@
 		01E1C1C21C5CBBBB00EF6B5A = {
 			isa = PBXGroup;
 			children = (
+				01E1C21B1C5CF74C00EF6B5A /* SwiftyJSON.framework */,
+				01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */,
+				01E1C2151C5CF6B900EF6B5A /* Cartfile */,
 				01E1C1CD1C5CBBBB00EF6B5A /* NKBill */,
 				01E1C1CC1C5CBBBB00EF6B5A /* Products */,
 			);
@@ -137,6 +165,7 @@
 				01E1C1C71C5CBBBB00EF6B5A /* Sources */,
 				01E1C1C81C5CBBBB00EF6B5A /* Frameworks */,
 				01E1C1C91C5CBBBB00EF6B5A /* Resources */,
+				01E1C21A1C5CF73B00EF6B5A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -186,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01E1C2161C5CF6B900EF6B5A /* Cartfile in Resources */,
 				01E1C1D91C5CBBBB00EF6B5A /* LaunchScreen.storyboard in Resources */,
 				01E1C2101C5CE1CE00EF6B5A /* p2pbank.plist in Resources */,
 				01E1C2081C5CDABC00EF6B5A /* NKInvestAmoutCell.xib in Resources */,
@@ -316,6 +346,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = NKBill/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -328,6 +362,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = NKBill/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -355,6 +393,7 @@
 				01E1C1DF1C5CBBBB00EF6B5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
