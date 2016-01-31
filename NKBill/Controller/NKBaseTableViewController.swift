@@ -12,16 +12,6 @@ class NKBaseTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let refresh = UIRefreshControl()
-        
-        self.tableView.addSubview(refresh)
-        refresh.addTarget(self, action: "loadNewData", forControlEvents: .ValueChanged)
-        
     }
-
-    func loadNewData() {
-        print("加载新数据")
-    }
-    
+  
 }

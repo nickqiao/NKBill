@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Chameleon
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Chameleon.setGlobalThemeUsingPrimaryColor(FlatMint(),
+            withContentStyle: UIContentStyle.Light)
+        
         UIScreen.mainScreen().bounds
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.backgroundColor = UIColor.whiteColor()

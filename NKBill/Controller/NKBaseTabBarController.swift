@@ -20,7 +20,7 @@ class NKBaseTabBarController: UITabBarController {
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         if item.title == "记一笔" {
             
-            self.presentViewController( NKBaseNavigationController(rootViewController: NKComposeController()), animated: true, completion: nil)
+            self.presentViewController( NKBaseNavigationController(rootViewController: NKComposeController.composeController()),animated: true, completion: nil)
             
         }
     }

@@ -10,15 +10,17 @@ import UIKit
 
 let reuseIndentifier = "platform"
 
-protocol PlatformControllerDelegate {
+protocol NKPlatformControllerDelegate {
     func platformControllerSelectPlatform(platform:NKPlatform)
 }
 
 class NKPlatformController: NKBaseTableViewController {
 
-    var platforms:[NKPlatform] = []
+    lazy var platforms:[NKPlatform] = {
+        return NKLibraryAPI.sharedInstance.getPlatforms()
+    }()
     
-    var delegate: PlatformControllerDelegate?
+    var delegate: NKPlatformControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +30,14 @@ class NKPlatformController: NKBaseTableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return platforms.count
-        return 10
+        
+        return platforms.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIndentifier)
-        
-        cell?.textLabel?.text = "ddafds\(indexPath.row)"
+        let p = platforms[indexPath.row]
+        cell?.textLabel?.text = p.name
         return cell!
     }
     
@@ -44,8 +46,9 @@ class NKPlatformController: NKBaseTableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delegate?.platformControllerSelectPlatform(platforms[indexPath.row])
         
+        delegate?.platformControllerSelectPlatform(platforms[indexPath.row])
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
 

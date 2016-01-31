@@ -8,15 +8,33 @@
 
 import UIKit
 
-class NKPlatform: NSObject {
+class NKPlatform: NSObject,NSCoding {
     
-    var name: String?
-    var icon: String?
+    var name: String = ""
+    var icon: String = ""
     
-    init(name: String,icon: String) {
+    override init() {
         super.init()
+    }
+    
+    init(name:String,icon:String) {
         self.name = name
         self.icon = icon
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init()
+        self.name = aDecoder.decodeObjectForKey("name") as! String
+        self.icon = aDecoder.decodeObjectForKey("icon") as! String
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(name, forKey: "name")
+        aCoder.encodeObject(icon, forKey: "icon")
+    }
+    
+    override var description: String {
+        return "name:\(name)" +
+                "icon:\(icon)"
+    }
 }

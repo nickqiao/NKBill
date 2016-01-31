@@ -10,25 +10,15 @@ import UIKit
 
 class NKIndexController: NKBaseViewController {
 
-    var tableView = UITableView(frame: CGRectMake(0, 80, 400, 300), style: .Grouped)
-    
-    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.view.addSubview(tableView)
-        self.tableView.registerClass(UITableViewCell.self , forCellReuseIdentifier: "cell")
-        self.tableView.dataSource = self
-        self.tableView.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: "load" , forControlEvents: .ValueChanged)
+      
     }
     
-    func load() {
-        print("即使对方拉空间")
-    }
-    
+ 
 }
 
 extension NKIndexController: UITableViewDataSource {
