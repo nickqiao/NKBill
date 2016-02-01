@@ -7,80 +7,113 @@
 //
 
 import UIKit
+import RealmSwift
 
-enum TimeType {
+enum TimeType: String {
     case MONTH
     case DAY
 }
 
-enum RepaymentType {
+enum RepayType:String {
     case AverageCapital
     case InterestByMonth
     case InterestByDay
     case RepayAllAtLast
 }
 
-class NKAccount: NSObject {
+class NKAccount: Object {
     
-    var platform = NKPlatform()
-    var invest = 0
-    var rate: Float = 0.0
-    var timeType: TimeType = .MONTH
-    var timeSpan = 0
-    var date: NSDate = NSDate(timeIntervalSinceNow: 0.0)
-    var repaymentType: RepaymentType = .AverageCapital
+    dynamic var id = ""
+    dynamic var platform: NKPlatform?
+    dynamic var invest = 0
+    dynamic var rate = 0.0
+    dynamic var timeSpan = 0
+    dynamic var created: NSDate = NSDate(timeIntervalSinceNow: 0.0)
+    let items = List<NKItem>()
+    
+    dynamic var timeType = TimeType.MONTH.rawValue
+    var timeTypeEnum: TimeType {
+        get {
+            return TimeType(rawValue: timeType)!
+        }
+        
+        set {
+            timeType = newValue.rawValue
+        }
+    }
+    
+    dynamic var repayType = RepayType.AverageCapital.rawValue
+    var repayTypeEnum:RepayType {
+        get {
+            return RepayType(rawValue: repayType)!
+        }
+        
+        set {
+            repayType = newValue.rawValue
+        }
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
     
 }
 
 extension NKAccount {
     
-    func compose_name() -> (String,String) {
-        return ("投资平台:",platform.name)
+    func compose_name() -> String {
+        if let n = platform?.name {
+            return n
+        }else {
+            return ""
+        }
+        
     }
     
-    func compose_invest() -> (String,String) {
-        return ("投资金额","¥\(invest)")
+    func compose_invest() -> String {
+        return "¥\(invest)"
     }
     
-    func compose_rate() -> (String,String) {
+    func compose_rate() -> String {
         if rate == 0.0 {
-            return ("年利率","")
+            return ""
         }
         if rate > 0.5 {
-            return ("年利率","60%")
+            return "60%"
         }
         
-        return ("年利率","\(rate * 100)%")
+        return "\(rate * 100)%"
         
     }
     
-    func compose_timeSpan() -> (String,String) {
-        switch timeType {
+    func compose_timeSpan() -> String {
+        switch timeTypeEnum {
         case .DAY:
-            return ("期限","\(timeSpan)天")
+            return "\(timeSpan)天"
         case .MONTH:
-            return ("期限","\(timeSpan)个月")
+            return "\(timeSpan)个月"
         }
     }
     
-    func compose_date() -> (String,String) {
-        let fmt = NSDateFormatter()
-        fmt.locale = NSLocale(localeIdentifier: "zh_CN")
-        fmt.dateFormat = "yyyy年MM月dd日"
-        return ("起息日",fmt.stringFromDate(date))
+    func compose_created() -> String {
+        return created.NK_formatDate()
     }
     
-    func compose_repaymentType() -> (String,String) {
-        switch repaymentType {
+    func compose_repayType() -> String {
+        switch repayTypeEnum {
         case .AverageCapital:
-            return ("还款方式","等额本息")
+            return "等额本息"
         case .InterestByMonth:
-            return ("还款方式","按月计息,到期还本")
+            return "按月计息,到期还本"
         case .InterestByDay:
-            return ("还款方式","按日计息,到期还本")
+            return "按日计息,到期还本"
         case .RepayAllAtLast:
-            return ("还款方式","到期还本息")
+            return "到期还本息"
         }
     }
     
 }
+
+
+
+

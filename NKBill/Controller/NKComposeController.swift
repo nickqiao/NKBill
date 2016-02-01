@@ -17,7 +17,8 @@ class NKComposeController: NKBaseTableViewController {
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var rateField: UITextField!
     
-    var account = NKAccount()
+    var account: NKAccount!
+    var selectedPlatform: NKPlatform!
     
     lazy var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
@@ -40,10 +41,8 @@ class NKComposeController: NKBaseTableViewController {
     }
     
     func datePickerChanged(picker:UIDatePicker) {
-        let fmt = NSDateFormatter()
-        fmt.locale = NSLocale(localeIdentifier: "zh_CN")
-        fmt.dateFormat = "yyyy年MM月dd日"
-        dateField.text = "\(fmt.stringFromDate(picker.date))"
+        
+        dateField.text = "\(picker.date.NK_formatDate())"
         
     }
 
@@ -61,11 +60,25 @@ class NKComposeController: NKBaseTableViewController {
         
         configureView()
         
-        refreshView()
+        if let _ = account {
+            title = "记一笔"
+            fillText()
+        }else {
+            title = "投资详情"
+        }
         
     }
     
-    func configureView() {
+    private func fillText() {
+        platformCell.detailTextLabel?.text = account.compose_name()
+        investField.text = account.compose_invest()
+        rateField.text = account.compose_rate()
+        timeSpanField.text = account.compose_timeSpan()
+        dateField.text = account.compose_created()
+        repayTypeField.text = account.compose_repayType()
+    }
+    
+    private func configureView() {
         
         investField.keyboardType = .NumberPad
         rateField.keyboardType = .DecimalPad
@@ -74,17 +87,36 @@ class NKComposeController: NKBaseTableViewController {
         dateField.inputAccessoryView = inputAccessory
         
     }
-    
-    func refreshView()  {
-        platformCell.textLabel?.text = account.compose_name().0
-        platformCell.detailTextLabel?.text = account.compose_name().1
-        investField.text = account.compose_invest().1
-        rateField.text = account.compose_rate().1
-        timeSpanField.text = account.compose_timeSpan().1
-        dateField.text = account.compose_date().1
-        repayTypeField.text = account.compose_repaymentType().1
-    }
 
+    private func addNewAccount() {
+        
+        let account = NKAccount()
+        account.id = NSUUID().UUIDString
+        account.platform = selectedPlatform
+//        account.invest = Int(investField.text!)!
+//        account.rate = Double(rateField.text!)!
+        //account.timeSpan = Int(timeSpanField.text!)!
+        //account.created = datePicker.date
+        account.invest = 100000
+        account.rate = 0.24
+        account.timeSpan = 10
+        account.created = NSDate()
+        
+        //            var x = timeSpanField.text!
+        //            let range = x.endIndex.advancedBy(-2)..<x.endIndex
+        //            account.timeSpan = Int(x.removeRange(range))
+       
+        
+        account.timeTypeEnum = TimeType.MONTH
+        account.repayTypeEnum = RepayType.AverageCapital
+        
+        NKLibraryAPI.sharedInstance.saveAccount(account)
+    }
+    
+    private func updateAccount() {
+        
+    }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -140,7 +172,13 @@ class NKComposeController: NKBaseTableViewController {
     }
     
     func save() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        if account != nil {
+            updateAccount()
+        }else {
+            addNewAccount()
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)        
     }
     
 }
@@ -148,38 +186,38 @@ class NKComposeController: NKBaseTableViewController {
 extension NKComposeController: NKPlatformControllerDelegate {
     
     func platformControllerSelectPlatform(platform: NKPlatform) {
-        account.platform = platform
+        selectedPlatform = platform
         platformCell.detailTextLabel?.text = platform.name
         platformCell.accessoryType = .None
     }
     
 }
 
-extension NKComposeController: UITextFieldDelegate {
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        
-        if textField == investField {
-            // 一开始就禁止输入0
-            if textField.text == "¥0" && string == "0" {
-                return false
-            }
-            // 开始输入之后把第一个0去掉
-            if textField.text == "¥0" {
-                textField.text = "¥"
-                return true
-            }
-            
-            let currentCharacterCount = textField.text?.characters.count ?? 0
-            if (range.length + range.location > currentCharacterCount){
-                return false
-            }
-            let newLength = currentCharacterCount + string.characters.count - range.length
-            return newLength <= 9
-        }
-        
-        return true
-    }
-
-}
+//extension NKComposeController: UITextFieldDelegate {
+//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+//        
+//        if textField == investField {
+//            // 一开始就禁止输入0
+//            if textField.text == "¥0" && string == "0" {
+//                return false
+//            }
+//            // 开始输入之后把第一个0去掉
+//            if textField.text == "¥0" {
+//                textField.text = "¥"
+//                return true
+//            }
+//            
+//            let currentCharacterCount = textField.text?.characters.count ?? 0
+//            if (range.length + range.location > currentCharacterCount){
+//                return false
+//            }
+//            let newLength = currentCharacterCount + string.characters.count - range.length
+//            return newLength <= 9
+//        }
+//        
+//        return true
+//    }
+//
+//}
 
 

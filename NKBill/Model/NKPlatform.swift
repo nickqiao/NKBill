@@ -7,34 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
-class NKPlatform: NSObject,NSCoding {
+class NKPlatform: Object {
     
-    var name: String = ""
-    var icon: String = ""
-    
-    override init() {
-        super.init()
-    }
-    
-    init(name:String,icon:String) {
-        self.name = name
-        self.icon = icon
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init()
-        self.name = aDecoder.decodeObjectForKey("name") as! String
-        self.icon = aDecoder.decodeObjectForKey("icon") as! String
-    }
-    
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(name, forKey: "name")
-        aCoder.encodeObject(icon, forKey: "icon")
-    }
-    
-    override var description: String {
-        return "name:\(name)" +
-                "icon:\(icon)"
+    dynamic var name = ""
+    override static func primaryKey() -> String? {
+        return "name"
     }
 }

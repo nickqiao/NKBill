@@ -11,7 +11,7 @@ import UIKit
 let reuseIndentifier = "platform"
 
 protocol NKPlatformControllerDelegate {
-    func platformControllerSelectPlatform(platform:NKPlatform)
+    func platformControllerSelectPlatform(platform: NKPlatform)
 }
 
 class NKPlatformController: NKBaseTableViewController {

@@ -35,6 +35,10 @@
 		01E1C21C1C5CF74C00EF6B5A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E1C21B1C5CF74C00EF6B5A /* SwiftyJSON.framework */; };
 		01E1C21D1C5CF74C00EF6B5A /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01E1C21B1C5CF74C00EF6B5A /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01FC3A9D1C5E54E800176931 /* NKComposeController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FC3A9C1C5E54E800176931 /* NKComposeController.storyboard */; };
+		01FC3A9F1C5F242600176931 /* NKAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3A9E1C5F242600176931 /* NKAccountManager.swift */; };
+		01FC3AA11C5F496200176931 /* NKItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3AA01C5F496200176931 /* NKItem.swift */; };
+		01FC3AA31C5F5E8300176931 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3AA21C5F5E8300176931 /* NSDateExtension.swift */; };
+		01FC3AA51C5F63CC00176931 /* NKAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3AA41C5F63CC00176931 /* NKAlgorithm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -81,6 +85,10 @@
 		01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		01E1C21B1C5CF74C00EF6B5A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		01FC3A9C1C5E54E800176931 /* NKComposeController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NKComposeController.storyboard; sourceTree = "<group>"; };
+		01FC3A9E1C5F242600176931 /* NKAccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKAccountManager.swift; sourceTree = "<group>"; };
+		01FC3AA01C5F496200176931 /* NKItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKItem.swift; sourceTree = "<group>"; };
+		01FC3AA21C5F5E8300176931 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		01FC3AA41C5F63CC00176931 /* NKAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKAlgorithm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +110,10 @@
 			isa = PBXGroup;
 			children = (
 				018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */,
+				01FC3A9E1C5F242600176931 /* NKAccountManager.swift */,
 				018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */,
+				01FC3AA21C5F5E8300176931 /* NSDateExtension.swift */,
+				01FC3AA41C5F63CC00176931 /* NKAlgorithm.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -155,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				01E1C1F51C5CCA7200EF6B5A /* NKAccount.swift */,
+				01FC3AA01C5F496200176931 /* NKItem.swift */,
 				01E1C1F71C5CCE0300EF6B5A /* NKPlatform.swift */,
 			);
 			path = Model;
@@ -255,9 +267,12 @@
 			files = (
 				01E1C1F61C5CCA7200EF6B5A /* NKAccount.swift in Sources */,
 				01E1C1EC1C5CBE8300EF6B5A /* NKIndexController.swift in Sources */,
+				01FC3A9F1C5F242600176931 /* NKAccountManager.swift in Sources */,
+				01FC3AA31C5F5E8300176931 /* NSDateExtension.swift in Sources */,
 				01E1C1E41C5CBC8600EF6B5A /* NKBaseViewController.swift in Sources */,
 				01E1C1F41C5CBF5E00EF6B5A /* NKMoreController.swift in Sources */,
 				01E1C1E81C5CBCCD00EF6B5A /* NKBaseTabBarController.swift in Sources */,
+				01FC3AA51C5F63CC00176931 /* NKAlgorithm.swift in Sources */,
 				018B92301C5DD14C00236E16 /* NKLibraryAPI.swift in Sources */,
 				018B922E1C5DCCF500236E16 /* NKPlatformManager.swift in Sources */,
 				01E1C1F01C5CBF0F00EF6B5A /* NKComposeController.swift in Sources */,
@@ -266,6 +281,7 @@
 				01E1C20A1C5CDFC400EF6B5A /* NKPlatformController.swift in Sources */,
 				01E1C1EA1C5CBCEA00EF6B5A /* NKBaseTableViewController.swift in Sources */,
 				01E1C1E61C5CBCAA00EF6B5A /* NKBaseNavigationController.swift in Sources */,
+				01FC3AA11C5F496200176931 /* NKItem.swift in Sources */,
 				01E1C1CF1C5CBBBB00EF6B5A /* AppDelegate.swift in Sources */,
 				01E1C1EE1C5CBEE500EF6B5A /* NKScheduleController.swift in Sources */,
 			);
