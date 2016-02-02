@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NKComposeController: NKBaseTableViewController {
+class NKComposeController: UITableViewController {
     
     @IBOutlet weak var platformCell: UITableViewCell!
     @IBOutlet weak var investField: UITextField!

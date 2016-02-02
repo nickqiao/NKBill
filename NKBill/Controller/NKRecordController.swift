@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
-class NKRecordController: NKBaseTableViewController {
+class NKRecordController: UITableViewController {
 
-    var accounts:[NKAccount] = {
+    var accounts:[NKAccount] {
         return NKLibraryAPI.sharedInstance.getAccountsByDate()
-    }()
+    }
     
     let reuseIdentifier = "record"
     
@@ -24,6 +25,11 @@ class NKRecordController: NKBaseTableViewController {
         self.tableView.rowHeight = 64
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return accounts.count
     }

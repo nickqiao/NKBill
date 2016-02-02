@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NKBaseNavigationController: UINavigationController {
+class NKNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

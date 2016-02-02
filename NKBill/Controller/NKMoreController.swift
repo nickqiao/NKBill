@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NKMoreController: NKBaseTableViewController {
+class NKMoreController: NKBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

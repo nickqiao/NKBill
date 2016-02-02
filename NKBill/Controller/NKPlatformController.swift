@@ -14,7 +14,7 @@ protocol NKPlatformControllerDelegate {
     func platformControllerSelectPlatform(platform: NKPlatform)
 }
 
-class NKPlatformController: NKBaseTableViewController {
+class NKPlatformController: UITableViewController {
 
     lazy var platforms:[NKPlatform] = {
         return NKLibraryAPI.sharedInstance.getPlatforms()

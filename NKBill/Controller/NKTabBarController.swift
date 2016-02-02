@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NKBaseTabBarController: UITabBarController {
+class NKTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +20,13 @@ class NKBaseTabBarController: UITabBarController {
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         if item.title == "记一笔" {
             
-            self.presentViewController( NKBaseNavigationController(rootViewController: NKComposeController.composeController()),animated: true, completion: nil)
+            self.presentViewController( NKNavigationController(rootViewController: NKComposeController.composeController()),animated: true, completion: nil)
             
         }
     }
 }
 
-extension NKBaseTabBarController: UITabBarControllerDelegate {
+extension NKTabBarController: UITabBarControllerDelegate {
   
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
         if viewController == tabBarController.viewControllers![2] {

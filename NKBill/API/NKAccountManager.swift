@@ -61,7 +61,12 @@ extension NKAccountManager {
     }
     
     func getAccountsByDate() -> [NKAccount] {
-        return getAccountsResults().sorted("created", ascending: false).map{ $0 }
+        return Array(getAccountsResults().sorted("created", ascending: false))
+    }
+    
+    
+    func test() -> [NKAccount] {
+        return getAccountsResults().sorted("created", ascending: false).map({ $0 })
     }
     
     private func getAccountsResults() -> Results<NKAccount> {
@@ -75,6 +80,26 @@ extension NKAccountManager {
     
     func getOverdueItems() -> [NKItem] {
         return getOverdueItemResults().map({ $0 })
+    }
+    
+//    func getToDealWatingItems -> [NKItem] {
+//        
+//    }
+    
+    func getBeforeWatingItems() -> Results<NKItem> {
+        return getWaitingItemResults().filter("repayDate < %@",NSDate().NK_date())
+    }
+    
+    func getTodayWatingItems() -> Results<NKItem> {
+        return getWaitingItemResults().filter("repayDate > %@ AND repayDate < %@",NSDate().NK_date(),NSDate().NK_date().NK_dateByAddingDays(1))
+    }
+    
+    func getInAmonthWatingItems() -> Results<NKItem> {
+        return getWaitingItemResults().filter("repayDate < %@ AND repayDate > %@",NSDate().NK_dateByAddingMonths(1),NSDate().NK_date().NK_dateByAddingDays(1))
+    }
+    
+    func getOneMonthLaterWatingItems() -> Results<NKItem> {
+        return getWaitingItemResults().filter("repayDate > %@",NSDate().NK_dateByAddingMonths(1))
     }
     
     func getWaitingItems() -> [NKItem] {
