@@ -20,10 +20,10 @@ class NKPlatformManager: NSObject {
     }
     
     func createPlaceholderPlatform() {
-        let p1 = NKPlatform(value:["支付宝"])
-        let p2 = NKPlatform(value:["陆金所"])
-        let p3 = NKPlatform(value:["积木盒子"])
-        let p4 = NKPlatform(value:["人人贷"])
+        let p1 = NKPlatform(value:["支付宝",[]])
+        let p2 = NKPlatform(value:["陆金所",[]])
+        let p3 = NKPlatform(value:["积木盒子",[]])
+        let p4 = NKPlatform(value:["人人贷",[]])
         platforms = [p1,p2,p3,p4]
         savePlatforms()
     }

@@ -42,9 +42,6 @@ extension NKLibraryAPI {
 
 extension NKLibraryAPI {
     
-    func getAccounts() -> [NKAccount]{
-        return accountManager.getAccounts()
-    }
     
     func deleteAccounts(accounts:[NKAccount]) {
         accountManager.deleteAccounts(accounts)
@@ -54,17 +51,40 @@ extension NKLibraryAPI {
         accountManager.saveAccount(account)
     }
     
-    func getAccountsByPlatform(platform: NKPlatform) -> [NKAccount]{
-        return accountManager.getAccountsByPlatform(platform)
-    }
-    
     func getAccountsByDate() -> [NKAccount]{
         return accountManager.getAccountsByDate()
     }
     
     func getSumInvest() -> Int {
-        return accountManager.sumInvest()
+        return accountManager.getSumInvest()
     }
 
+    func getPassedInterest() -> Double {
+        return accountManager.getPassedInterest()
+    }
+    
+    func getWatingInterest() -> Double {
+        return accountManager.getWatingInterest()
+    }
+    
+    func getSumInvestFromPlatform(platform: NKPlatform) -> Int {
+        return accountManager.getSumInvestFromPlatform(platform)
+    }
+    
+    func getOverdueItems() -> [NKItem] {
+        return accountManager.getOverdueItems()
+    }
+    
+    func getWaitingItems() -> [NKItem] {
+        return accountManager.getWaitingItems()
+    }
+    
+    func getPassedItems() -> [NKItem] {
+        return accountManager.getPassedItems()
+    }
+    
+    func getInvestedPlatforms() -> [NKPlatform] {
+        return accountManager.getInvestedPlatforms().sort({ $0.sum > $1.sum })
+    }
     
 }

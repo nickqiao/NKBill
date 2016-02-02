@@ -12,7 +12,19 @@ import RealmSwift
 class NKPlatform: Object {
     
     dynamic var name = ""
+    let accounts = List<NKAccount>()
     override static func primaryKey() -> String? {
         return "name"
     }
+    
+    var sum: Int {
+        return NKLibraryAPI.sharedInstance.getSumInvestFromPlatform(self)
+    }
+    
+    var ratio: Double {
+        return Double(sum) / Double(NKLibraryAPI.sharedInstance.getSumInvest())
+    }
+    
 }
+
+

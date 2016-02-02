@@ -20,6 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("\(NSHomeDirectory())")
         
         
+       // print(NKLibraryAPI.sharedInstance.getWatingInterest())
+        //print(NKLibraryAPI.sharedInstance.getInvestedPlatforms())
+        
+//        print(NKLibraryAPI.sharedInstance.getSumInvest())
+//        print(NKLibraryAPI.sharedInstance.getWaitingItems())
+//        print(NKLibraryAPI.sharedInstance.getPassedInterest())
+       // print(NKLibraryAPI.sharedInstance.getAccountsByDate())
+      //  print(NKLibraryAPI.sharedInstance.getInvestedPlatforms())
+        
+        
         Chameleon.setGlobalThemeUsingPrimaryColor(FlatMint(),
             withContentStyle: UIContentStyle.Light)
         

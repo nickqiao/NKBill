@@ -10,26 +10,44 @@ import UIKit
 
 class NKRecordController: NKBaseTableViewController {
 
+    var accounts:[NKAccount] = {
+        return NKLibraryAPI.sharedInstance.getAccountsByDate()
+    }()
+    
+    let reuseIdentifier = "record"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.tableView.registerNib(UINib(nibName: "NKAccountCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+        self.tableView.rowHeight = 64
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return accounts.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+       let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! NKAccountCell
+        let account = accounts[indexPath.row]
+        configureCell(cell, account: account)
+        
+        return cell
     }
-    */
-
+    
+    private func configureCell(cell:NKAccountCell, account:NKAccount) {
+        
+        cell.platNameLabel.text = account.record_name()
+        cell.investLabel.text = account.record_invest()
+        cell.dateLabel.text = account.record_date()
+        cell.rateLabel.text = account.record_rate()
+        cell.progressBar.progress = account.record_progress()
+        cell.progressLabel.text = account.record_progressString()
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
 }

@@ -88,29 +88,36 @@ class NKComposeController: NKBaseTableViewController {
         
     }
 
+    let x = [RepayType.AverageCapital,RepayType.InterestByMonth,RepayType.RepayAllAtLast]
+    
     private func addNewAccount() {
         
-        let account = NKAccount()
-        account.id = NSUUID().UUIDString
-        account.platform = selectedPlatform
-//        account.invest = Int(investField.text!)!
-//        account.rate = Double(rateField.text!)!
-        //account.timeSpan = Int(timeSpanField.text!)!
-        //account.created = datePicker.date
-        account.invest = 100000
-        account.rate = 0.24
-        account.timeSpan = 10
-        account.created = NSDate()
         
-        //            var x = timeSpanField.text!
-        //            let range = x.endIndex.advancedBy(-2)..<x.endIndex
-        //            account.timeSpan = Int(x.removeRange(range))
+        
+            let account = NKAccount()
+            account.id = NSUUID().UUIDString
+            account.platform = selectedPlatform
+            //        account.invest = Int(investField.text!)!
+            //        account.rate = Double(rateField.text!)!
+            //account.timeSpan = Int(timeSpanField.text!)!
+            //account.created = datePicker.date
+            account.invest = 10000 * randomInRange(1...10)
+            account.rate = Double(randomInRange(12...24)) / Double(100)
+            account.timeSpan = randomInRange(1...10)
+            account.created = datePicker.date
+            account.desc = "good\(randomInRange(1...10))"
+            //            var x = timeSpanField.text!
+            //            let range = x.endIndex.advancedBy(-2)..<x.endIndex
+            //            account.timeSpan = Int(x.removeRange(range))
+            
+            
+            account.timeTypeEnum = TimeType.MONTH
+            account.repayTypeEnum = x[randomInRange(0...2)]
+            
+            NKLibraryAPI.sharedInstance.saveAccount(account)
        
         
-        account.timeTypeEnum = TimeType.MONTH
-        account.repayTypeEnum = RepayType.AverageCapital
         
-        NKLibraryAPI.sharedInstance.saveAccount(account)
     }
     
     private func updateAccount() {

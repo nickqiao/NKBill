@@ -8,6 +8,9 @@
 
 import Foundation
 
+func createItemsFor(account:NKAccount) -> [NKItem] { 
+    return createItems(account.invest, rate: account.rate, length: account.timeSpan, repayType: account.repayTypeEnum, date: account.created)
+}
 
 func createItems(invest:Int,rate: Double,length:Int,repayType:RepayType,date: NSDate) -> [NKItem]{
     
