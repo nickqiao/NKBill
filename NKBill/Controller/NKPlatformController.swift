@@ -10,23 +10,19 @@ import UIKit
 
 let reuseIndentifier = "platform"
 
-protocol NKPlatformControllerDelegate {
-    func platformControllerSelectPlatform(platform: NKPlatform)
-}
-
 class NKPlatformController: UITableViewController {
 
     lazy var platforms:[NKPlatform] = {
         return NKLibraryAPI.sharedInstance.getPlatforms()
     }()
     
-    var delegate: NKPlatformControllerDelegate?
+    var selectedPlatform: NKPlatform!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.tableView.registerClass(UITableViewCell.self , forCellReuseIdentifier: reuseIndentifier)
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,10 +41,9 @@ class NKPlatformController: UITableViewController {
         return 60
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        delegate?.platformControllerSelectPlatform(platforms[indexPath.row])
-        self.navigationController?.popViewControllerAnimated(true)
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath {
+        selectedPlatform = platforms[indexPath.row]
+        return indexPath
     }
     
 

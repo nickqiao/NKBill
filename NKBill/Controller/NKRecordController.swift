@@ -9,11 +9,16 @@
 import UIKit
 import RealmSwift
 
-class NKRecordController: UITableViewController {
+protocol NKRecordControllerDatasource {
+    var title: String { get }
+    var accounts: Results<NKAccount> { get }
+}
 
-    var accounts:[NKAccount] {
-        return NKLibraryAPI.sharedInstance.getAccountsByDate()
-    }
+class NKRecordController: UITableViewController {
+    
+    var dataSource: NKRecordControllerDatasource?
+    
+    var selectedAccount: NKAccount!
     
     let reuseIdentifier = "record"
     
@@ -21,22 +26,32 @@ class NKRecordController: UITableViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.tableView.registerNib(UINib(nibName: "NKAccountCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-        self.tableView.rowHeight = 64
+        
+        if let _ = dataSource {
+            
+        }else {
+            dataSource =  NKRecordDatasource.placeholder
+        }
+        tableView.backgroundColor = NKBackGroudColor()
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let detailVc = segue.destinationViewController as! NKDetailController
+        detailVc.account = selectedAccount
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return accounts.count
+        return dataSource!.accounts.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! NKAccountCell
-        let account = accounts[indexPath.row]
+        let account = dataSource!.accounts[indexPath.row]
         configureCell(cell, account: account)
         
         return cell
@@ -52,8 +67,9 @@ class NKRecordController: UITableViewController {
         cell.progressLabel.text = account.record_progressString()
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        selectedAccount = dataSource!.accounts[indexPath.row]
+        return indexPath
     }
     
 }

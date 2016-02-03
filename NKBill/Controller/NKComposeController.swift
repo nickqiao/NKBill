@@ -17,6 +17,16 @@ class NKComposeController: UITableViewController {
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var rateField: UITextField!
     
+    
+    @IBAction func unwindFromPlatform(segue: UIStoryboardSegue) {
+        
+        let platVc = segue.sourceViewController as! NKPlatformController
+        selectedPlatform = platVc.selectedPlatform
+        platformCell.detailTextLabel?.text = selectedPlatform.name
+        platformCell.accessoryType = .None
+        
+    }
+    
     var account: NKAccount!
     var selectedPlatform: NKPlatform!
     
@@ -45,12 +55,6 @@ class NKComposeController: UITableViewController {
         dateField.text = "\(picker.date.NK_formatDate())"
         
     }
-
-    
-    static func composeController() -> NKComposeController {
-        let st = UIStoryboard(name: "NKComposeController", bundle: nil)
-        return st.instantiateInitialViewController() as! NKComposeController
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,21 +65,22 @@ class NKComposeController: UITableViewController {
         configureView()
         
         if let _ = account {
-            title = "记一笔"
+            title = "投资详情"
+            
             fillText()
         }else {
-            title = "投资详情"
+            title = "记一笔"
         }
         
     }
     
     private func fillText() {
-        platformCell.detailTextLabel?.text = account.compose_name()
-        investField.text = account.compose_invest()
-        rateField.text = account.compose_rate()
-        timeSpanField.text = account.compose_timeSpan()
-        dateField.text = account.compose_created()
-        repayTypeField.text = account.compose_repayType()
+        platformCell.detailTextLabel?.text = account.compose_name().1
+        investField.text = account.compose_invest().1
+        rateField.text = account.compose_rate().1
+        timeSpanField.text = account.compose_timeSpan().1
+        dateField.text = account.compose_created().1
+        repayTypeField.text = account.compose_repayType().1
     }
     
     private func configureView() {
@@ -91,8 +96,6 @@ class NKComposeController: UITableViewController {
     let x = [RepayType.AverageCapital,RepayType.InterestByMonth,RepayType.RepayAllAtLast]
     
     private func addNewAccount() {
-        
-        
         
             let account = NKAccount()
             account.id = NSUUID().UUIDString
@@ -129,8 +132,6 @@ class NKComposeController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         switch indexPath.row {
-        case 0:
-            selectPlatcell()
         case 1:
             selectInvestCell()
         case 2:
@@ -147,12 +148,6 @@ class NKComposeController: UITableViewController {
             break
 
         }
-    }
-    
-    private func selectPlatcell() {
-        let platVc = NKPlatformController()
-        platVc.delegate = self
-        self.navigationController?.pushViewController(platVc, animated: true)
     }
    
     private func selectInvestCell() {
@@ -190,15 +185,15 @@ class NKComposeController: UITableViewController {
     
 }
 
-extension NKComposeController: NKPlatformControllerDelegate {
-    
-    func platformControllerSelectPlatform(platform: NKPlatform) {
-        selectedPlatform = platform
-        platformCell.detailTextLabel?.text = platform.name
-        platformCell.accessoryType = .None
-    }
-    
-}
+//extension NKComposeController: NKPlatformControllerDelegate {
+//    
+//    func platformControllerSelectPlatform(platform: NKPlatform) {
+//        selectedPlatform = platform
+//        platformCell.detailTextLabel?.text = platform.name
+//        platformCell.accessoryType = .None
+//    }
+//    
+//}
 
 //extension NKComposeController: UITextFieldDelegate {
 //    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {

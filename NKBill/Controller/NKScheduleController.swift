@@ -7,22 +7,9 @@
 //
 
 import UIKit
-
-protocol ScheduleControllerDataSource {
-    var kind: State { get }
-    var sections: Int { get }
-    var numberOfRows: Int { get }
-    var items: [NKItem] { get }
-}
-
-extension ScheduleControllerDataSource {
-    var  sections :Int {
-        return 1
-    }
-    var kind: State {
-        return State.Waiting
-    }
-    
+import RealmSwift
+protocol NKScheduleControllerDataSource {
+    var items: [(String, Results<NKItem>)] { get }
 }
 
 class NKScheduleController: NKBaseViewController {
@@ -30,35 +17,66 @@ class NKScheduleController: NKBaseViewController {
     @IBOutlet weak var segment: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
-    var dataSource: ScheduleControllerDataSource?
+    let reuseIndentifier = "schedule"
+    let cellNibName = "NKScheduleCell"
+    
+    var dataSource: NKScheduleControllerDataSource? {
+        
+        switch segment.selectedSegmentIndex {
+        case 0:
+            return NKScheduleDataSource.Wating
+        case 1:
+            return NKScheduleDataSource.Passed
+        case 2:
+            return NKScheduleDataSource.Overdue
+        default:
+            return NKScheduleDataSource.Wating
+        }
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.tableView.registerClass(UITableView.self , forCellReuseIdentifier: "1")
+        self.tableView.registerNib(UINib(nibName: cellNibName, bundle: nil), forCellReuseIdentifier: reuseIndentifier)
+        tableView.rowHeight = 64
+        tableView.backgroundColor = NKBackGroudColor()
+        segment.addTarget(self, action: "segmentChangeValue:", forControlEvents: .ValueChanged)
+    }
+    
+    func segmentChangeValue(seg: UISegmentedControl) {
+        tableView.reloadData()
     }
     
 }
 
 extension NKScheduleController: UITableViewDataSource {
+    
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return (dataSource?.sections)!
+        return (dataSource?.items.count)!
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (dataSource?.numberOfRows)!
+        return (dataSource?.items[section].1.count)!
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("1")
-        let item = dataSource?.items[indexPath.row]
-        cell?.textLabel?.text = item?.account.first?.platform?.name
-        return cell!
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIndentifier) as! NKScheduleCell
+        cell.item = dataSource?.items[indexPath.section].1[indexPath.row]
+
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return dataSource?.items[section].0
     }
     
 }
 
 extension NKScheduleController: UITableViewDelegate {
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
 }

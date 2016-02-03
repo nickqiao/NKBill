@@ -36,37 +36,4 @@ class NKItem: Object {
     }
 }
 
-extension NKItem {
-    
-    func Item_name() -> String {
-        return (account.first?.platform?.name)!
-    }
-    
-    func Item_repayDate() -> String {
-        return repayDate.NK_formatDate()
-    }
-    
-    func Item_interest() -> String {
-        return String(format: ".2f", interest)
-    }
-    
-    func Item_principal() -> String {
-        return String(format: ".2f", principal)
-    }
-    
-    func Item_sum() -> String {
-        return String(format: ".2f", principal + interest)
-    }
-    
-    func Item_state() -> String {
-        switch stateEnum {
-        case .Overdue:
-            return "逾期"
-        case .Passed:
-            return "已还"
-        case .Waiting:
-            return "待还"
-        }
-    }
-    
-}
+

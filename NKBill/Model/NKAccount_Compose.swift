@@ -11,54 +11,55 @@ import Foundation
 
 extension NKAccount {
     
-    func compose_name() -> String {
+    func compose_name() -> (String,String) {
         if let n = platform?.name {
-            return n
+            return ("投资平台",n)
         }else {
-            return ""
+            return ("投资平台","")
         }
         
     }
     
-    func compose_invest() -> String {
-        return "¥\(invest)"
+    func compose_invest() -> (String,String)  {
+        return ("投资金额","¥\(invest)")
     }
     
-    func compose_rate() -> String {
+    func compose_rate() -> (String,String) {
         if rate == 0.0 {
-            return ""
+            return ("年化利率", "")
         }
         if rate > 0.5 {
-            return "60%"
+            return ("年化利率", "60%")
         }
         
-        return "\(rate * 100)%"
+        return ("年化利率", "\(rate * 100)%")
         
     }
     
-    func compose_timeSpan() -> String {
+    func compose_timeSpan() -> (String,String) {
         switch timeTypeEnum {
         case .DAY:
-            return "\(timeSpan)天"
+            return ("投资期限","\(timeSpan)天")
         case .MONTH:
-            return "\(timeSpan)个月"
+            return ("投资期限","\(timeSpan)个月")
         }
     }
     
-    func compose_created() -> String {
-        return created.NK_formatDate()
+    func compose_created() -> (String,String) {
+        return ("起息日",created.NK_formatDate())
+
     }
     
-    func compose_repayType() -> String {
+    func compose_repayType() -> (String,String) {
         switch repayTypeEnum {
         case .AverageCapital:
-            return "等额本息"
+            return ("还款方式:","等额本息")
         case .InterestByMonth:
-            return "按月计息,到期还本"
+            return ("还款方式:","按月计息,到期还本")
         case .InterestByDay:
-            return "按日计息,到期还本"
+            return ("还款方式:","按日计息,到期还本")
         case .RepayAllAtLast:
-            return "到期还本息"
+            return ("还款方式:","到期还本息")
         }
     }
     

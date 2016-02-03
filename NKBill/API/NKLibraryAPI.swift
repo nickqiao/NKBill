@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import RealmSwift
 class NKLibraryAPI: NSObject {
     
     private var platformManager: NKPlatformManager
@@ -51,7 +51,7 @@ extension NKLibraryAPI {
         accountManager.saveAccount(account)
     }
     
-    func getAccountsByDate() -> [NKAccount]{
+    func getAccountsByDate() -> Results<NKAccount>{
         return accountManager.getAccountsByDate()
     }
     
@@ -67,24 +67,46 @@ extension NKLibraryAPI {
         return accountManager.getWatingInterest()
     }
     
+    func getAccountsFromPlatform(platform: NKPlatform) -> Results<NKAccount> {
+        return accountManager.getAccountsByPlatform(platform)
+    }
+    
     func getSumInvestFromPlatform(platform: NKPlatform) -> Int {
         return accountManager.getSumInvestFromPlatform(platform)
     }
     
-    func getOverdueItems() -> [NKItem] {
+    func getOverdueItems() -> Results<NKItem> {
         return accountManager.getOverdueItems()
     }
     
-    func getWaitingItems() -> [NKItem] {
+    func getWaitingItems() -> Results<NKItem> {
         return accountManager.getWaitingItems()
     }
     
-    func getPassedItems() -> [NKItem] {
+    func getBeforeWatingItems() -> Results<NKItem> {
+        return accountManager.getBeforeWatingItems()
+    }
+    
+    func getTodayWatingItems()-> Results<NKItem> {
+        return accountManager.getTodayWatingItems()
+    }
+    
+    func getInAmonthWatingItems() -> Results<NKItem> {
+        return accountManager.getInAmonthWatingItems()
+    }
+
+    func getAfterAmonthWatingItems() -> Results<NKItem> {
+        return accountManager.getOneMonthLaterWatingItems()
+    }
+    
+    func getPassedItems() -> Results<NKItem> {
         return accountManager.getPassedItems()
     }
     
-    func getInvestedPlatforms() -> [NKPlatform] {
-        return accountManager.getInvestedPlatforms().sort({ $0.sum > $1.sum })
+    func getInvestedPlatforms() -> Results<NKPlatform> {
+        return accountManager.getInvestedPlatforms()//.sort({ $0.sum > $1.sum })
     }
+    
+    
     
 }

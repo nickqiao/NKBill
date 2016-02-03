@@ -8,15 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		011524F41C609A6F000D9539 /* NKAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011524F21C609A6F000D9539 /* NKAccountCell.swift */; };
-		011524F51C609A6F000D9539 /* NKAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011524F31C609A6F000D9539 /* NKAccountCell.xib */; };
 		011524F71C60A6D7000D9539 /* NKAccount_Compose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011524F61C60A6D7000D9539 /* NKAccount_Compose.swift */; };
 		011524F91C60A6FD000D9539 /* NKAccount_Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011524F81C60A6FD000D9539 /* NKAccount_Record.swift */; };
 		011524FE1C60AECC000D9539 /* NKIndexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011524FC1C60AECC000D9539 /* NKIndexCell.swift */; };
 		011524FF1C60AECC000D9539 /* NKIndexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011524FD1C60AECC000D9539 /* NKIndexCell.xib */; };
 		011525011C60B0A0000D9539 /* NKPlatform_Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525001C60B0A0000D9539 /* NKPlatform_Index.swift */; };
-		011525031C60CE15000D9539 /* NKPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525021C60CE15000D9539 /* NKPrint.swift */; };
 		011525051C60D38A000D9539 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011525041C60D38A000D9539 /* Main.storyboard */; };
-		011525071C60F34A000D9539 /* NKScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525061C60F34A000D9539 /* NKScheduleModel.swift */; };
+		011525071C60F34A000D9539 /* NKScheduleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525061C60F34A000D9539 /* NKScheduleDataSource.swift */; };
+		0115250C1C61C3AD000D9539 /* NKScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115250A1C61C3AD000D9539 /* NKScheduleCell.swift */; };
+		0115250D1C61C3AD000D9539 /* NKScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0115250B1C61C3AD000D9539 /* NKScheduleCell.xib */; };
+		0115250F1C61F119000D9539 /* NKDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115250E1C61F119000D9539 /* NKDetailController.swift */; };
+		011525111C61F2C9000D9539 /* NKDetailItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525101C61F2C9000D9539 /* NKDetailItemCell.swift */; };
+		011525131C61FCF2000D9539 /* NKItem_Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525121C61FCF2000D9539 /* NKItem_Detail.swift */; };
+		011525151C6200F1000D9539 /* NKItem_Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525141C6200F1000D9539 /* NKItem_Schedule.swift */; };
+		011525171C62040A000D9539 /* NKScheduleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525161C62040A000D9539 /* NKScheduleHeader.swift */; };
+		011525191C6205CB000D9539 /* NKScheduleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011525181C6205CB000D9539 /* NKScheduleHeader.xib */; };
+		0115251D1C6221E9000D9539 /* NKRecordDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115251C1C6221E9000D9539 /* NKRecordDatasource.swift */; };
 		018B922E1C5DCCF500236E16 /* NKPlatformManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */; };
 		018B92301C5DD14C00236E16 /* NKLibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */; };
 		018B92361C5E244C00236E16 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92351C5E244C00236E16 /* Realm.framework */; };
@@ -41,9 +48,6 @@
 		01E1C2161C5CF6B900EF6B5A /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 01E1C2151C5CF6B900EF6B5A /* Cartfile */; };
 		01E1C2181C5CF73A00EF6B5A /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */; };
 		01E1C2191C5CF73A00EF6B5A /* Chameleon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01E1C21C1C5CF74C00EF6B5A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E1C21B1C5CF74C00EF6B5A /* SwiftyJSON.framework */; };
-		01E1C21D1C5CF74C00EF6B5A /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01E1C21B1C5CF74C00EF6B5A /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01FC3A9D1C5E54E800176931 /* NKComposeController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FC3A9C1C5E54E800176931 /* NKComposeController.storyboard */; };
 		01FC3A9F1C5F242600176931 /* NKAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3A9E1C5F242600176931 /* NKAccountManager.swift */; };
 		01FC3AA11C5F496200176931 /* NKItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3AA01C5F496200176931 /* NKItem.swift */; };
 		01FC3AA31C5F5E8300176931 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3AA21C5F5E8300176931 /* NSDateExtension.swift */; };
@@ -59,7 +63,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				018B92371C5E244C00236E16 /* Realm.framework in Embed Frameworks */,
-				01E1C21D1C5CF74C00EF6B5A /* SwiftyJSON.framework in Embed Frameworks */,
 				018B923A1C5E245B00236E16 /* RealmSwift.framework in Embed Frameworks */,
 				01E1C2191C5CF73A00EF6B5A /* Chameleon.framework in Embed Frameworks */,
 			);
@@ -70,15 +73,22 @@
 
 /* Begin PBXFileReference section */
 		011524F21C609A6F000D9539 /* NKAccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKAccountCell.swift; sourceTree = "<group>"; };
-		011524F31C609A6F000D9539 /* NKAccountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKAccountCell.xib; sourceTree = "<group>"; };
 		011524F61C60A6D7000D9539 /* NKAccount_Compose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKAccount_Compose.swift; sourceTree = "<group>"; };
 		011524F81C60A6FD000D9539 /* NKAccount_Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKAccount_Record.swift; sourceTree = "<group>"; };
 		011524FC1C60AECC000D9539 /* NKIndexCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKIndexCell.swift; sourceTree = "<group>"; };
 		011524FD1C60AECC000D9539 /* NKIndexCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKIndexCell.xib; sourceTree = "<group>"; };
 		011525001C60B0A0000D9539 /* NKPlatform_Index.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPlatform_Index.swift; sourceTree = "<group>"; };
-		011525021C60CE15000D9539 /* NKPrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPrint.swift; sourceTree = "<group>"; };
 		011525041C60D38A000D9539 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		011525061C60F34A000D9539 /* NKScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKScheduleModel.swift; sourceTree = "<group>"; };
+		011525061C60F34A000D9539 /* NKScheduleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKScheduleDataSource.swift; sourceTree = "<group>"; };
+		0115250A1C61C3AD000D9539 /* NKScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKScheduleCell.swift; sourceTree = "<group>"; };
+		0115250B1C61C3AD000D9539 /* NKScheduleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKScheduleCell.xib; sourceTree = "<group>"; };
+		0115250E1C61F119000D9539 /* NKDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKDetailController.swift; sourceTree = "<group>"; };
+		011525101C61F2C9000D9539 /* NKDetailItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKDetailItemCell.swift; sourceTree = "<group>"; };
+		011525121C61FCF2000D9539 /* NKItem_Detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKItem_Detail.swift; sourceTree = "<group>"; };
+		011525141C6200F1000D9539 /* NKItem_Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKItem_Schedule.swift; sourceTree = "<group>"; };
+		011525161C62040A000D9539 /* NKScheduleHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKScheduleHeader.swift; sourceTree = "<group>"; };
+		011525181C6205CB000D9539 /* NKScheduleHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKScheduleHeader.xib; sourceTree = "<group>"; };
+		0115251C1C6221E9000D9539 /* NKRecordDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKRecordDatasource.swift; sourceTree = "<group>"; };
 		018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPlatformManager.swift; sourceTree = "<group>"; };
 		018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKLibraryAPI.swift; sourceTree = "<group>"; };
 		018B92351C5E244C00236E16 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -103,7 +113,6 @@
 		01E1C2151C5CF6B900EF6B5A /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		01E1C21B1C5CF74C00EF6B5A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		01FC3A9C1C5E54E800176931 /* NKComposeController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NKComposeController.storyboard; sourceTree = "<group>"; };
 		01FC3A9E1C5F242600176931 /* NKAccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKAccountManager.swift; sourceTree = "<group>"; };
 		01FC3AA01C5F496200176931 /* NKItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKItem.swift; sourceTree = "<group>"; };
 		01FC3AA21C5F5E8300176931 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
@@ -117,7 +126,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				018B92361C5E244C00236E16 /* Realm.framework in Frameworks */,
-				01E1C21C1C5CF74C00EF6B5A /* SwiftyJSON.framework in Frameworks */,
 				018B92391C5E245B00236E16 /* RealmSwift.framework in Frameworks */,
 				01E1C2181C5CF73A00EF6B5A /* Chameleon.framework in Frameworks */,
 			);
@@ -135,7 +143,6 @@
 				01FC3AA21C5F5E8300176931 /* NSDateExtension.swift */,
 				01FC3AA41C5F63CC00176931 /* NKAlgorithm.swift */,
 				01FC3AA71C60493300176931 /* NKConfigure.swift */,
-				011525021C60CE15000D9539 /* NKPrint.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -164,16 +171,16 @@
 		01E1C1CD1C5CBBBB00EF6B5A /* NKBill */ = {
 			isa = PBXGroup;
 			children = (
+				01E1C1CE1C5CBBBB00EF6B5A /* AppDelegate.swift */,
+				011525041C60D38A000D9539 /* Main.storyboard */,
 				018B922C1C5DCC6F00236E16 /* API */,
 				01E1C1E21C5CBC4A00EF6B5A /* Controller */,
 				01E1C1E11C5CBC4000EF6B5A /* Model */,
 				01E1C1E01C5CBC3000EF6B5A /* View */,
-				01E1C1CE1C5CBBBB00EF6B5A /* AppDelegate.swift */,
 				01E1C1D51C5CBBBB00EF6B5A /* Assets.xcassets */,
 				01E1C1D71C5CBBBB00EF6B5A /* LaunchScreen.storyboard */,
 				01E1C1DA1C5CBBBB00EF6B5A /* Info.plist */,
 				01E1C20F1C5CE1CE00EF6B5A /* p2pbank.plist */,
-				011525041C60D38A000D9539 /* Main.storyboard */,
 			);
 			path = NKBill;
 			sourceTree = "<group>";
@@ -182,9 +189,13 @@
 			isa = PBXGroup;
 			children = (
 				011524F21C609A6F000D9539 /* NKAccountCell.swift */,
-				011524F31C609A6F000D9539 /* NKAccountCell.xib */,
 				011524FC1C60AECC000D9539 /* NKIndexCell.swift */,
 				011524FD1C60AECC000D9539 /* NKIndexCell.xib */,
+				0115250A1C61C3AD000D9539 /* NKScheduleCell.swift */,
+				0115250B1C61C3AD000D9539 /* NKScheduleCell.xib */,
+				011525101C61F2C9000D9539 /* NKDetailItemCell.swift */,
+				011525161C62040A000D9539 /* NKScheduleHeader.swift */,
+				011525181C6205CB000D9539 /* NKScheduleHeader.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,9 +207,12 @@
 				011524F61C60A6D7000D9539 /* NKAccount_Compose.swift */,
 				011524F81C60A6FD000D9539 /* NKAccount_Record.swift */,
 				01FC3AA01C5F496200176931 /* NKItem.swift */,
+				011525141C6200F1000D9539 /* NKItem_Schedule.swift */,
+				011525121C61FCF2000D9539 /* NKItem_Detail.swift */,
 				01E1C1F71C5CCE0300EF6B5A /* NKPlatform.swift */,
 				011525001C60B0A0000D9539 /* NKPlatform_Index.swift */,
-				011525061C60F34A000D9539 /* NKScheduleModel.swift */,
+				011525061C60F34A000D9539 /* NKScheduleDataSource.swift */,
+				0115251C1C6221E9000D9539 /* NKRecordDatasource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,10 +226,10 @@
 				01E1C1EB1C5CBE8300EF6B5A /* NKIndexController.swift */,
 				01E1C1ED1C5CBEE500EF6B5A /* NKScheduleController.swift */,
 				01E1C1EF1C5CBF0F00EF6B5A /* NKComposeController.swift */,
-				01FC3A9C1C5E54E800176931 /* NKComposeController.storyboard */,
-				01E1C1F11C5CBF4800EF6B5A /* NKRecordController.swift */,
 				01E1C1F31C5CBF5E00EF6B5A /* NKMoreController.swift */,
 				01E1C2091C5CDFC400EF6B5A /* NKPlatformController.swift */,
+				01E1C1F11C5CBF4800EF6B5A /* NKRecordController.swift */,
+				0115250E1C61F119000D9539 /* NKDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -280,11 +294,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				011524F51C609A6F000D9539 /* NKAccountCell.xib in Resources */,
 				011524FF1C60AECC000D9539 /* NKIndexCell.xib in Resources */,
+				0115250D1C61C3AD000D9539 /* NKScheduleCell.xib in Resources */,
 				01E1C2161C5CF6B900EF6B5A /* Cartfile in Resources */,
 				01E1C1D91C5CBBBB00EF6B5A /* LaunchScreen.storyboard in Resources */,
-				01FC3A9D1C5E54E800176931 /* NKComposeController.storyboard in Resources */,
+				011525191C6205CB000D9539 /* NKScheduleHeader.xib in Resources */,
 				011525051C60D38A000D9539 /* Main.storyboard in Resources */,
 				01E1C2101C5CE1CE00EF6B5A /* p2pbank.plist in Resources */,
 				01E1C1D61C5CBBBB00EF6B5A /* Assets.xcassets in Resources */,
@@ -298,30 +312,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				011525171C62040A000D9539 /* NKScheduleHeader.swift in Sources */,
+				011525131C61FCF2000D9539 /* NKItem_Detail.swift in Sources */,
 				01E1C1F61C5CCA7200EF6B5A /* NKAccount.swift in Sources */,
 				011524F71C60A6D7000D9539 /* NKAccount_Compose.swift in Sources */,
 				01E1C1EC1C5CBE8300EF6B5A /* NKIndexController.swift in Sources */,
 				01FC3A9F1C5F242600176931 /* NKAccountManager.swift in Sources */,
 				01FC3AA31C5F5E8300176931 /* NSDateExtension.swift in Sources */,
+				0115250C1C61C3AD000D9539 /* NKScheduleCell.swift in Sources */,
 				011524F41C609A6F000D9539 /* NKAccountCell.swift in Sources */,
-				011525031C60CE15000D9539 /* NKPrint.swift in Sources */,
 				01E1C1E41C5CBC8600EF6B5A /* NKBaseViewController.swift in Sources */,
 				01E1C1F41C5CBF5E00EF6B5A /* NKMoreController.swift in Sources */,
 				01E1C1E81C5CBCCD00EF6B5A /* NKTabBarController.swift in Sources */,
 				01FC3AA51C5F63CC00176931 /* NKAlgorithm.swift in Sources */,
+				0115250F1C61F119000D9539 /* NKDetailController.swift in Sources */,
 				018B92301C5DD14C00236E16 /* NKLibraryAPI.swift in Sources */,
 				011525011C60B0A0000D9539 /* NKPlatform_Index.swift in Sources */,
 				018B922E1C5DCCF500236E16 /* NKPlatformManager.swift in Sources */,
 				01E1C1F01C5CBF0F00EF6B5A /* NKComposeController.swift in Sources */,
+				011525151C6200F1000D9539 /* NKItem_Schedule.swift in Sources */,
 				01FC3AA81C60493300176931 /* NKConfigure.swift in Sources */,
 				01E1C1F81C5CCE0300EF6B5A /* NKPlatform.swift in Sources */,
+				011525111C61F2C9000D9539 /* NKDetailItemCell.swift in Sources */,
 				01E1C1F21C5CBF4800EF6B5A /* NKRecordController.swift in Sources */,
 				011524F91C60A6FD000D9539 /* NKAccount_Record.swift in Sources */,
 				01E1C20A1C5CDFC400EF6B5A /* NKPlatformController.swift in Sources */,
 				01E1C1E61C5CBCAA00EF6B5A /* NKNavigationController.swift in Sources */,
 				01FC3AA11C5F496200176931 /* NKItem.swift in Sources */,
+				0115251D1C6221E9000D9539 /* NKRecordDatasource.swift in Sources */,
 				011524FE1C60AECC000D9539 /* NKIndexCell.swift in Sources */,
-				011525071C60F34A000D9539 /* NKScheduleModel.swift in Sources */,
+				011525071C60F34A000D9539 /* NKScheduleDataSource.swift in Sources */,
 				01E1C1CF1C5CBBBB00EF6B5A /* AppDelegate.swift in Sources */,
 				01E1C1EE1C5CBEE500EF6B5A /* NKScheduleController.swift in Sources */,
 			);

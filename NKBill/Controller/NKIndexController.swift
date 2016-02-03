@@ -12,9 +12,9 @@ class NKIndexController: NKBaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var platforms: [NKPlatform]  {
-       return NKLibraryAPI.sharedInstance.getInvestedPlatforms()
-    }
+    var selectedPlatform: NKPlatform!
+    
+    private lazy var platforms = NKLibraryAPI.sharedInstance.getInvestedPlatforms()
     
     let reuseIdentifier = "index"
     
@@ -29,8 +29,14 @@ class NKIndexController: NKBaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
+        tableView.backgroundColor = NKBackGroudColor()
     }
  
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let recordVc = segue.destinationViewController as! NKRecordController
+        
+        recordVc.dataSource = NKRecordDatasource.platform(selectedPlatform)
+    }
 }
 
 extension NKIndexController: UITableViewDataSource {
@@ -52,6 +58,15 @@ extension NKIndexController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "投资平台"
+    }
+    
+}
+
+extension NKIndexController: UITableViewDelegate {
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        selectedPlatform = platforms[indexPath.row]
+        performSegueWithIdentifier("indexToRecord", sender: nil)
+        return indexPath
     }
     
 }

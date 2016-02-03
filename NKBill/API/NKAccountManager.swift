@@ -13,7 +13,7 @@ class NKAccountManager: NSObject {
     let realm = try! Realm()
     
     func getSumInvest() -> Int {
-        return getAccountsResults().sum("invest")
+        return getAccounts().sum("invest")
     }
   
     func getSumInvestFromPlatform(platform: NKPlatform) -> Int{
@@ -21,11 +21,11 @@ class NKAccountManager: NSObject {
     }
     
     func getPassedInterest() -> Double {
-        return getPassedItemResults().sum("interest")
+        return getPassedItems().sum("interest")
     }
     
     func getWatingInterest() -> Double {
-        return getWaitingItemResults().sum("interest") + getOverdueItemResults().sum("interest")
+        return getWaitingItems().sum("interest") + getOverdueItems().sum("interest")
     }
     
 }
@@ -56,20 +56,16 @@ extension NKAccountManager {
 // Accounts
 extension NKAccountManager {
     
+    
     func getAccountsByPlatform(platform:NKPlatform) -> Results<NKAccount> {
-        return getAccountsResults().filter("platform == %@", platform)
+        return getAccounts().filter("platform == %@", platform)
     }
     
-    func getAccountsByDate() -> [NKAccount] {
-        return Array(getAccountsResults().sorted("created", ascending: false))
+    func getAccountsByDate() -> Results<NKAccount> {
+        return getAccounts().sorted("created", ascending: false)
     }
     
-    
-    func test() -> [NKAccount] {
-        return getAccountsResults().sorted("created", ascending: false).map({ $0 })
-    }
-    
-    private func getAccountsResults() -> Results<NKAccount> {
+    func getAccounts() -> Results<NKAccount> {
         return self.realm.objects(NKAccount)
     }
 }
@@ -78,55 +74,40 @@ extension NKAccountManager {
 // Item
 extension NKAccountManager {
     
-    func getOverdueItems() -> [NKItem] {
-        return getOverdueItemResults().map({ $0 })
-    }
-    
-//    func getToDealWatingItems -> [NKItem] {
-//        
-//    }
-    
     func getBeforeWatingItems() -> Results<NKItem> {
-        return getWaitingItemResults().filter("repayDate < %@",NSDate().NK_date())
+        return getWaitingItems().filter("repayDate < %@",NSDate().NK_date())
     }
     
     func getTodayWatingItems() -> Results<NKItem> {
-        return getWaitingItemResults().filter("repayDate > %@ AND repayDate < %@",NSDate().NK_date(),NSDate().NK_date().NK_dateByAddingDays(1))
+        return getWaitingItems().filter("repayDate > %@ AND repayDate < %@",NSDate().NK_date(),NSDate().NK_date().NK_dateByAddingDays(1))
     }
     
     func getInAmonthWatingItems() -> Results<NKItem> {
-        return getWaitingItemResults().filter("repayDate < %@ AND repayDate > %@",NSDate().NK_dateByAddingMonths(1),NSDate().NK_date().NK_dateByAddingDays(1))
+        return getWaitingItems().filter("repayDate < %@ AND repayDate > %@",NSDate().NK_dateByAddingMonths(1),NSDate().NK_date().NK_dateByAddingDays(1))
     }
     
     func getOneMonthLaterWatingItems() -> Results<NKItem> {
-        return getWaitingItemResults().filter("repayDate > %@",NSDate().NK_dateByAddingMonths(1))
+        return getWaitingItems().filter("repayDate > %@",NSDate().NK_dateByAddingMonths(1))
     }
     
-    func getWaitingItems() -> [NKItem] {
-        return getWaitingItemResults().map({ $0 })
-    }
     
-    func getPassedItems() -> [NKItem] {
-        return getPassedItemResults().map({ $0 })
-    }
-    
-    private func appendItems(account:NKAccount) {
+    func appendItems(account:NKAccount) {
         createItemsFor(account).forEach({ account.items.append($0) })
     }
     
-    private func getOverdueItemResults() -> Results<NKItem> {
+    func getOverdueItems() -> Results<NKItem> {
         return getAllItems().filter("state == %@",State.Overdue.rawValue).sorted("repayDate", ascending: true)
     }
     
-    private func getWaitingItemResults() -> Results<NKItem> {
+    func getWaitingItems() -> Results<NKItem> {
         return getAllItems().filter("state == %@",State.Waiting.rawValue).sorted("repayDate", ascending: true)
     }
     
-    private func getPassedItemResults() -> Results<NKItem> {
+    func getPassedItems() -> Results<NKItem> {
         return getAllItems().filter("state == %@",State.Passed.rawValue).sorted("repayDate", ascending: false)
     }
     
-    private func getAllItems() -> Results<NKItem> {
+    func getAllItems() -> Results<NKItem> {
         return self.realm.objects(NKItem)
     }
     
@@ -135,11 +116,7 @@ extension NKAccountManager {
 // Platform
 extension NKAccountManager {
     
-    func getInvestedPlatforms() -> [NKPlatform] {
-        return getInvestedPlatformsResults().map( {$0} )
-    }
-    
-    private func getInvestedPlatformsResults() -> Results<NKPlatform> {
+    func getInvestedPlatforms() -> Results<NKPlatform> {
         return self.realm.objects(NKPlatform).filter("accounts.@count > 0")
     }
 }

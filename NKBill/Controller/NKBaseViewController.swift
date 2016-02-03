@@ -14,6 +14,7 @@ class NKBaseViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.view.backgroundColor = NKBackGroudColor()
     }
 
 }
