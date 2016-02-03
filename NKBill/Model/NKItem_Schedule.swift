@@ -15,7 +15,7 @@ extension NKItem {
     }
     
     func schedule_repayDate() -> String {
-        return String(format: "还款日期:%.2f", repayDate.NK_formatDate())
+        return String(format: "还款日期:%@", repayDate.NK_formatDate())
     }
     
     func schedule_interest() -> String {

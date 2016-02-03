@@ -11,7 +11,17 @@ import RealmSwift
 
 protocol NKRecordControllerDatasource {
     var title: String { get }
-    var accounts: Results<NKAccount> { get }
+    var accountsArray: Results<NKAccount> { get }
+}
+
+struct defaultDatasource: NKRecordControllerDatasource {
+    var title: String {
+        return "投资记录"
+    }
+    
+    var accountsArray: Results<NKAccount> {
+        return NKLibraryAPI.sharedInstance.getAccountsByDate()
+    }
 }
 
 class NKRecordController: UITableViewController {
@@ -27,10 +37,11 @@ class NKRecordController: UITableViewController {
 
         // Do any additional setup after loading the view.
         
-        if let _ = dataSource {
-            
+        if let x = dataSource {
+            title = x.title
         }else {
-            dataSource =  NKRecordDatasource.placeholder
+            dataSource = defaultDatasource()
+            title = dataSource?.title
         }
         tableView.backgroundColor = NKBackGroudColor()
     }
@@ -46,12 +57,12 @@ class NKRecordController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource!.accounts.count
+        return dataSource!.accountsArray.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! NKAccountCell
-        let account = dataSource!.accounts[indexPath.row]
+        let account = dataSource!.accountsArray[indexPath.row]
         configureCell(cell, account: account)
         
         return cell
@@ -68,7 +79,7 @@ class NKRecordController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        selectedAccount = dataSource!.accounts[indexPath.row]
+        selectedAccount = dataSource!.accountsArray[indexPath.row]
         return indexPath
     }
     

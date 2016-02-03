@@ -10,10 +10,8 @@ import UIKit
 import RealmSwift
 
 class NKPlatformManager: NSObject {
-    
-    private var platforms: [NKPlatform] = []
-    
-    let realm = try! Realm()
+        
+    //let realm = try! Realm()
     
     override init() {
         super.init()
@@ -24,20 +22,21 @@ class NKPlatformManager: NSObject {
         let p2 = NKPlatform(value:["陆金所",[]])
         let p3 = NKPlatform(value:["积木盒子",[]])
         let p4 = NKPlatform(value:["人人贷",[]])
-        platforms = [p1,p2,p3,p4]
-        savePlatforms()
+        addPlatform(p1)
+        addPlatform(p2)
+        addPlatform(p3)
+        addPlatform(p4)
     }
     
-    func getPlatforms() -> [NKPlatform]{
-        if self.realm.objects(NKPlatform).count == 0 {
+    func getInvestedPlatforms() -> Results<NKPlatform> {
+        return realm.objects(NKPlatform).filter("accounts.@count > 0")
+    }
+    
+    func getPlatforms() -> Results<NKPlatform> {
+        if realm.objects(NKPlatform).count == 0 {
             createPlaceholderPlatform()
-            return platforms
-        }else {
-            platforms.removeAll()
-            self.realm.objects(NKPlatform).forEach({platforms.append($0)})
-            return platforms
         }
-        
+        return realm.objects(NKPlatform)
     }
     
     func addPlatform(platform: NKPlatform) {
@@ -52,10 +51,7 @@ class NKPlatformManager: NSObject {
         })
     }
     
-    func savePlatforms() {
-        try! realm.write({ () -> Void in
-            platforms.forEach({realm.add($0)})
-        })
-    }
+    
+
     
 }

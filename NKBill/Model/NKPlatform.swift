@@ -27,4 +27,13 @@ class NKPlatform: Object {
     
 }
 
+extension NKPlatform: NKRecordControllerDatasource {
+    var title: String {
+        return self.name
+    }
+    
+    var accountsArray: Results<NKAccount> {
+        return  NKLibraryAPI.sharedInstance.getAccountsFromPlatform(self)
+    }
+}
 

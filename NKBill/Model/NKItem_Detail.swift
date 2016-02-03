@@ -15,7 +15,7 @@ extension NKItem {
     }
     
     func Detail_repayDate() -> String {
-        return String(format: "  %.2f", repayDate.NK_formatDate())
+        return repayDate.NK_formatDate()
     }
     
     func Detail_interest() -> String {

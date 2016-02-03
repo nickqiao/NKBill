@@ -14,7 +14,6 @@
 		011524FF1C60AECC000D9539 /* NKIndexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011524FD1C60AECC000D9539 /* NKIndexCell.xib */; };
 		011525011C60B0A0000D9539 /* NKPlatform_Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525001C60B0A0000D9539 /* NKPlatform_Index.swift */; };
 		011525051C60D38A000D9539 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011525041C60D38A000D9539 /* Main.storyboard */; };
-		011525071C60F34A000D9539 /* NKScheduleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525061C60F34A000D9539 /* NKScheduleDataSource.swift */; };
 		0115250C1C61C3AD000D9539 /* NKScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115250A1C61C3AD000D9539 /* NKScheduleCell.swift */; };
 		0115250D1C61C3AD000D9539 /* NKScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0115250B1C61C3AD000D9539 /* NKScheduleCell.xib */; };
 		0115250F1C61F119000D9539 /* NKDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115250E1C61F119000D9539 /* NKDetailController.swift */; };
@@ -23,7 +22,6 @@
 		011525151C6200F1000D9539 /* NKItem_Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525141C6200F1000D9539 /* NKItem_Schedule.swift */; };
 		011525171C62040A000D9539 /* NKScheduleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525161C62040A000D9539 /* NKScheduleHeader.swift */; };
 		011525191C6205CB000D9539 /* NKScheduleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011525181C6205CB000D9539 /* NKScheduleHeader.xib */; };
-		0115251D1C6221E9000D9539 /* NKRecordDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115251C1C6221E9000D9539 /* NKRecordDatasource.swift */; };
 		018B922E1C5DCCF500236E16 /* NKPlatformManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */; };
 		018B92301C5DD14C00236E16 /* NKLibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */; };
 		018B92361C5E244C00236E16 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92351C5E244C00236E16 /* Realm.framework */; };
@@ -53,6 +51,7 @@
 		01FC3AA31C5F5E8300176931 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3AA21C5F5E8300176931 /* NSDateExtension.swift */; };
 		01FC3AA51C5F63CC00176931 /* NKAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3AA41C5F63CC00176931 /* NKAlgorithm.swift */; };
 		01FC3AA81C60493300176931 /* NKConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3AA71C60493300176931 /* NKConfigure.swift */; };
+		46112BF01C626F52009E9AF1 /* NKScheduleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46112BEF1C626F52009E9AF1 /* NKScheduleDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,7 +78,6 @@
 		011524FD1C60AECC000D9539 /* NKIndexCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKIndexCell.xib; sourceTree = "<group>"; };
 		011525001C60B0A0000D9539 /* NKPlatform_Index.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPlatform_Index.swift; sourceTree = "<group>"; };
 		011525041C60D38A000D9539 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		011525061C60F34A000D9539 /* NKScheduleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKScheduleDataSource.swift; sourceTree = "<group>"; };
 		0115250A1C61C3AD000D9539 /* NKScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKScheduleCell.swift; sourceTree = "<group>"; };
 		0115250B1C61C3AD000D9539 /* NKScheduleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKScheduleCell.xib; sourceTree = "<group>"; };
 		0115250E1C61F119000D9539 /* NKDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKDetailController.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 		011525141C6200F1000D9539 /* NKItem_Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKItem_Schedule.swift; sourceTree = "<group>"; };
 		011525161C62040A000D9539 /* NKScheduleHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKScheduleHeader.swift; sourceTree = "<group>"; };
 		011525181C6205CB000D9539 /* NKScheduleHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKScheduleHeader.xib; sourceTree = "<group>"; };
-		0115251C1C6221E9000D9539 /* NKRecordDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKRecordDatasource.swift; sourceTree = "<group>"; };
 		018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPlatformManager.swift; sourceTree = "<group>"; };
 		018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKLibraryAPI.swift; sourceTree = "<group>"; };
 		018B92351C5E244C00236E16 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -118,6 +115,7 @@
 		01FC3AA21C5F5E8300176931 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		01FC3AA41C5F63CC00176931 /* NKAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKAlgorithm.swift; sourceTree = "<group>"; };
 		01FC3AA71C60493300176931 /* NKConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKConfigure.swift; sourceTree = "<group>"; };
+		46112BEF1C626F52009E9AF1 /* NKScheduleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKScheduleDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,8 +209,7 @@
 				011525121C61FCF2000D9539 /* NKItem_Detail.swift */,
 				01E1C1F71C5CCE0300EF6B5A /* NKPlatform.swift */,
 				011525001C60B0A0000D9539 /* NKPlatform_Index.swift */,
-				011525061C60F34A000D9539 /* NKScheduleDataSource.swift */,
-				0115251C1C6221E9000D9539 /* NKRecordDatasource.swift */,
+				46112BEF1C626F52009E9AF1 /* NKScheduleDataSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -329,6 +326,7 @@
 				018B92301C5DD14C00236E16 /* NKLibraryAPI.swift in Sources */,
 				011525011C60B0A0000D9539 /* NKPlatform_Index.swift in Sources */,
 				018B922E1C5DCCF500236E16 /* NKPlatformManager.swift in Sources */,
+				46112BF01C626F52009E9AF1 /* NKScheduleDataSource.swift in Sources */,
 				01E1C1F01C5CBF0F00EF6B5A /* NKComposeController.swift in Sources */,
 				011525151C6200F1000D9539 /* NKItem_Schedule.swift in Sources */,
 				01FC3AA81C60493300176931 /* NKConfigure.swift in Sources */,
@@ -339,9 +337,7 @@
 				01E1C20A1C5CDFC400EF6B5A /* NKPlatformController.swift in Sources */,
 				01E1C1E61C5CBCAA00EF6B5A /* NKNavigationController.swift in Sources */,
 				01FC3AA11C5F496200176931 /* NKItem.swift in Sources */,
-				0115251D1C6221E9000D9539 /* NKRecordDatasource.swift in Sources */,
 				011524FE1C60AECC000D9539 /* NKIndexCell.swift in Sources */,
-				011525071C60F34A000D9539 /* NKScheduleDataSource.swift in Sources */,
 				01E1C1CF1C5CBBBB00EF6B5A /* AppDelegate.swift in Sources */,
 				01E1C1EE1C5CBEE500EF6B5A /* NKScheduleController.swift in Sources */,
 			);

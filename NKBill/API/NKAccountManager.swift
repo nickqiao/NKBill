@@ -8,9 +8,10 @@
 
 import UIKit
 import RealmSwift
+ let realm = try! Realm()
 class NKAccountManager: NSObject {
     
-    let realm = try! Realm()
+   
     
     func getSumInvest() -> Int {
         return getAccounts().sum("invest")
@@ -66,7 +67,7 @@ extension NKAccountManager {
     }
     
     func getAccounts() -> Results<NKAccount> {
-        return self.realm.objects(NKAccount)
+        return realm.objects(NKAccount)
     }
 }
 
@@ -108,15 +109,8 @@ extension NKAccountManager {
     }
     
     func getAllItems() -> Results<NKItem> {
-        return self.realm.objects(NKItem)
+        return realm.objects(NKItem)
     }
     
 }
 
-// Platform
-extension NKAccountManager {
-    
-    func getInvestedPlatforms() -> Results<NKPlatform> {
-        return self.realm.objects(NKPlatform).filter("accounts.@count > 0")
-    }
-}

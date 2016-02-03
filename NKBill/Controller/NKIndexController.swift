@@ -33,9 +33,10 @@ class NKIndexController: NKBaseViewController {
     }
  
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         let recordVc = segue.destinationViewController as! NKRecordController
         
-        recordVc.dataSource = NKRecordDatasource.platform(selectedPlatform)
+        recordVc.dataSource = selectedPlatform
     }
 }
 

@@ -12,9 +12,8 @@ let reuseIndentifier = "platform"
 
 class NKPlatformController: UITableViewController {
 
-    lazy var platforms:[NKPlatform] = {
-        return NKLibraryAPI.sharedInstance.getPlatforms()
-    }()
+    private lazy var platforms = NKLibraryAPI.sharedInstance.getPlatforms()
+    
     
     var selectedPlatform: NKPlatform!
     

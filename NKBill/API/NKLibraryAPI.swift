@@ -23,7 +23,7 @@ class NKLibraryAPI: NSObject {
 }
 
 extension NKLibraryAPI {
-    func getPlatforms() -> [NKPlatform] {
+    func getPlatforms() -> Results<NKPlatform> {
         return platformManager.getPlatforms()
     }
     
@@ -35,9 +35,6 @@ extension NKLibraryAPI {
         platformManager.deleteplatform(platform)
     }
     
-    func savePlatforms() {
-        platformManager.savePlatforms()
-    }
 }
 
 extension NKLibraryAPI {
@@ -66,6 +63,8 @@ extension NKLibraryAPI {
     func getWatingInterest() -> Double {
         return accountManager.getWatingInterest()
     }
+    
+   
     
     func getAccountsFromPlatform(platform: NKPlatform) -> Results<NKAccount> {
         return accountManager.getAccountsByPlatform(platform)
@@ -104,7 +103,7 @@ extension NKLibraryAPI {
     }
     
     func getInvestedPlatforms() -> Results<NKPlatform> {
-        return accountManager.getInvestedPlatforms()//.sort({ $0.sum > $1.sum })
+        return platformManager.getInvestedPlatforms()//.sort({ $0.sum > $1.sum })
     }
     
     
