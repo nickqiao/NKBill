@@ -31,16 +31,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
        customAppearce()
+
         
-        //UIScreen.mainScreen().bounds
-        //self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        //self.window?.backgroundColor = UIColor.whiteColor()
-        //self.addSonControllers()
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge,.Alert,.Sound], categories: nil))
         
         return true
     }
     
-   
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        print(notification)
+    }
+    
+    
     private func customAppearce() {
         
         // Global Tint Color

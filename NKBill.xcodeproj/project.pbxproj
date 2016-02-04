@@ -29,6 +29,7 @@
 		018B92391C5E245B00236E16 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92381C5E245B00236E16 /* RealmSwift.framework */; };
 		018B923A1C5E245B00236E16 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92381C5E245B00236E16 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01A2791B1C63851C000FC9E1 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2791A1C63851C000FC9E1 /* CircularProgressView.swift */; };
+		01A2791D1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2791C1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift */; };
 		01E1C1CF1C5CBBBB00EF6B5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1CE1C5CBBBB00EF6B5A /* AppDelegate.swift */; };
 		01E1C1D61C5CBBBB00EF6B5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E1C1D51C5CBBBB00EF6B5A /* Assets.xcassets */; };
 		01E1C1D91C5CBBBB00EF6B5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E1C1D71C5CBBBB00EF6B5A /* LaunchScreen.storyboard */; };
@@ -92,6 +93,7 @@
 		018B92351C5E244C00236E16 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		018B92381C5E245B00236E16 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		01A2791A1C63851C000FC9E1 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		01A2791C1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKChooseNoticeTimeController.swift; sourceTree = "<group>"; };
 		01E1C1CB1C5CBBBB00EF6B5A /* NKBill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NKBill.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E1C1CE1C5CBBBB00EF6B5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01E1C1D51C5CBBBB00EF6B5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				01E1C1F11C5CBF4800EF6B5A /* NKRecordController.swift */,
 				0115250E1C61F119000D9539 /* NKDetailController.swift */,
 				01E1C1F31C5CBF5E00EF6B5A /* NKMoreController.swift */,
+				01A2791C1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				01E1C1F41C5CBF5E00EF6B5A /* NKMoreController.swift in Sources */,
 				01E1C1E81C5CBCCD00EF6B5A /* NKTabBarController.swift in Sources */,
 				01FC3AA51C5F63CC00176931 /* NKAlgorithm.swift in Sources */,
+				01A2791D1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift in Sources */,
 				0115250F1C61F119000D9539 /* NKDetailController.swift in Sources */,
 				018B92301C5DD14C00236E16 /* NKLibraryAPI.swift in Sources */,
 				011525011C60B0A0000D9539 /* NKPlatform_Index.swift in Sources */,
