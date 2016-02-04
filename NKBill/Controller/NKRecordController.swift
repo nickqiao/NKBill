@@ -74,7 +74,7 @@ class NKRecordController: UITableViewController {
         cell.investLabel.text = account.record_invest()
         cell.dateLabel.text = account.record_date()
         cell.rateLabel.text = account.record_rate()
-        cell.progressBar.progress = account.record_progress()
+        cell.progressBar.progress = account.progress()
         cell.progressLabel.text = account.record_progressString()
     }
     
@@ -82,5 +82,14 @@ class NKRecordController: UITableViewController {
         selectedAccount = dataSource!.accountsArray[indexPath.row]
         return indexPath
     }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            
+            NKLibraryAPI.sharedInstance.deleteAccount(dataSource!.accountsArray[indexPath.row])
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+        }
+    }
+
     
 }

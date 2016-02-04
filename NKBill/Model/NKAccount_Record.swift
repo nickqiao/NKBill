@@ -9,14 +9,19 @@
 import Foundation
 
 extension NKAccount {
-    private func progress() -> Float {
+    
+    func progress() -> Float {
         
         let passed = items.filter(NSPredicate(format: "state == %@", State.Passed.rawValue)).count
         return  Float(passed) / Float(timeSpan)
     }
     
+    func record_progressString() -> String {
+        return "投资进度:\(progress() * 100)%"
+    }
+    
     func record_name() -> String {
-        return (platform?.name)!
+        return platform.name
     }
     
     func record_invest() -> String {
@@ -37,14 +42,6 @@ extension NKAccount {
     func record_date() -> String {
         return "投资日期:\(created.NK_formatDate())"
     }
-    
-    func record_progress() -> Float {
-        return progress()
-    }
-    
-    func record_progressString() -> String {
-        return "投资进度:\(record_progress() * 100)%"
-    }
-    
+     
 }
 

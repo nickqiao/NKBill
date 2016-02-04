@@ -12,12 +12,7 @@ import Foundation
 extension NKAccount {
     
     func compose_name() -> (String,String) {
-        if let n = platform?.name {
-            return ("投资平台",n)
-        }else {
-            return ("投资平台","")
-        }
-        
+        return ("投资平台",platform.name)
     }
     
     func compose_invest() -> (String,String)  {

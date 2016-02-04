@@ -15,16 +15,32 @@ class NKLibraryAPI: NSObject {
     static let sharedInstance = NKLibraryAPI()
     
     private override init() {
+        
         platformManager = NKPlatformManager()
         accountManager = NKAccountManager()
         super.init()
     }
 
+    func saveAccount(account: NKAccount) {
+        accountManager.addAccount(account)
+    }
+    
+    func deleteAccount(account: NKAccount) {
+        accountManager.deleteAccount(account)
+    }
+    
 }
+
 
 extension NKLibraryAPI {
     func getPlatforms() -> Results<NKPlatform> {
         return platformManager.getPlatforms()
+    }
+    
+    func getInvestedPlatforms() -> Results<NKPlatform> {
+        
+        return platformManager.getInvestedPlatforms()
+
     }
     
     func addPlatform(platfrom: NKPlatform) {
@@ -38,15 +54,6 @@ extension NKLibraryAPI {
 }
 
 extension NKLibraryAPI {
-    
-    
-    func deleteAccounts(accounts:[NKAccount]) {
-        accountManager.deleteAccounts(accounts)
-    }
-    
-    func saveAccount(account: NKAccount) {
-        accountManager.saveAccount(account)
-    }
     
     func getAccountsByDate() -> Results<NKAccount>{
         return accountManager.getAccountsByDate()
@@ -63,8 +70,6 @@ extension NKLibraryAPI {
     func getWatingInterest() -> Double {
         return accountManager.getWatingInterest()
     }
-    
-   
     
     func getAccountsFromPlatform(platform: NKPlatform) -> Results<NKAccount> {
         return accountManager.getAccountsByPlatform(platform)
@@ -101,11 +106,5 @@ extension NKLibraryAPI {
     func getPassedItems() -> Results<NKItem> {
         return accountManager.getPassedItems()
     }
-    
-    func getInvestedPlatforms() -> Results<NKPlatform> {
-        return platformManager.getInvestedPlatforms()//.sort({ $0.sum > $1.sum })
-    }
-    
-    
-    
+ 
 }

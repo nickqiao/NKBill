@@ -24,7 +24,7 @@ enum RepayType:String {
 class NKAccount: Object {
     
     dynamic var id = ""
-    dynamic var platform: NKPlatform?
+    dynamic var platform: NKPlatform!
     dynamic var invest = 0
     dynamic var rate = 0.0
     dynamic var timeSpan = 0

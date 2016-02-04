@@ -11,7 +11,7 @@ import Foundation
 extension NKItem {
     
     func Detail_platName() -> String {
-        return (account.first?.platform?.name)!
+        return account.platform.name
     }
     
     func Detail_repayDate() -> String {

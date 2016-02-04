@@ -11,17 +11,21 @@ import RealmSwift
 
 class NKPlatformManager: NSObject {
         
-    //let realm = try! Realm()
+    let realm = try! Realm()
     
     override init() {
         super.init()
     }
     
     func createPlaceholderPlatform() {
-        let p1 = NKPlatform(value:["支付宝",[]])
-        let p2 = NKPlatform(value:["陆金所",[]])
-        let p3 = NKPlatform(value:["积木盒子",[]])
-        let p4 = NKPlatform(value:["人人贷",[]])
+        let p1 = NKPlatform()
+        p1.name = "腾讯"
+        let p2 = NKPlatform()
+        p2.name = "阿里"
+        let p3 = NKPlatform()
+        p3.name = "百度"
+        let p4 = NKPlatform()
+        p4.name = "苹果"
         addPlatform(p1)
         addPlatform(p2)
         addPlatform(p3)
@@ -29,7 +33,7 @@ class NKPlatformManager: NSObject {
     }
     
     func getInvestedPlatforms() -> Results<NKPlatform> {
-        return realm.objects(NKPlatform).filter("accounts.@count > 0")
+        return realm.objects(NKPlatform).filter("accounts.@count > 0").sorted("sum", ascending: false)
     }
     
     func getPlatforms() -> Results<NKPlatform> {
@@ -47,11 +51,12 @@ class NKPlatformManager: NSObject {
     
     func deleteplatform(platform: NKPlatform) {
         try! realm.write({ () -> Void in
+            
+            platform.accounts.forEach( {realm.delete($0.items)} )
+            realm.delete(platform.accounts)
             realm.delete(platform)
+            
         })
     }
-    
-    
-
-    
+   
 }

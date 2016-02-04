@@ -24,7 +24,7 @@ class NKScheduleCell: UITableViewCell {
             investLabel.text = item!.schedule_sum()
             principleLabel.text = item!.schedule_principal()
             interestLabel.text = item!.schedule_interest()
-            spanLabel.text = "1"
+            spanLabel.text = item?.schedule_progress()
             platNameLabel.text = item!.schedule_platName()
         }
     }

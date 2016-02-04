@@ -223,10 +223,10 @@
 				01E1C1EB1C5CBE8300EF6B5A /* NKIndexController.swift */,
 				01E1C1ED1C5CBEE500EF6B5A /* NKScheduleController.swift */,
 				01E1C1EF1C5CBF0F00EF6B5A /* NKComposeController.swift */,
-				01E1C1F31C5CBF5E00EF6B5A /* NKMoreController.swift */,
 				01E1C2091C5CDFC400EF6B5A /* NKPlatformController.swift */,
 				01E1C1F11C5CBF4800EF6B5A /* NKRecordController.swift */,
 				0115250E1C61F119000D9539 /* NKDetailController.swift */,
+				01E1C1F31C5CBF5E00EF6B5A /* NKMoreController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

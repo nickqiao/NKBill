@@ -8,19 +8,15 @@
 
 import Foundation
 
-func createItemsFor(account:NKAccount) -> [NKItem] { 
-    return createItems(account.invest, rate: account.rate, length: account.timeSpan, repayType: account.repayTypeEnum, date: account.created)
-}
-
-func createItems(invest:Int,rate: Double,length:Int,repayType:RepayType,date: NSDate) -> [NKItem]{
+func createItems(account:NKAccount) -> [NKItem]{
     
-    switch repayType {
+    switch account.repayTypeEnum {
     case .InterestByMonth :
-        return fun1(invest, rate: rate, month: length, date: date)
+        return fun1(account)
     case .AverageCapital :
-        return fun2(invest, rate: rate, month: length, date: date)
+        return fun2(account)
     case .RepayAllAtLast:
-        return fun3(invest, rate: rate, month: length, date: date)
+        return fun3(account)
     default:
         return [NKItem]()
     }
@@ -28,38 +24,41 @@ func createItems(invest:Int,rate: Double,length:Int,repayType:RepayType,date: NS
 }
 
 /// 按月计息
-func fun1(invest:Int,rate: Double,month:Int,date:NSDate) -> [NKItem] {
+func fun1(account:NKAccount) -> [NKItem] {
     
     var items:[NKItem] = []
-    for index in 1...Int(month) {
+    for index in 1...Int(account.timeSpan) {
         let item = NKItem()
+        item.order = index
+        item.account = account
+        item.repayDate = account.created.NK_dateByAddingMonths(index)
         
-        item.repayDate = date.NK_dateByAddingMonths(index)
+        item.interest = Double(account.invest) * account.rate / 12
         
-        item.interest = Double(invest) * rate / 12
-        
-        if index == Int(month) {
-            item.principal = Double(invest)
+        if index == Int(account.timeSpan) {
+            item.principal = Double(account.invest)
         }else {
             item.principal = 0
         }
         item.sum = item.interest + item.principal
+        
         items.append(item)
     }
     return items
 }
 
 /// 等额本息
-func fun2(invest:Int,rate: Double,month:Int,date:NSDate) -> [NKItem] {
+func fun2(account:NKAccount) -> [NKItem] {
     
     var items:[NKItem] = []
-    for index in 1...month {
+    for index in 1...account.timeSpan {
         let item = NKItem()
-        
-        let monthRate = rate / 12.0
-        let AB = Double(invest) * monthRate * pow(1.0 + monthRate , Double(month)) / (pow(1.0 + monthRate, Double(month)) - 1.0);
+        item.order = index
+        item.account = account
+        let monthRate = account.rate / 12.0
+        let AB = Double(account.invest) * monthRate * pow(1.0 + monthRate , Double(account.timeSpan)) / (pow(1.0 + monthRate, Double(account.timeSpan)) - 1.0);
         // 每月本金
-        let A = Double(invest) * monthRate * pow(1.0 + monthRate, Double(index - 1))/(pow(1.0 + monthRate, Double(month)) - 1.0);
+        let A = Double(account.invest) * monthRate * pow(1.0 + monthRate, Double(index - 1))/(pow(1.0 + monthRate, Double(account.timeSpan)) - 1.0);
         // 每月利息
         let B = AB - A;
         
@@ -67,20 +66,22 @@ func fun2(invest:Int,rate: Double,month:Int,date:NSDate) -> [NKItem] {
         item.interest = B
         item.sum = AB
        
-        item.repayDate = date.NK_dateByAddingMonths(index)
+        item.repayDate = account.created.NK_dateByAddingMonths(index)
         items.append(item)
     }
     return items
 }
 
 /// 到期还本息
-func fun3(invest:Int,rate: Double,month:Int,date:NSDate) -> [NKItem]{
+func fun3(account:NKAccount) -> [NKItem]{
     let item = NKItem()
-    item.principal = Double(invest)
-    item.interest = Double(invest) * rate * Double(month) / 12.0
+    item.order = 1
+    item.account = account
+    item.principal = Double(account.invest)
+    item.interest = Double(account.invest) * (account.rate) * Double(account.timeSpan) / 12.0
     item.sum = item.interest + item.principal
     
-    item.repayDate = date.NK_dateByAddingMonths(month)
+    item.repayDate = account.created.NK_dateByAddingMonths(account.timeSpan)
     return [item]
 }
 

@@ -116,11 +116,10 @@ class NKComposeController: UITableViewController {
             
             account.timeTypeEnum = TimeType.MONTH
             account.repayTypeEnum = x[randomInRange(0...2)]
+        
             
-            NKLibraryAPI.sharedInstance.saveAccount(account)
-       
-        
-        
+        NKLibraryAPI.sharedInstance.saveAccount(account)
+           
     }
     
     private func updateAccount() {

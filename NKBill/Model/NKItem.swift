@@ -17,13 +17,12 @@ enum State: String {
 
 class NKItem: Object {
     
+    dynamic var order = 0
     dynamic var repayDate = NSDate()
     dynamic var interest = 0.0
     dynamic var principal = 0.0
     dynamic var sum = 0.0
-    var account: [NKAccount] {
-        return linkingObjects(NKAccount.self, forProperty: "items")
-    }
+    dynamic var account: NKAccount!
     dynamic var state = State.Waiting.rawValue
     var stateEnum:State {
         get {

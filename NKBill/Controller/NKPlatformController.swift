@@ -16,6 +16,35 @@ class NKPlatformController: UITableViewController {
     
     
     var selectedPlatform: NKPlatform!
+    @IBAction func addPlatform(sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "添加平台", message: nil , preferredStyle: .Alert)
+        alert.addTextFieldWithConfigurationHandler { nameField -> Void in
+            nameField.placeholder = "平台名称"
+        }
+        alert.addTextFieldWithConfigurationHandler { descField -> Void in
+            descField.placeholder = "平台备注"
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil )
+        let sureAction = UIAlertAction(title: "确定", style: .Default) { a -> Void in
+            
+            let textfield = alert.textFields![0]
+            
+            if textfield.text?.characters.count > 0 {
+                
+                let p = NKPlatform(value:[textfield.text!,[]])
+                
+                NKLibraryAPI.sharedInstance.addPlatform(p)
+                self.tableView.reloadData()
+            }
+           
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(sureAction)
+        presentViewController(alert, animated: true, completion: nil)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,5 +74,11 @@ class NKPlatformController: UITableViewController {
         return indexPath
     }
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            NKLibraryAPI.sharedInstance.deletePlatform(platforms[indexPath.row])
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+        }
+    }
 
 }

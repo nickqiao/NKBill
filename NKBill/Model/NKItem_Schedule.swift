@@ -11,7 +11,7 @@ import Foundation
 extension NKItem {
     
     func schedule_platName() -> String {
-        return (account.first?.platform?.name)!
+        return account.platform.name
     }
     
     func schedule_repayDate() -> String {
@@ -28,6 +28,10 @@ extension NKItem {
     
     func schedule_sum() -> String {
         return String(format: "还款金额:%.2f", principal + interest)
+    }
+    
+    func schedule_progress() -> String {
+        return String(format: "%d/%d", order,account.timeSpan)
     }
     
     func schedule_state() -> String {

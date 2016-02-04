@@ -8,15 +8,42 @@
 
 import UIKit
 import RealmSwift
- let realm = try! Realm()
+
 class NKAccountManager: NSObject {
     
-   
+    let realm = try! Realm()
     
+    func addAccount(account: NKAccount) {
+        let items = createItems(account)
+        
+        try! realm.write { () -> Void in
+            
+            items.forEach({ account.items.append($0) })
+            realm.add(items)
+            realm.add(account)
+            account.platform.accounts.append(account)
+            account.platform.sum = account.platform.sum + account.invest
+            realm.add(account.platform)
+        }
+    }
+    
+    func deleteAccount(account: NKAccount) {
+        try! realm.write { () -> Void in
+            account.platform.sum = account.platform.sum - account.invest
+            realm.delete(account.items)
+            realm.delete(account)
+        }
+    }
+    
+}
+
+
+// statics
+extension NKAccountManager {
     func getSumInvest() -> Int {
         return getAccounts().sum("invest")
     }
-  
+    
     func getSumInvestFromPlatform(platform: NKPlatform) -> Int{
         return getAccountsByPlatform(platform).sum("invest")
     }
@@ -27,29 +54,6 @@ class NKAccountManager: NSObject {
     
     func getWatingInterest() -> Double {
         return getWaitingItems().sum("interest") + getOverdueItems().sum("interest")
-    }
-    
-}
-
-// CRUD
-extension NKAccountManager {
-    func saveAccount(account:NKAccount) {
-        try! realm.write { () -> Void in
-            appendItems(account)
-            account.platform?.accounts.append(account)
-        }
-    }
-    
-    func deleteAccount(account:NKAccount) {
-        try! realm.write({ () -> Void in
-            realm.delete(account)
-        })
-    }
-    
-    func deleteAccounts(accounts: [NKAccount]) {
-        try! realm.write({ () -> Void in
-            realm.delete(accounts)
-        })
     }
 
 }
@@ -89,11 +93,6 @@ extension NKAccountManager {
     
     func getOneMonthLaterWatingItems() -> Results<NKItem> {
         return getWaitingItems().filter("repayDate > %@",NSDate().NK_dateByAddingMonths(1))
-    }
-    
-    
-    func appendItems(account:NKAccount) {
-        createItemsFor(account).forEach({ account.items.append($0) })
     }
     
     func getOverdueItems() -> Results<NKItem> {
