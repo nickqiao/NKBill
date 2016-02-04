@@ -107,4 +107,8 @@ extension NKLibraryAPI {
         return accountManager.getPassedItems()
     }
  
+    func changeItemState(item: NKItem,toState:State) {
+        accountManager.changeItemState(item, toState: toState)
+    }
+    
 }

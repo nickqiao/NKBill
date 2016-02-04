@@ -32,11 +32,13 @@ extension NKAccount {
     }
     
     func compose_timeSpan() -> (String,String) {
-        switch timeTypeEnum {
-        case .DAY:
+        switch timeType {
+        case TimeType.DAY.rawValue:
             return ("投资期限","\(timeSpan)天")
-        case .MONTH:
+        case TimeType.MONTH.rawValue:
             return ("投资期限","\(timeSpan)个月")
+        default:
+            return ("","")
         }
     }
     
@@ -46,15 +48,17 @@ extension NKAccount {
     }
     
     func compose_repayType() -> (String,String) {
-        switch repayTypeEnum {
-        case .AverageCapital:
+        switch repayType {
+        case RepayType.AverageCapital.rawValue:
             return ("还款方式:","等额本息")
-        case .InterestByMonth:
+        case RepayType.InterestByMonth.rawValue:
             return ("还款方式:","按月计息,到期还本")
-        case .InterestByDay:
+        case RepayType.InterestByDay.rawValue:
             return ("还款方式:","按日计息,到期还本")
-        case .RepayAllAtLast:
+        case RepayType.RepayAllAtLast.rawValue:
             return ("还款方式:","到期还本息")
+        default:
+            return ("","")
         }
     }
     

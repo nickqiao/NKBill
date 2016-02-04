@@ -10,19 +10,19 @@ import UIKit
 
 class NKAccountCell: UITableViewCell {
 
+    @IBOutlet weak var circleProgressView: CircularProgressView!
     @IBOutlet weak var platNameLabel: UILabel!
     @IBOutlet weak var investLabel: UILabel!
-    
-    
     @IBOutlet weak var rateLabel: UILabel!
     
-    @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var dateLabel: UILabel!
     override func awakeFromNib() {
         
         super.awakeFromNib()
         // Initialization code
+        circleProgressView.trackTint = UIColor.flatBlackColor()
+       
+        circleProgressView.progressTint = UIColor.flatGreenColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

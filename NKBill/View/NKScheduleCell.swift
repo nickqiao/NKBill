@@ -10,6 +10,7 @@ import UIKit
 
 class NKScheduleCell: UITableViewCell {
 
+    @IBOutlet weak var unreadIcon: UIImageView!
     @IBOutlet weak var repayDateLabel: UILabel!
     @IBOutlet weak var investLabel: UILabel!
     @IBOutlet weak var principleLabel: UILabel!
@@ -26,6 +27,15 @@ class NKScheduleCell: UITableViewCell {
             interestLabel.text = item!.schedule_interest()
             spanLabel.text = item?.schedule_progress()
             platNameLabel.text = item!.schedule_platName()
+            
+        
+            
+            if item?.repayDate.timeIntervalSince1970 < NSDate().timeIntervalSince1970 && item?.state == State.Waiting.rawValue {
+                unreadIcon.hidden = false
+            }else {
+                unreadIcon.hidden = true
+            }
+            
         }
     }
     

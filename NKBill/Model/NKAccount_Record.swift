@@ -13,11 +13,15 @@ extension NKAccount {
     func progress() -> Float {
         
         let passed = items.filter(NSPredicate(format: "state == %@", State.Passed.rawValue)).count
+        
+        if repayType == RepayType.RepayAllAtLast.rawValue {
+            return  Float(passed) / 1.0
+        }
         return  Float(passed) / Float(timeSpan)
     }
     
     func record_progressString() -> String {
-        return "投资进度:\(progress() * 100)%"
+        return "\(progress() * 100)%"
     }
     
     func record_name() -> String {
@@ -30,11 +34,13 @@ extension NKAccount {
     
     func record_rate() -> String {
         
-        switch timeTypeEnum {
-        case .DAY:
+        switch timeType {
+        case TimeType.DAY.rawValue:
             return "利率:\(rate * 100)%  期限:\(timeSpan)天"
-        case .MONTH:
+        case TimeType.MONTH.rawValue:
             return "利率:\(rate * 100)%  期限:\(timeSpan)个月"
+        default:
+            return ""
         }
         
     }

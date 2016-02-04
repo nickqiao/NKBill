@@ -111,5 +111,11 @@ extension NKAccountManager {
         return realm.objects(NKItem)
     }
     
+    func changeItemState(item: NKItem,toState:State) {
+        try! realm.write({ () -> Void in
+            item.state = toState.rawValue
+        })
+    }
+    
 }
 

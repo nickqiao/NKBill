@@ -17,6 +17,11 @@ class NKScheduleController: NKBaseViewController {
     @IBOutlet weak var segment: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
+    var selectedItem: NKItem!
+    
+    
+    
+    
     let reuseIndentifier = "schedule"
     let cellNibName = "NKScheduleCell"
     
@@ -43,6 +48,11 @@ class NKScheduleController: NKBaseViewController {
         tableView.rowHeight = 64
         tableView.backgroundColor = NKBackGroudColor()
         segment.addTarget(self, action: "segmentChangeValue:", forControlEvents: .ValueChanged)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     func segmentChangeValue(seg: UISegmentedControl) {
@@ -78,5 +88,63 @@ extension NKScheduleController: UITableViewDataSource {
 extension NKScheduleController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        selectedItem = dataSource?.items[indexPath.section].1[indexPath.row]
+        
+        showActionSheet()
     }
+    
+    func showActionSheet() {
+        
+        let sheet = UIAlertController(title: "处理该笔还款状态", message: nil, preferredStyle: .ActionSheet)
+        
+        let watingHandler = UIAlertAction(title: "未还", style: .Default){(_) -> Void in
+            NKLibraryAPI.sharedInstance.changeItemState(self.selectedItem, toState: .Waiting)
+            self.tableView.reloadData()
+        }
+
+        let passedHandler = UIAlertAction(title: "已还", style: .Default){(_) -> Void in
+             NKLibraryAPI.sharedInstance.changeItemState(self.selectedItem, toState: .Passed)
+            self.tableView.reloadData()
+        }
+
+        let overDueHandler = UIAlertAction(title: "逾期", style: .Default){(_) -> Void in
+            NKLibraryAPI.sharedInstance.changeItemState(self.selectedItem, toState: .Overdue)
+            self.tableView.reloadData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+
+        
+        switch selectedItem.state {
+            
+        case State.Waiting.rawValue:
+            if selectedItem.repayDate.timeIntervalSince1970 < NSDate().timeIntervalSince1970 {
+                sheet.addAction(passedHandler)
+                sheet.addAction(overDueHandler)
+                sheet.addAction(cancelAction)
+                presentViewController(sheet, animated: true, completion: nil)
+            }else {
+                sheet.addAction(passedHandler)
+                sheet.addAction(cancelAction)
+                presentViewController(sheet, animated: true, completion: nil)
+
+            }
+        case State.Passed.rawValue:
+             sheet.addAction(watingHandler)
+             sheet.addAction(overDueHandler)
+             sheet.addAction(cancelAction)
+            presentViewController(sheet, animated: true, completion: nil)
+        case State.Overdue.rawValue:
+            sheet.addAction(watingHandler)
+            sheet.addAction(passedHandler)
+            sheet.addAction(cancelAction)
+            presentViewController(sheet, animated: true, completion: nil)
+        default:
+            break
+            
+        }
+        
+    }
+    
 }

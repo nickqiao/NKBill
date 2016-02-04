@@ -24,15 +24,7 @@ class NKItem: Object {
     dynamic var sum = 0.0
     dynamic var account: NKAccount!
     dynamic var state = State.Waiting.rawValue
-    var stateEnum:State {
-        get {
-            return State(rawValue: state)!
-        }
-        
-        set {
-            state = newValue.rawValue
-        }
-    }
+
 }
 
 

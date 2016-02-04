@@ -33,27 +33,9 @@ class NKAccount: Object {
     dynamic var desc = ""
     
     dynamic var timeType = TimeType.MONTH.rawValue
-    var timeTypeEnum: TimeType {
-        get {
-            return TimeType(rawValue: timeType)!
-        }
-        
-        set {
-            timeType = newValue.rawValue
-        }
-    }
-    
+       
     dynamic var repayType = RepayType.AverageCapital.rawValue
-    var repayTypeEnum:RepayType {
-        get {
-            return RepayType(rawValue: repayType)!
-        }
         
-        set {
-            repayType = newValue.rawValue
-        }
-    }
-    
     override static func primaryKey() -> String? {
         return "id"
     }

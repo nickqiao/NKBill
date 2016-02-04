@@ -31,12 +31,14 @@ extension NKItem {
     }
     
     func Detail_state() -> String {
-        switch stateEnum {
-        case .Overdue:
+        switch state {
+        case State.Overdue.rawValue:
             return "逾期"
-        case .Passed:
+        case State.Passed.rawValue:
             return "已还"
-        case .Waiting:
+        case State.Waiting.rawValue:
+            return "待还"
+        default:
             return "待还"
         }
     }

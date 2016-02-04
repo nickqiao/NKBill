@@ -74,8 +74,8 @@ class NKRecordController: UITableViewController {
         cell.investLabel.text = account.record_invest()
         cell.dateLabel.text = account.record_date()
         cell.rateLabel.text = account.record_rate()
-        cell.progressBar.progress = account.progress()
-        cell.progressLabel.text = account.record_progressString()
+        
+        cell.circleProgressView.value = CGFloat(account.progress())
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {

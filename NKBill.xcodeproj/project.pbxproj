@@ -28,6 +28,7 @@
 		018B92371C5E244C00236E16 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92351C5E244C00236E16 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		018B92391C5E245B00236E16 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92381C5E245B00236E16 /* RealmSwift.framework */; };
 		018B923A1C5E245B00236E16 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92381C5E245B00236E16 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01A2791B1C63851C000FC9E1 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2791A1C63851C000FC9E1 /* CircularProgressView.swift */; };
 		01E1C1CF1C5CBBBB00EF6B5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1CE1C5CBBBB00EF6B5A /* AppDelegate.swift */; };
 		01E1C1D61C5CBBBB00EF6B5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E1C1D51C5CBBBB00EF6B5A /* Assets.xcassets */; };
 		01E1C1D91C5CBBBB00EF6B5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E1C1D71C5CBBBB00EF6B5A /* LaunchScreen.storyboard */; };
@@ -90,6 +91,7 @@
 		018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKLibraryAPI.swift; sourceTree = "<group>"; };
 		018B92351C5E244C00236E16 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		018B92381C5E245B00236E16 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		01A2791A1C63851C000FC9E1 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		01E1C1CB1C5CBBBB00EF6B5A /* NKBill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NKBill.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E1C1CE1C5CBBBB00EF6B5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01E1C1D51C5CBBBB00EF6B5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 		01E1C1E01C5CBC3000EF6B5A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				01A2791A1C63851C000FC9E1 /* CircularProgressView.swift */,
 				011524F21C609A6F000D9539 /* NKAccountCell.swift */,
 				011524FC1C60AECC000D9539 /* NKIndexCell.swift */,
 				011524FD1C60AECC000D9539 /* NKIndexCell.xib */,
@@ -335,6 +338,7 @@
 				01E1C1F21C5CBF4800EF6B5A /* NKRecordController.swift in Sources */,
 				011524F91C60A6FD000D9539 /* NKAccount_Record.swift in Sources */,
 				01E1C20A1C5CDFC400EF6B5A /* NKPlatformController.swift in Sources */,
+				01A2791B1C63851C000FC9E1 /* CircularProgressView.swift in Sources */,
 				01E1C1E61C5CBCAA00EF6B5A /* NKNavigationController.swift in Sources */,
 				01FC3AA11C5F496200176931 /* NKItem.swift in Sources */,
 				011524FE1C60AECC000D9539 /* NKIndexCell.swift in Sources */,

@@ -10,12 +10,12 @@ import Foundation
 
 func createItems(account:NKAccount) -> [NKItem]{
     
-    switch account.repayTypeEnum {
-    case .InterestByMonth :
+    switch account.repayType {
+    case RepayType.InterestByMonth.rawValue :
         return fun1(account)
-    case .AverageCapital :
+    case RepayType.AverageCapital.rawValue :
         return fun2(account)
-    case .RepayAllAtLast:
+    case RepayType.RepayAllAtLast.rawValue:
         return fun3(account)
     default:
         return [NKItem]()

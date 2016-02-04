@@ -93,7 +93,7 @@ class NKComposeController: UITableViewController {
         
     }
 
-    let x = [RepayType.AverageCapital,RepayType.InterestByMonth,RepayType.RepayAllAtLast]
+    let x = [RepayType.AverageCapital.rawValue,RepayType.InterestByMonth.rawValue,RepayType.RepayAllAtLast.rawValue]
     
     private func addNewAccount() {
         
@@ -114,8 +114,8 @@ class NKComposeController: UITableViewController {
             //            account.timeSpan = Int(x.removeRange(range))
             
             
-            account.timeTypeEnum = TimeType.MONTH
-            account.repayTypeEnum = x[randomInRange(0...2)]
+            account.timeType = TimeType.MONTH.rawValue
+            account.repayType = x[randomInRange(0...2)]
         
             
         NKLibraryAPI.sharedInstance.saveAccount(account)
