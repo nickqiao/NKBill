@@ -28,9 +28,7 @@ class NKScheduleCell: UITableViewCell {
             spanLabel.text = item?.schedule_progress()
             platNameLabel.text = item!.schedule_platName()
             
-        
-            
-            if item?.repayDate.timeIntervalSince1970 < NSDate().timeIntervalSince1970 && item?.state == State.Waiting.rawValue {
+            if item?.repayDate.isAfterToday() == false && item?.state == State.Waiting.rawValue {
                 unreadIcon.hidden = false
             }else {
                 unreadIcon.hidden = true

@@ -64,6 +64,14 @@ extension NSDate {
         return calendar.dateByAddingComponents(components, toDate: self, options: .MatchFirst)!
     }
     
+    func isBeforeToday() -> Bool {
+        return self.compare(NSDate().NK_zeroMorning()) == .OrderedAscending
+    }
+    
+    func isAfterToday() -> Bool {
+        return self.compare(NSDate().NK_zeroMorning().NK_dateByAddingDays(1)) == .OrderedDescending
+    }
+    
     func isToday() -> Bool {
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Era,.Day,.Month,.Year], fromDate: NSDate())
