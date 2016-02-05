@@ -12,20 +12,30 @@ class NKDetailItemCell: UITableViewCell {
     @IBOutlet weak var repayDateLabel: UILabel!
     @IBOutlet weak var interestLabel: UILabel!
     @IBOutlet weak var principleLabel: UILabel!
-    @IBOutlet weak var orderLabel: UILabel!
+    @IBOutlet weak var stateLabel: UILabel!
 
     var item: NKItem! {
         didSet {
-            orderLabel.text = item.Detail_repayDate()
+            repayDateLabel.text = item.Detail_repayDate()
             interestLabel.text = item.Detail_interest()
             principleLabel.text = item.Detail_principal()
-            repayDateLabel.text = item.Detail_state()
+            if item.state == State.Overdue.rawValue {
+                stateLabel.textColor = UIColor.flatRedColor()
+            }else {
+                stateLabel.textColor = UIColor.flatBlackColor()
+            }
+            stateLabel.text = item.Detail_state()
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        repayDateLabel.font = UIFont.systemFontOfSize(12)
+        interestLabel.font = UIFont.systemFontOfSize(12)
+        principleLabel.font = UIFont.systemFontOfSize(12)
+        stateLabel.font = UIFont.systemFontOfSize(12)
+        stateLabel.textAlignment = .Center
     }
 
     

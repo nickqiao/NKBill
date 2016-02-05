@@ -16,17 +16,7 @@ class NKComposeController: UITableViewController {
     @IBOutlet weak var repayTypeField: UITextField!
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var rateField: UITextField!
-    
-    
-    @IBAction func unwindFromPlatform(segue: UIStoryboardSegue) {
-        
-        let platVc = segue.sourceViewController as! NKPlatformController
-        selectedPlatform = platVc.selectedPlatform
-        platformCell.detailTextLabel?.text = selectedPlatform.name
-        platformCell.accessoryType = .None
-        
-    }
-    
+
     var account: NKAccount!
     var selectedPlatform: NKPlatform!
     
@@ -40,27 +30,15 @@ class NKComposeController: UITableViewController {
     lazy var inputAccessory: UIToolbar = {
         let accessory = UIToolbar(frame: CGRectMake(0, 0, 320, 44))
         let item0 = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil , action: nil)
-        let item1 = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "done")
+        let item1 = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "inputAccessoryDone")
         accessory.items = [item0,item1]
+        
         return accessory
     }()
     
-    
-    func done() {
-        dateField.endEditing(true)
-    }
-    
-    func datePickerChanged(picker:UIDatePicker) {
-        
-        dateField.text = "\(picker.date.NK_formatDate())"
-        
-    }
-    
+    // MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "close")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: "save")
         
         configureView()
         
@@ -72,6 +50,61 @@ class NKComposeController: UITableViewController {
             title = "记一笔"
         }
         
+    }
+    
+    // MARK:IBAction
+    
+    @IBAction func saveAccount(sender: AnyObject) {
+
+        if account != nil {
+            updateAccount()
+        }else {
+            addNewAccount()
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    @IBAction func quit(sender: AnyObject) {
+         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func unwindFromPlatform(segue: UIStoryboardSegue) {
+        
+        let platVc = segue.sourceViewController as! NKPlatformController
+        selectedPlatform = platVc.selectedPlatform
+        platformCell.detailTextLabel?.text = selectedPlatform.name
+        platformCell.accessoryType = .None
+        
+    }
+    
+    // MARK: handler
+    func inputAccessoryDone() {
+        dateField.endEditing(true)
+    }
+    
+    func datePickerChanged(picker:UIDatePicker) {
+        
+        dateField.text = "\(picker.date.NK_formatDate())"
+        
+    }
+    
+    // MARK: Private
+    private func selectInvestCell() {
+        investField.becomeFirstResponder()
+    }
+    
+    private func selectRateCell() {
+        rateField.becomeFirstResponder()
+    }
+    private func selectTimeSpanCell() {
+        timeSpanField.becomeFirstResponder()
+    }
+    
+    private func selectDateCell() {
+        dateField.becomeFirstResponder()
+    }
+    
+    private func selectRepayTypeCell() {
+        repayTypeField.becomeFirstResponder()
     }
     
     private func fillText() {
@@ -126,6 +159,7 @@ class NKComposeController: UITableViewController {
         
     }
     
+    // MARK: Tableview delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -147,39 +181,6 @@ class NKComposeController: UITableViewController {
             break
 
         }
-    }
-   
-    private func selectInvestCell() {
-        investField.becomeFirstResponder()
-    }
-    
-    private func selectRateCell() {
-        rateField.becomeFirstResponder()
-    }
-    private func selectTimeSpanCell() {
-        timeSpanField.becomeFirstResponder()
-    }
-    
-    private func selectDateCell() {
-        dateField.becomeFirstResponder()
-    }
-    
-    private func selectRepayTypeCell() {
-        repayTypeField.becomeFirstResponder()
-    }
-    
-    func close() {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func save() {
-        
-        if account != nil {
-            updateAccount()
-        }else {
-            addNewAccount()
-        }
-        self.dismissViewControllerAnimated(true, completion: nil)        
     }
     
 }

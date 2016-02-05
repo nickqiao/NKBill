@@ -10,27 +10,56 @@ import UIKit
 
 class NKMoreController: UITableViewController {
 
-    @IBOutlet weak var noticeSwitch: UISwitch!
-    @IBAction func swichChangeValue(sender: AnyObject) {
-        
-        let sw = sender   as! UISwitch
-        if sw.on == true {
-            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Automatic)
-        } else {
-            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Automatic)
-        }
-        
-    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return noticeSwitch.on  == true ? 3 : 2;
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
     }
     
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allowsNotification() ? 2 : 1
+    }
     
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("more")
+        if indexPath.row == 0 {
+            
+            cell?.textLabel?.text = "接收新消息通知"
+            if allowsNotification() == true {
+                cell?.detailTextLabel?.text = "已开启"
+            }else {
+                cell?.detailTextLabel?.text = "已关闭"
+            }
+            
+            return cell!
+        }
+        
+        cell?.textLabel?.text = "设置通知时间"
+        cell?.detailTextLabel?.text = ""
+        cell?.accessoryType = .DisclosureIndicator
+        return cell!
+        
+    }
+
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "如果您要关闭或开启微信的消息通知,请在iPhone的\"设置\"-\"通知\"功能中,找到应用程序更改"
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if allowsNotification() && indexPath.row == 1 {
+            performSegueWithIdentifier("noticeTime", sender: nil)
+            
+        }
+    }
     
 }

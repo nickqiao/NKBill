@@ -79,6 +79,10 @@ extension NKLibraryAPI {
         return accountManager.getSumInvestFromPlatform(platform)
     }
     
+    func getNeedNoticeItems() -> Results<NKItem> {
+        return accountManager.getNeedNoticeItems()
+    }
+    
     func getOverdueItems() -> Results<NKItem> {
         return accountManager.getOverdueItems()
     }

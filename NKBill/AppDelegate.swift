@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("\(NSHomeDirectory())")
         
-        
+      
        // print(NKLibraryAPI.sharedInstance.getWatingInterest())
         //print(NKLibraryAPI.sharedInstance.getInvestedPlatforms())
         
@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge,.Alert,.Sound], categories: nil))
+        
+        print(allowsNotification())
         
         return true
     }
@@ -84,7 +86,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UITabBar.appearance().translucent = false
     }
 
-    
-    
 }
 

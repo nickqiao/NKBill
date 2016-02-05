@@ -43,7 +43,7 @@ class NKRecordController: UITableViewController {
             dataSource = defaultDatasource()
             title = dataSource?.title
         }
-        tableView.backgroundColor = NKBackGroudColor()
+        tableView.backgroundColor = NKBackGroundColor()
     }
     
     override func viewWillAppear(animated: Bool) {

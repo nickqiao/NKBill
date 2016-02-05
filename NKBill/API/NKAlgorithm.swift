@@ -73,7 +73,8 @@ func fun2(account:NKAccount) -> [NKItem] {
 }
 
 /// 到期还本息
-func fun3(account:NKAccount) -> [NKItem]{
+func fun3(account:NKAccount) -> [NKItem] {
+    
     let item = NKItem()
     item.order = 1
     item.account = account
@@ -83,5 +84,6 @@ func fun3(account:NKAccount) -> [NKItem]{
     
     item.repayDate = account.created.NK_dateByAddingMonths(account.timeSpan)
     return [item]
+    
 }
 

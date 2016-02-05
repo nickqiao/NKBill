@@ -29,7 +29,7 @@ class NKIndexController: NKBaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
-        tableView.backgroundColor = NKBackGroudColor()
+        tableView.backgroundColor = NKBackGroundColor()
     }
  
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

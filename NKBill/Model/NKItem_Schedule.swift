@@ -31,6 +31,9 @@ extension NKItem {
     }
     
     func schedule_progress() -> String {
+        if account.repayType == RepayType.RepayAllAtLast.rawValue {
+            return String(format: "%d/%d", order,1)
+        }
         return String(format: "%d/%d", order,account.timeSpan)
     }
     

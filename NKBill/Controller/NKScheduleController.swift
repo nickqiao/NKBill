@@ -19,9 +19,6 @@ class NKScheduleController: NKBaseViewController {
     
     var selectedItem: NKItem!
     
-    
-    
-    
     let reuseIndentifier = "schedule"
     let cellNibName = "NKScheduleCell"
     
@@ -46,7 +43,7 @@ class NKScheduleController: NKBaseViewController {
         // Do any additional setup after loading the view.
         self.tableView.registerNib(UINib(nibName: cellNibName, bundle: nil), forCellReuseIdentifier: reuseIndentifier)
         tableView.rowHeight = 64
-        tableView.backgroundColor = NKBackGroudColor()
+        tableView.backgroundColor = NKBackGroundColor()
         segment.addTarget(self, action: "segmentChangeValue:", forControlEvents: .ValueChanged)
     }
     

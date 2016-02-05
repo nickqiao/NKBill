@@ -79,16 +79,20 @@ extension NKAccountManager {
 // Item
 extension NKAccountManager {
     
+    func getNeedNoticeItems() -> Results<NKItem> {
+        return getWaitingItems().filter("repayDate > %@",NSDate().NK_zeroMorning().NK_dateByAddingDays(1))
+    }
+    
     func getBeforeWatingItems() -> Results<NKItem> {
-        return getWaitingItems().filter("repayDate < %@",NSDate().NK_date())
+        return getWaitingItems().filter("repayDate < %@",NSDate().NK_zeroMorning())
     }
     
     func getTodayWatingItems() -> Results<NKItem> {
-        return getWaitingItems().filter("repayDate > %@ AND repayDate < %@",NSDate().NK_date(),NSDate().NK_date().NK_dateByAddingDays(1))
+        return getWaitingItems().filter("repayDate > %@ AND repayDate < %@",NSDate().NK_zeroMorning(),NSDate().NK_zeroMorning().NK_dateByAddingDays(1))
     }
     
     func getInAmonthWatingItems() -> Results<NKItem> {
-        return getWaitingItems().filter("repayDate < %@ AND repayDate > %@",NSDate().NK_dateByAddingMonths(1),NSDate().NK_date().NK_dateByAddingDays(1))
+        return getWaitingItems().filter("repayDate <= %@ AND repayDate > %@",NSDate().NK_dateByAddingMonths(1),NSDate().NK_zeroMorning().NK_dateByAddingDays(1))
     }
     
     func getOneMonthLaterWatingItems() -> Results<NKItem> {

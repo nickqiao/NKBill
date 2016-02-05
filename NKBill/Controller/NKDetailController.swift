@@ -94,7 +94,7 @@ class NKDetailController: UITableViewController {
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1 {
-            return NKScheduleHeader.scheduleHeader()
+            return NKDetailHeader.detailHeader()
         }
         return nil
     }
