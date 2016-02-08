@@ -17,8 +17,10 @@ class NKComposeController: UITableViewController {
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var rateField: UITextField!
 
+    @IBOutlet weak var descTextView: UITextView!
     var account: NKAccount!
     var selectedPlatform: NKPlatform!
+    var selectedRepayType: String!
     
     lazy var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
@@ -43,7 +45,7 @@ class NKComposeController: UITableViewController {
         configureView()
         
         if let _ = account {
-            title = "投资详情"
+            title = "编辑投资"
             
             fillText()
         }else {
@@ -104,7 +106,36 @@ class NKComposeController: UITableViewController {
     }
     
     private func selectRepayTypeCell() {
-        repayTypeField.becomeFirstResponder()
+        repayTypeField.resignFirstResponder()
+        let alertVc = UIAlertController(title: "选择还款方式", message: "", preferredStyle: .ActionSheet)
+        let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+        let action1 = UIAlertAction(title: "等额本息", style: .Default) { (_) -> Void in
+            self.selectedRepayType = RepayType.AverageCapital.rawValue
+            self.repayTypeField.text = "等额本息"
+        }
+        let action2 = UIAlertAction(title: "按月计息,到期还本", style: .Default) { (_) -> Void in
+            self.selectedRepayType = RepayType.InterestByMonth.rawValue
+            self.repayTypeField.text = "按月计息,到期还本"
+        }
+        let action3 = UIAlertAction(title: "按日计息,到期还本", style: .Default) { (_) -> Void in
+            self.selectedRepayType = RepayType.InterestByDay.rawValue
+            self.repayTypeField.text = "按日计息,到期还本"
+        }
+        let action4 = UIAlertAction(title: "到期还本息", style: .Default) { (_) -> Void in
+            self.selectedRepayType = RepayType.RepayAllAtLast.rawValue
+            self.repayTypeField.text = "到期还本息"
+
+        }
+        alertVc.addAction(cancelAction)
+        alertVc.addAction(action1)
+        alertVc.addAction(action2)
+        alertVc.addAction(action3)
+        alertVc.addAction(action4)
+        presentViewController(alertVc, animated: true, completion: nil)
+    }
+    
+    private func selectDescCell() {
+        
     }
     
     private func fillText() {
@@ -123,32 +154,32 @@ class NKComposeController: UITableViewController {
         timeSpanField.keyboardType = .NumberPad
         dateField.inputView = datePicker
         dateField.inputAccessoryView = inputAccessory
-        
+        dateField.text = "\(NSDate().NK_formatDate())"
+        descTextView.layer.borderColor = UIColor.flatBlackColor().CGColor
+        descTextView.layer.borderWidth = 1.0
     }
-
-    let x = [RepayType.AverageCapital.rawValue,RepayType.InterestByMonth.rawValue,RepayType.RepayAllAtLast.rawValue]
     
     private func addNewAccount() {
         
             let account = NKAccount()
             account.id = NSUUID().UUIDString
             account.platform = selectedPlatform
-            //        account.invest = Int(investField.text!)!
-            //        account.rate = Double(rateField.text!)!
-            //account.timeSpan = Int(timeSpanField.text!)!
-            //account.created = datePicker.date
-            account.invest = 10000 * randomInRange(1...10)
-            account.rate = Double(randomInRange(12...24)) / Double(100)
-            account.timeSpan = randomInRange(1...10)
+            account.invest = Int(investField.text!)!
+            account.rate = Double(rateField.text!)!
+            account.timeSpan = Int(timeSpanField.text!)!
             account.created = datePicker.date
-            account.desc = "good\(randomInRange(1...10))"
+//            account.invest = 10000 * randomInRange(1...10)
+//            account.rate = Double(randomInRange(12...24)) / Double(100)
+//            account.timeSpan = randomInRange(1...10)
+//            account.created = datePicker.date
+//            account.desc = "good\(randomInRange(1...10))"
             //            var x = timeSpanField.text!
             //            let range = x.endIndex.advancedBy(-2)..<x.endIndex
             //            account.timeSpan = Int(x.removeRange(range))
             
             
             account.timeType = TimeType.MONTH.rawValue
-            account.repayType = x[randomInRange(0...2)]
+            account.repayType = selectedRepayType
         
             
         NKLibraryAPI.sharedInstance.saveAccount(account)
@@ -160,6 +191,7 @@ class NKComposeController: UITableViewController {
     }
     
     // MARK: Tableview delegate
+  
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -174,9 +206,9 @@ class NKComposeController: UITableViewController {
         case 4:
             selectDateCell()
         case 5:
-            selectDateCell()
-        case 6:
             selectRepayTypeCell()
+        case 6:
+            selectDescCell()
         default:
             break
 
@@ -185,17 +217,15 @@ class NKComposeController: UITableViewController {
     
 }
 
-//extension NKComposeController: NKPlatformControllerDelegate {
-//    
-//    func platformControllerSelectPlatform(platform: NKPlatform) {
-//        selectedPlatform = platform
-//        platformCell.detailTextLabel?.text = platform.name
-//        platformCell.accessoryType = .None
-//    }
-//    
-//}
-
-//extension NKComposeController: UITextFieldDelegate {
+extension NKComposeController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField == repayTypeField {
+            
+            selectRepayTypeCell()
+        }
+    }
+    
 //    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
 //        
 //        if textField == investField {
@@ -220,6 +250,6 @@ class NKComposeController: UITableViewController {
 //        return true
 //    }
 //
-//}
+}
 
 

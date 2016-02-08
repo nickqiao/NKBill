@@ -20,12 +20,12 @@ class NKDetailController: UITableViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "edit" {
-//            let nav = segue.destinationViewController as! NKNavigationController
-//            if let composeVc = nav.topViewController as? NKComposeController {
-//                composeVc.account = account
-//            }
-//        }
+        if segue.identifier == "edit" {
+            let nav = segue.destinationViewController as! NKNavigationController
+            if let composeVc = nav.topViewController as? NKComposeController {
+                composeVc.account = account
+            }
+        }
     }
 
     // MARK: - Table view data source
