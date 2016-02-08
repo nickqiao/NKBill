@@ -22,6 +22,7 @@
 		011525151C6200F1000D9539 /* NKItem_Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525141C6200F1000D9539 /* NKItem_Schedule.swift */; };
 		011525171C62040A000D9539 /* NKDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525161C62040A000D9539 /* NKDetailHeader.swift */; };
 		011525191C6205CB000D9539 /* NKDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011525181C6205CB000D9539 /* NKDetailHeader.xib */; };
+		0117442F1C68B01F00CD0A7D /* NKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0117442E1C68B01F00CD0A7D /* NKTextField.swift */; };
 		018B922E1C5DCCF500236E16 /* NKPlatformManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */; };
 		018B92301C5DD14C00236E16 /* NKLibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */; };
 		018B92361C5E244C00236E16 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92351C5E244C00236E16 /* Realm.framework */; };
@@ -89,6 +90,7 @@
 		011525141C6200F1000D9539 /* NKItem_Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKItem_Schedule.swift; sourceTree = "<group>"; };
 		011525161C62040A000D9539 /* NKDetailHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKDetailHeader.swift; sourceTree = "<group>"; };
 		011525181C6205CB000D9539 /* NKDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKDetailHeader.xib; sourceTree = "<group>"; };
+		0117442E1C68B01F00CD0A7D /* NKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKTextField.swift; sourceTree = "<group>"; };
 		018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPlatformManager.swift; sourceTree = "<group>"; };
 		018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKLibraryAPI.swift; sourceTree = "<group>"; };
 		018B92351C5E244C00236E16 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 		01E1C1E11C5CBC4000EF6B5A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0117442E1C68B01F00CD0A7D /* NKTextField.swift */,
 				01E1C1F51C5CCA7200EF6B5A /* NKAccount.swift */,
 				011524F61C60A6D7000D9539 /* NKAccount_Compose.swift */,
 				011524F81C60A6FD000D9539 /* NKAccount_Record.swift */,
@@ -326,6 +329,7 @@
 				01FC3A9F1C5F242600176931 /* NKAccountManager.swift in Sources */,
 				01FC3AA31C5F5E8300176931 /* NSDateExtension.swift in Sources */,
 				0115250C1C61C3AD000D9539 /* NKScheduleCell.swift in Sources */,
+				0117442F1C68B01F00CD0A7D /* NKTextField.swift in Sources */,
 				011524F41C609A6F000D9539 /* NKAccountCell.swift in Sources */,
 				01E1C1E41C5CBC8600EF6B5A /* NKBaseViewController.swift in Sources */,
 				01E1C1F41C5CBF5E00EF6B5A /* NKMoreController.swift in Sources */,

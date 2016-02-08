@@ -157,31 +157,41 @@ class NKComposeController: UITableViewController {
         dateField.text = "\(NSDate().NK_formatDate())"
         descTextView.layer.borderColor = UIColor.flatBlackColor().CGColor
         descTextView.layer.borderWidth = 1.0
+        descTextView.text = "请输入项目备注"
+        descTextView.textColor = UIColor.flatGrayColor()
+        
     }
     
     private func addNewAccount() {
         
-            let account = NKAccount()
-            account.id = NSUUID().UUIDString
-            account.platform = selectedPlatform
-            account.invest = Int(investField.text!)!
-            account.rate = Double(rateField.text!)!
-            account.timeSpan = Int(timeSpanField.text!)!
-            account.created = datePicker.date
-//            account.invest = 10000 * randomInRange(1...10)
-//            account.rate = Double(randomInRange(12...24)) / Double(100)
-//            account.timeSpan = randomInRange(1...10)
-//            account.created = datePicker.date
-//            account.desc = "good\(randomInRange(1...10))"
-            //            var x = timeSpanField.text!
-            //            let range = x.endIndex.advancedBy(-2)..<x.endIndex
-            //            account.timeSpan = Int(x.removeRange(range))
-            
-            
-            account.timeType = TimeType.MONTH.rawValue
-            account.repayType = selectedRepayType
+        let account = NKAccount()
+        // 每笔投资id
+        account.id = NSUUID().UUIDString
+        // 投资平台
+        account.platform = selectedPlatform
+        // 投资金额
+        account.invest = Int(investField.text!)!
         
-            
+        // 利率
+        account.rate = Double(rateField.text!)! / Double(100)
+        
+        // 投资时长
+        account.timeSpan = Int(timeSpanField.text!)!
+        
+        // 投资期限的类型(月/日)
+        account.timeType = TimeType.MONTH.rawValue
+        
+        // 创建日期
+        account.created = datePicker.date
+        
+        // 还款方式
+        account.repayType = selectedRepayType
+        
+        // 描述
+        account.desc = descTextView.text
+        
+       
+        
         NKLibraryAPI.sharedInstance.saveAccount(account)
            
     }
@@ -226,30 +236,42 @@ extension NKComposeController: UITextFieldDelegate {
         }
     }
     
-//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-//        
-//        if textField == investField {
-//            // 一开始就禁止输入0
-//            if textField.text == "¥0" && string == "0" {
-//                return false
-//            }
-//            // 开始输入之后把第一个0去掉
-//            if textField.text == "¥0" {
-//                textField.text = "¥"
-//                return true
-//            }
-//            
-//            let currentCharacterCount = textField.text?.characters.count ?? 0
-//            if (range.length + range.location > currentCharacterCount){
-//                return false
-//            }
-//            let newLength = currentCharacterCount + string.characters.count - range.length
-//            return newLength <= 9
-//        }
-//        
-//        return true
-//    }
-//
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == investField {
+            // 一开始就禁止输入0
+            if string == "0" {
+                return false
+            }
+            
+            let currentCharacterCount = textField.text?.characters.count ?? 0
+            if (range.length + range.location > currentCharacterCount){
+                return false
+            }
+            let newLength = currentCharacterCount + string.characters.count - range.length
+            return newLength <= 9
+        }
+        
+        return true
+    }
+
 }
 
+extension NKComposeController: UITextViewDelegate {
+    func textViewDidBeginEditing(textView: UITextView) {
+        if (textView.text == "请输入项目备注") {
+            textView.text = "";
+            textView.textColor = UIColor.flatBlackColor()
+        }
+        textView.becomeFirstResponder()
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        if (textView.text == "") {
+            textView.text = "请输入项目备注"
+            textView.textColor = UIColor.flatGrayColor()
+        }
+        textView.resignFirstResponder()
+    }
+}
 
