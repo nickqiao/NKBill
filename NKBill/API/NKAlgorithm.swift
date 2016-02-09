@@ -17,6 +17,8 @@ func createItems(account:NKAccount) -> [NKItem]{
         return fun2(account)
     case RepayType.RepayAllAtLast.rawValue:
         return fun3(account)
+    case RepayType.InterestByDay.rawValue:
+        return fun4(account)
     default:
         return [NKItem]()
     }
@@ -79,11 +81,21 @@ func fun3(account:NKAccount) -> [NKItem] {
     item.order = 1
     item.account = account
     item.principal = Double(account.invest)
-    item.interest = Double(account.invest) * (account.rate) * Double(account.timeSpan) / 12.0
-    item.sum = item.interest + item.principal
     
-    item.repayDate = account.created.NK_dateByAddingMonths(account.timeSpan)
+    if account.timeType == TimeType.MONTH.rawValue {
+        item.interest = Double(account.invest) * (account.rate) * Double(account.timeSpan) / 12.0
+        item.repayDate = account.created.NK_dateByAddingMonths(account.timeSpan)
+    }else {
+        item.interest = Double(account.invest) * (account.rate) * Double(account.timeSpan) / 365.0
+        item.repayDate = account.created.NK_dateByAddingDays(account.timeSpan)
+    }
+    
+    item.sum = item.interest + item.principal
     return [item]
     
 }
 
+/// 按日计息，到期还本息
+func fun4(account: NKAccount) -> [NKItem] {
+   return fun3(account)
+}

@@ -18,7 +18,6 @@ class NKComposeController: UITableViewController {
     @IBOutlet weak var rateField: UITextField!
 
     @IBOutlet weak var monthButton: UIButton!
-    
     @IBOutlet weak var dayButton: UIButton!
     @IBOutlet weak var descTextView: UITextView!
     var account: NKAccount!
@@ -40,9 +39,27 @@ class NKComposeController: UITableViewController {
         let item0 = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil , action: nil)
         let item1 = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "inputAccessoryDone")
         accessory.items = [item0,item1]
-        return accessory
+                return accessory
         
     }()
+    
+    @IBAction func dayBtnClicked(sender: AnyObject) {
+        dayButton.selected = true
+        monthButton.selected = false
+        // 在选择时间单位是 天 时，还款方式只有两种，都是到期还本息
+        if let temp = selectedRepayType {
+            if temp == RepayType.InterestByMonth.rawValue || temp == RepayType.AverageCapital.rawValue {
+                selectedRepayType = nil
+                repayTypeField.text = ""
+            }
+        }
+     
+    }
+    
+    @IBAction func monthBtnClicked(sender: AnyObject) {
+        dayButton.selected = false
+        monthButton.selected = true
+    }
     
     // MARK: lifecycle
     override func viewDidLoad() {
@@ -52,7 +69,6 @@ class NKComposeController: UITableViewController {
         
         if let _ = account {
             title = "编辑投资"
-            
             fillText()
         }else {
             title = "记一笔"
@@ -110,31 +126,54 @@ class NKComposeController: UITableViewController {
     
     private func selectRepayTypeCell() {
         repayTypeField.resignFirstResponder()
-        let alertVc = UIAlertController(title: "选择还款方式", message: "", preferredStyle: .ActionSheet)
-        let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
-        let action1 = UIAlertAction(title: "等额本息", style: .Default) { (_) -> Void in
-            self.selectedRepayType = RepayType.AverageCapital.rawValue
-            self.repayTypeField.text = "等额本息"
+        
+        if monthButton.selected == true {
+            let alertVc = UIAlertController(title: "选择还款方式", message: "", preferredStyle: .ActionSheet)
+            let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+            let action1 = UIAlertAction(title: "等额本息", style: .Default) { (_) -> Void in
+                self.selectedRepayType = RepayType.AverageCapital.rawValue
+                self.repayTypeField.text = "等额本息"
+            }
+            let action2 = UIAlertAction(title: "按月计息,到期还本", style: .Default) { (_) -> Void in
+                self.selectedRepayType = RepayType.InterestByMonth.rawValue
+                self.repayTypeField.text = "按月计息,到期还本"
+            }
+            let action3 = UIAlertAction(title: "按日计息,到期还本", style: .Default) { (_) -> Void in
+                self.selectedRepayType = RepayType.InterestByDay.rawValue
+                self.repayTypeField.text = "按日计息,到期还本"
+            }
+            let action4 = UIAlertAction(title: "到期还本息", style: .Default) { (_) -> Void in
+                self.selectedRepayType = RepayType.RepayAllAtLast.rawValue
+                self.repayTypeField.text = "到期还本息"
+                
+            }
+            alertVc.addAction(cancelAction)
+            alertVc.addAction(action1)
+            alertVc.addAction(action2)
+            alertVc.addAction(action3)
+            alertVc.addAction(action4)
+            presentViewController(alertVc, animated: true, completion: nil)
         }
-        let action2 = UIAlertAction(title: "按月计息,到期还本", style: .Default) { (_) -> Void in
-            self.selectedRepayType = RepayType.InterestByMonth.rawValue
-            self.repayTypeField.text = "按月计息,到期还本"
+        
+        if dayButton.selected == true {
+            
+            let alertVc = UIAlertController(title: "选择还款方式", message: "", preferredStyle: .ActionSheet)
+            let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+            let action3 = UIAlertAction(title: "按日计息,到期还本", style: .Default) { (_) -> Void in
+                self.selectedRepayType = RepayType.InterestByDay.rawValue
+                self.repayTypeField.text = "按日计息,到期还本"
+            }
+            let action4 = UIAlertAction(title: "到期还本息", style: .Default) { (_) -> Void in
+                self.selectedRepayType = RepayType.RepayAllAtLast.rawValue
+                self.repayTypeField.text = "到期还本息"
+                
+            }
+            alertVc.addAction(cancelAction)
+            alertVc.addAction(action3)
+            alertVc.addAction(action4)
+            presentViewController(alertVc, animated: true, completion: nil)
         }
-        let action3 = UIAlertAction(title: "按日计息,到期还本", style: .Default) { (_) -> Void in
-            self.selectedRepayType = RepayType.InterestByDay.rawValue
-            self.repayTypeField.text = "按日计息,到期还本"
-        }
-        let action4 = UIAlertAction(title: "到期还本息", style: .Default) { (_) -> Void in
-            self.selectedRepayType = RepayType.RepayAllAtLast.rawValue
-            self.repayTypeField.text = "到期还本息"
-
-        }
-        alertVc.addAction(cancelAction)
-        alertVc.addAction(action1)
-        alertVc.addAction(action2)
-        alertVc.addAction(action3)
-        alertVc.addAction(action4)
-        presentViewController(alertVc, animated: true, completion: nil)
+        
     }
     
     private func fillText() {
@@ -237,7 +276,11 @@ class NKComposeController: UITableViewController {
         account.repayType = selectedRepayType
         
         // 描述
-        account.desc = descTextView.text       
+        if descTextView.text == "请输入项目备注" {
+            account.desc = ""
+        } else{
+            account.desc = descTextView.text
+        }
         
         NKLibraryAPI.sharedInstance.saveAccount(account)
            
@@ -281,7 +324,7 @@ extension NKComposeController: UITextFieldDelegate {
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         if textField == investField {
-            // 一开始就禁止输入0
+            
             if string == "0" && textField.text == ""{
                 return false
             }
@@ -322,7 +365,6 @@ extension NKComposeController: UITextFieldDelegate {
         return true
     }
 
-    
 }
 
 extension NKComposeController: UITextViewDelegate {

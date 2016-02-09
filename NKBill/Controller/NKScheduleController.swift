@@ -72,7 +72,6 @@ extension NKScheduleController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIndentifier) as! NKScheduleCell
         cell.item = dataSource?.items[indexPath.section].1[indexPath.row]
-
         return cell
     }
     
