@@ -17,25 +17,31 @@ class NKComposeController: UITableViewController {
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var rateField: UITextField!
 
+    @IBOutlet weak var monthButton: UIButton!
+    
+    @IBOutlet weak var dayButton: UIButton!
     @IBOutlet weak var descTextView: UITextView!
     var account: NKAccount!
     var selectedPlatform: NKPlatform!
     var selectedRepayType: String!
     
     lazy var datePicker: UIDatePicker = {
+        
         let picker = UIDatePicker()
         picker.datePickerMode = .Date
         picker.addTarget(self , action: "datePickerChanged:", forControlEvents: .ValueChanged)
         return picker
+        
     }()
     
     lazy var inputAccessory: UIToolbar = {
+        
         let accessory = UIToolbar(frame: CGRectMake(0, 0, 320, 44))
         let item0 = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil , action: nil)
         let item1 = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "inputAccessoryDone")
         accessory.items = [item0,item1]
-        
         return accessory
+        
     }()
     
     // MARK: lifecycle
@@ -58,12 +64,16 @@ class NKComposeController: UITableViewController {
     
     @IBAction func saveAccount(sender: AnyObject) {
 
-        if account != nil {
-            updateAccount()
-        }else {
-            addNewAccount()
+        if validateFields() {
+            
+            if account != nil {
+                updateAccount()
+            }else {
+                addNewAccount()
+            }
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
     }
     @IBAction func quit(sender: AnyObject) {
          self.dismissViewControllerAnimated(true, completion: nil)
@@ -92,13 +102,6 @@ class NKComposeController: UITableViewController {
     // MARK: Private
     private func selectInvestCell() {
         investField.becomeFirstResponder()
-    }
-    
-    private func selectRateCell() {
-        rateField.becomeFirstResponder()
-    }
-    private func selectTimeSpanCell() {
-        timeSpanField.becomeFirstResponder()
     }
     
     private func selectDateCell() {
@@ -134,10 +137,6 @@ class NKComposeController: UITableViewController {
         presentViewController(alertVc, animated: true, completion: nil)
     }
     
-    private func selectDescCell() {
-        
-    }
-    
     private func fillText() {
         platformCell.detailTextLabel?.text = account.compose_name().1
         investField.text = account.compose_invest().1
@@ -160,15 +159,61 @@ class NKComposeController: UITableViewController {
         descTextView.text = "请输入项目备注"
         descTextView.textColor = UIColor.flatGrayColor()
         
+        monthButton.selected = true
+        dayButton.selected = false
+        
+    }
+    
+    private func validateFields() -> Bool {
+        
+        if platformCell.detailTextLabel!.text!.isEmpty {
+            showAlertWithTitle("请选择投资平台")
+            return false
+        }
+        
+        if investField.text!.isEmpty  {
+            showAlertWithTitle("请输入投资金额")
+            return false
+        }
+        
+        if rateField.text!.isEmpty {
+            showAlertWithTitle("请填写利率")
+            return false
+        }
+            
+        if timeSpanField.text!.isEmpty {
+            showAlertWithTitle("请填写投资期限")
+            return false
+        }
+            
+        if repayTypeField.text!.isEmpty {
+            showAlertWithTitle("请选择一种还款方式")
+            return false
+        }
+        
+        return true
+        
+    }
+
+    private func showAlertWithTitle(title: String) {
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .Alert)
+        let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: {(alert : UIAlertAction) in
+            alertController.dismissViewControllerAnimated(true, completion: nil)
+        })
+        alertController.addAction(alertAction)
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     private func addNewAccount() {
         
         let account = NKAccount()
+        
         // 每笔投资id
         account.id = NSUUID().UUIDString
+        
         // 投资平台
         account.platform = selectedPlatform
+        
         // 投资金额
         account.invest = Int(investField.text!)!
         
@@ -179,7 +224,11 @@ class NKComposeController: UITableViewController {
         account.timeSpan = Int(timeSpanField.text!)!
         
         // 投资期限的类型(月/日)
-        account.timeType = TimeType.MONTH.rawValue
+        if monthButton.selected == true {
+            account.timeType = TimeType.MONTH.rawValue
+        }else {
+            account.timeType = TimeType.DAY.rawValue
+        }
         
         // 创建日期
         account.created = datePicker.date
@@ -188,9 +237,7 @@ class NKComposeController: UITableViewController {
         account.repayType = selectedRepayType
         
         // 描述
-        account.desc = descTextView.text
-        
-       
+        account.desc = descTextView.text       
         
         NKLibraryAPI.sharedInstance.saveAccount(account)
            
@@ -209,16 +256,11 @@ class NKComposeController: UITableViewController {
         switch indexPath.row {
         case 1:
             selectInvestCell()
-        case 2:
-            selectRateCell()
         case 3:
-           selectTimeSpanCell()
-        case 4:
             selectDateCell()
-        case 5:
+        case 4:
             selectRepayTypeCell()
-        case 6:
-            selectDescCell()
+        
         default:
             break
 
@@ -240,7 +282,7 @@ extension NKComposeController: UITextFieldDelegate {
         
         if textField == investField {
             // 一开始就禁止输入0
-            if string == "0" {
+            if string == "0" && textField.text == ""{
                 return false
             }
             
@@ -252,9 +294,35 @@ extension NKComposeController: UITextFieldDelegate {
             return newLength <= 9
         }
         
+        if textField == rateField {
+            if string != "." && textField.text == "0" {
+                return false
+            }
+            
+            let currentCharacterCount = textField.text?.characters.count ?? 0
+            if (range.length + range.location > currentCharacterCount){
+                return false
+            }
+            let newLength = currentCharacterCount + string.characters.count - range.length
+            return newLength <= 5
+        }
+        
+        if textField == timeSpanField {
+            if string == "0" && textField.text == ""{
+                return false
+            }
+            let currentCharacterCount = textField.text?.characters.count ?? 0
+            if (range.length + range.location > currentCharacterCount){
+                return false
+            }
+            let newLength = currentCharacterCount + string.characters.count - range.length
+            return newLength <= 5
+        }
+        
         return true
     }
 
+    
 }
 
 extension NKComposeController: UITextViewDelegate {

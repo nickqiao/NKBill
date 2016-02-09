@@ -18,24 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         print("\(NSHomeDirectory())")
-        
-      
-       // print(NKLibraryAPI.sharedInstance.getWatingInterest())
-        //print(NKLibraryAPI.sharedInstance.getInvestedPlatforms())
-        
-//        print(NKLibraryAPI.sharedInstance.getSumInvest())
-//        print(NKLibraryAPI.sharedInstance.getWaitingItems())
-//        print(NKLibraryAPI.sharedInstance.getPassedInterest())
-       // print(NKLibraryAPI.sharedInstance.getAccountsByDate())
-      //  print(NKLibraryAPI.sharedInstance.getInvestedPlatforms())
-        
-        
-       customAppearce()
 
-        
+        customAppearce()
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge,.Alert,.Sound], categories: nil))
-        
-        print(allowsNotification())
+
         
         return true
     }
