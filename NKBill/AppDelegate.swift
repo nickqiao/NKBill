@@ -20,14 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("\(NSHomeDirectory())")
 
         customAppearce()
+        updateBadgeValue()
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge,.Alert,.Sound], categories: nil))
 
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateBadgeValue", name: updateBadgeValueNotification, object: nil)
         return true
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        print(notification)
+       
     }
     
     
@@ -72,5 +73,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UITabBar.appearance().translucent = false
     }
 
+    // 更新badgeValue
+    func updateBadgeValue() {
+        
+        let tabVc = window?.rootViewController as! NKTabBarController
+        let tbItem = tabVc.tabBar.items![1]
+        let num = NKLibraryAPI.sharedInstance.getUnsolvedItemsCount()
+        if num > 0 {
+            tbItem.badgeValue = "\(num)"
+        }else {
+            tbItem.badgeValue = nil
+        }
+    
+    }
+    
 }
 

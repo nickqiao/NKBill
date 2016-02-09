@@ -10,6 +10,8 @@ import UIKit
 
 let NoticeTimeKey = "NoticeTime"
 
+let updateBadgeValueNotification = "updateBadgeValue"
+
 /// random number
 func randomInRange(range: Range<Int>) -> Int {
     let count = UInt32(range.endIndex - range.startIndex)

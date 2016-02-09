@@ -48,6 +48,10 @@ extension NKAccountManager {
         return getAccountsByPlatform(platform).sum("invest")
     }
     
+    func getUnsolvedItemsCount() -> Int {
+        return getWaitingItems().filter("repayDate < %@",NSDate().NK_zeroMorning().NK_dateByAddingDays(1)).count
+    }
+    
     func getPassedInterest() -> Double {
         return getPassedItems().sum("interest")
     }
@@ -78,6 +82,8 @@ extension NKAccountManager {
 
 // Item
 extension NKAccountManager {
+    
+   
     
     func getNeedNoticeItems() -> Results<NKItem> {
         return getWaitingItems().filter("repayDate > %@",NSDate().NK_zeroMorning().NK_dateByAddingDays(1))

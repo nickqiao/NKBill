@@ -40,7 +40,6 @@ class NKChooseNoticeTimeController: UITableViewController {
             al.addAction(sureAction)
             presentViewController(al, animated: true, completion: nil)
         }
-        navigationController?.popViewControllerAnimated(true)
     }
     
     

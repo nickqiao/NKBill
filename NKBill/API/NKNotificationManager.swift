@@ -10,6 +10,8 @@ import UIKit
 
 class NKNotificationManager {
     
+  
+    
     static func updateLocalNotifications() {
         
         UIApplication.sharedApplication().cancelAllLocalNotifications()

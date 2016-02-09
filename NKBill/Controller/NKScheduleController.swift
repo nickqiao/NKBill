@@ -50,6 +50,7 @@ class NKScheduleController: NKBaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+       
     }
     
     func segmentChangeValue(seg: UISegmentedControl) {
@@ -95,18 +96,24 @@ extension NKScheduleController: UITableViewDelegate {
         let sheet = UIAlertController(title: "处理该笔还款状态", message: nil, preferredStyle: .ActionSheet)
         
         let watingHandler = UIAlertAction(title: "未还", style: .Default){(_) -> Void in
+            
             NKLibraryAPI.sharedInstance.changeItemState(self.selectedItem, toState: .Waiting)
             self.tableView.reloadData()
+            NSNotificationCenter.defaultCenter().postNotificationName(updateBadgeValueNotification, object: nil)
         }
 
         let passedHandler = UIAlertAction(title: "已还", style: .Default){(_) -> Void in
+            
              NKLibraryAPI.sharedInstance.changeItemState(self.selectedItem, toState: .Passed)
             self.tableView.reloadData()
+             NSNotificationCenter.defaultCenter().postNotificationName(updateBadgeValueNotification, object: nil)
         }
 
         let overDueHandler = UIAlertAction(title: "逾期", style: .Default){(_) -> Void in
+            
             NKLibraryAPI.sharedInstance.changeItemState(self.selectedItem, toState: .Overdue)
             self.tableView.reloadData()
+            NSNotificationCenter.defaultCenter().postNotificationName(updateBadgeValueNotification, object: nil)
         }
         
         let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)

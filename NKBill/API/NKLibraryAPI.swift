@@ -62,7 +62,12 @@ extension NKLibraryAPI {
     func getSumInvest() -> Int {
         return accountManager.getSumInvest()
     }
-
+    
+    /// 待处理中需要在badgeValue处通知的个数
+    func getUnsolvedItemsCount() -> Int {
+        return accountManager.getUnsolvedItemsCount()
+    }
+    
     func getPassedInterest() -> Double {
         return accountManager.getPassedInterest()
     }
@@ -79,6 +84,7 @@ extension NKLibraryAPI {
         return accountManager.getSumInvestFromPlatform(platform)
     }
     
+    /// 需要本地通知的条目
     func getNeedNoticeItems() -> Results<NKItem> {
         return accountManager.getNeedNoticeItems()
     }
