@@ -23,6 +23,8 @@
 		011525171C62040A000D9539 /* NKDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011525161C62040A000D9539 /* NKDetailHeader.swift */; };
 		011525191C6205CB000D9539 /* NKDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011525181C6205CB000D9539 /* NKDetailHeader.xib */; };
 		0117442F1C68B01F00CD0A7D /* NKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0117442E1C68B01F00CD0A7D /* NKTextField.swift */; };
+		0117444F1C69DF0100CD0A7D /* UILabel+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0117444E1C69DF0100CD0A7D /* UILabel+Animate.swift */; };
+		011744511C69DFD100CD0A7D /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011744501C69DFD100CD0A7D /* Easing.swift */; };
 		018B922E1C5DCCF500236E16 /* NKPlatformManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */; };
 		018B92301C5DD14C00236E16 /* NKLibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */; };
 		018B92361C5E244C00236E16 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92351C5E244C00236E16 /* Realm.framework */; };
@@ -91,6 +93,8 @@
 		011525161C62040A000D9539 /* NKDetailHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKDetailHeader.swift; sourceTree = "<group>"; };
 		011525181C6205CB000D9539 /* NKDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKDetailHeader.xib; sourceTree = "<group>"; };
 		0117442E1C68B01F00CD0A7D /* NKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKTextField.swift; sourceTree = "<group>"; };
+		0117444E1C69DF0100CD0A7D /* UILabel+Animate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Animate.swift"; sourceTree = "<group>"; };
+		011744501C69DFD100CD0A7D /* Easing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Easing.swift; sourceTree = "<group>"; };
 		018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPlatformManager.swift; sourceTree = "<group>"; };
 		018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKLibraryAPI.swift; sourceTree = "<group>"; };
 		018B92351C5E244C00236E16 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 				01FC3AA41C5F63CC00176931 /* NKAlgorithm.swift */,
 				01FC3AA71C60493300176931 /* NKConfigure.swift */,
 				01F8020A1C64862100246912 /* NKNotificationManager.swift */,
+				0117444E1C69DF0100CD0A7D /* UILabel+Animate.swift */,
+				011744501C69DFD100CD0A7D /* Easing.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -350,8 +356,10 @@
 				01E1C1F21C5CBF4800EF6B5A /* NKRecordController.swift in Sources */,
 				011524F91C60A6FD000D9539 /* NKAccount_Record.swift in Sources */,
 				01E1C20A1C5CDFC400EF6B5A /* NKPlatformController.swift in Sources */,
+				011744511C69DFD100CD0A7D /* Easing.swift in Sources */,
 				01A2791B1C63851C000FC9E1 /* CircularProgressView.swift in Sources */,
 				01E1C1E61C5CBCAA00EF6B5A /* NKNavigationController.swift in Sources */,
+				0117444F1C69DF0100CD0A7D /* UILabel+Animate.swift in Sources */,
 				01FC3AA11C5F496200176931 /* NKItem.swift in Sources */,
 				011524FE1C60AECC000D9539 /* NKIndexCell.swift in Sources */,
 				01E1C1CF1C5CBBBB00EF6B5A /* AppDelegate.swift in Sources */,

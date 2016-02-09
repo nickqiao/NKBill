@@ -12,8 +12,12 @@ class NKIndexController: NKBaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var selectedPlatform: NKPlatform!
+    @IBOutlet weak var passedInterestLabel: UILabel!
+    @IBOutlet weak var weightRateLabel: UILabel!
+    @IBOutlet weak var investLabel: UILabel!
+    @IBOutlet weak var watingLabel: UILabel!
     
+    var selectedPlatform: NKPlatform!
     private lazy var platforms = NKLibraryAPI.sharedInstance.getInvestedPlatforms()
     
     let reuseIdentifier = "index"
@@ -30,6 +34,16 @@ class NKIndexController: NKBaseViewController {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
         tableView.backgroundColor = NKBackGroundColor()
+ 
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        passedInterestLabel.animate(from: 0, to: Int(NKLibraryAPI.sharedInstance.getPassedInterest()))
+        watingLabel.text = String(format: "%.2f",NKLibraryAPI.sharedInstance.getWatingInterest())
+        watingLabel.animate(from: 0, to: Int(NKLibraryAPI.sharedInstance.getWatingInterest()))
+        investLabel.animate(from: 0, to: NKLibraryAPI.sharedInstance.getSumInvest())
     }
  
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
