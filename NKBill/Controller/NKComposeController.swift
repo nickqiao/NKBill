@@ -176,14 +176,7 @@ class NKComposeController: UITableViewController {
         
     }
     
-    private func fillText() {
-        platformCell.detailTextLabel?.text = account.compose_name().1
-        investField.text = account.compose_invest().1
-        rateField.text = account.compose_rate().1
-        timeSpanField.text = account.compose_timeSpan().1
-        dateField.text = account.compose_created().1
-        repayTypeField.text = account.compose_repayType().1
-    }
+
     
     private func configureView() {
         
@@ -284,6 +277,19 @@ class NKComposeController: UITableViewController {
         
         NKLibraryAPI.sharedInstance.saveAccount(account)
            
+    }
+    
+    private func fillText() {
+        platformCell.detailTextLabel?.text = account.compose_name().1
+        investField.text = account.compose_invest().1
+        rateField.text = account.compose_rate().1
+        timeSpanField.text = account.compose_timeSpan().1
+        dateField.text = account.compose_created().1
+        repayTypeField.text = account.compose_repayType().1
+        if account.desc == "" {
+            
+        }
+        descTextView.text = ""
     }
     
     private func updateAccount() {

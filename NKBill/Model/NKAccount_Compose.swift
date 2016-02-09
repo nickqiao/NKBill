@@ -62,6 +62,12 @@ extension NKAccount {
         }
     }
     
-    
+    func compose_desc() -> String {
+        if desc == ""{
+            return "请输入项目备注"
+        }else {
+            return desc
+        }
+    }
     
 }
