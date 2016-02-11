@@ -276,7 +276,7 @@ class NKComposeController: UITableViewController {
         }
         
         NKLibraryAPI.sharedInstance.saveAccount(account)
-           
+        NSNotificationCenter.defaultCenter().postNotificationName(updateBadgeValueNotification, object: nil)
     }
     
     private func fillText() {

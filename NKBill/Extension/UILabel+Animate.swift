@@ -62,7 +62,7 @@ public extension UILabel {
             let change:Double = Double(toValue) - Double(fromValue)
             
             
-            var easedValue:Double = Easing.easeOutExpo(time: durationValue * percent, start: Double(fromValue), change: change, duration: durationValue)
+            let easedValue:Double = Easing.easeOutExpo(time: durationValue * percent, start: Double(fromValue), change: change, duration: durationValue)
             
             if (useTimeFromatValue == true) {
                 //self.text = Int(easedValue).time + appendTextValue

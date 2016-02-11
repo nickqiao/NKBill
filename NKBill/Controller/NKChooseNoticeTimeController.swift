@@ -26,7 +26,7 @@ class NKChooseNoticeTimeController: UITableViewController {
     @IBAction func back(sender: UIBarButtonItem) {
         
         if selectedIndex != NSUserDefaults.standardUserDefaults().integerForKey(NoticeTimeKey) {
-            let al = UIAlertController(title: "是否保存修改的数据", message: nil, preferredStyle: .Alert)
+            let al = UIAlertController(title: "是否保存修改的通知时间", message: nil, preferredStyle: .Alert)
             
             let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: {[unowned self] (_) -> Void in
                 self.navigationController?.popViewControllerAnimated(true)
@@ -39,6 +39,8 @@ class NKChooseNoticeTimeController: UITableViewController {
             al.addAction(cancelAction)
             al.addAction(sureAction)
             presentViewController(al, animated: true, completion: nil)
+        }else {
+            self.navigationController?.popViewControllerAnimated(true)
         }
     }
     

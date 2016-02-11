@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         customAppearce()
         updateBadgeValue()
-        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge,.Alert,.Sound], categories: nil))
-
+        configureLocalNotice()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateBadgeValue", name: updateBadgeValueNotification, object: nil)
         return true
     }
@@ -85,6 +85,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tbItem.badgeValue = nil
         }
     
+    }
+    
+    private func configureLocalNotice() {
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge,.Alert,.Sound], categories: nil))
+        if NSUserDefaults.standardUserDefaults().boolForKey(FirstLaunchKey) == false {
+            
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: FirstLaunchKey)
+            NSUserDefaults.standardUserDefaults().setInteger(9, forKey: NoticeTimeKey)
+            NKNotificationManager.updateLocalNotifications()
+            
+        }
     }
     
 }

@@ -10,6 +10,8 @@ import UIKit
 
 let NoticeTimeKey = "NoticeTime"
 
+let FirstLaunchKey = "firstLaunch"
+
 let updateBadgeValueNotification = "updateBadgeValue"
 
 /// random number

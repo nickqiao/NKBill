@@ -32,10 +32,11 @@ class NKPlatformController: UITableViewController {
             
             if textfield.text?.characters.count > 0 {
                 
-                let p = NKPlatform(value:[textfield.text!,[]])
-                
+                let p = NKPlatform()
+                p.name = textfield.text!
                 NKLibraryAPI.sharedInstance.addPlatform(p)
                 self.tableView.reloadData()
+                
             }
            
         }
