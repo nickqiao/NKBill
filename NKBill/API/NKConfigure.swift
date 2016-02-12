@@ -10,9 +10,9 @@ import UIKit
 
 let NoticeTimeKey = "NoticeTime"
 
-let FirstLaunchKey = "firstLaunch"
+let DefaultNoticeTime = 9
 
-let updateBadgeValueNotification = "updateBadgeValue"
+let FirstLaunchKey = "firstLaunch"
 
 /// random number
 func randomInRange(range: Range<Int>) -> Int {

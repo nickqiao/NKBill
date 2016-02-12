@@ -16,27 +16,24 @@ extension NKAccount {
     }
     
     func compose_invest() -> (String,String)  {
-        return ("投资金额","¥\(invest)")
+        return ("投资金额","\(invest)")
     }
     
     func compose_rate() -> (String,String) {
         if rate == 0.0 {
             return ("年化利率", "")
         }
-        if rate > 0.5 {
-            return ("年化利率", "60%")
-        }
         
-        return ("年化利率", "\(rate * 100)%")
+        return ("年化利率", "\(rate * 100)")
         
     }
     
     func compose_timeSpan() -> (String,String) {
         switch timeType {
         case TimeType.DAY.rawValue:
-            return ("投资期限","\(timeSpan)天")
+            return ("投资期限","\(timeSpan)")
         case TimeType.MONTH.rawValue:
-            return ("投资期限","\(timeSpan)个月")
+            return ("投资期限","\(timeSpan)")
         default:
             return ("","")
         }
@@ -62,12 +59,8 @@ extension NKAccount {
         }
     }
     
-    func compose_desc() -> String {
-        if desc == ""{
-            return "请输入项目备注"
-        }else {
-            return desc
-        }
+    func compose_desc() -> (String,String) {
+            return ("项目备注","\(desc)")
     }
     
 }

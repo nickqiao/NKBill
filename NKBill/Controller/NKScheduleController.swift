@@ -45,12 +45,13 @@ class NKScheduleController: NKBaseViewController {
         tableView.rowHeight = 64
         tableView.backgroundColor = NKBackGroundColor()
         segment.addTarget(self, action: "segmentChangeValue:", forControlEvents: .ValueChanged)
+        NKLibraryAPI.sharedInstance.updateUIWith(String(self)) { [unowned self]() -> Void in
+            self.tableView.reloadData()
+        }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-       
+    deinit {
+        NKLibraryAPI.sharedInstance.removeClosure(String(self))
     }
     
     func segmentChangeValue(seg: UISegmentedControl) {
@@ -98,22 +99,16 @@ extension NKScheduleController: UITableViewDelegate {
         let watingHandler = UIAlertAction(title: "未还", style: .Default){(_) -> Void in
             
             NKLibraryAPI.sharedInstance.changeItemState(self.selectedItem, toState: .Waiting)
-            self.tableView.reloadData()
-            NSNotificationCenter.defaultCenter().postNotificationName(updateBadgeValueNotification, object: nil)
         }
 
         let passedHandler = UIAlertAction(title: "已还", style: .Default){(_) -> Void in
             
              NKLibraryAPI.sharedInstance.changeItemState(self.selectedItem, toState: .Passed)
-            self.tableView.reloadData()
-             NSNotificationCenter.defaultCenter().postNotificationName(updateBadgeValueNotification, object: nil)
         }
 
         let overDueHandler = UIAlertAction(title: "逾期", style: .Default){(_) -> Void in
             
             NKLibraryAPI.sharedInstance.changeItemState(self.selectedItem, toState: .Overdue)
-            self.tableView.reloadData()
-            NSNotificationCenter.defaultCenter().postNotificationName(updateBadgeValueNotification, object: nil)
         }
         
         let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)

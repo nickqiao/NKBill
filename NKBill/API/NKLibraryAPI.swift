@@ -21,12 +21,24 @@ class NKLibraryAPI: NSObject {
         super.init()
     }
 
+    func updateUIWith(controller: String,with closure:() -> Void) {
+        accountManager.updateUI(controller, with: closure)
+    }
+    
+    func removeClosure(controller: String) {
+        accountManager.removeClosure(controller)
+    }
+    
     func saveAccount(account: NKAccount) {
         accountManager.addAccount(account)
     }
     
     func deleteAccount(account: NKAccount) {
         accountManager.deleteAccount(account)
+    }
+    
+    func updateAccount(oldAccount: NKAccount, with newAccount: NKAccount) {
+        accountManager.updateAccount(oldAccount, with: newAccount)
     }
     
 }
@@ -61,6 +73,10 @@ extension NKLibraryAPI {
     
     func getSumInvest() -> Int {
         return accountManager.getSumInvest()
+    }
+    
+    func getWeightRate() -> Double {
+        return accountManager.getWeightRate()
     }
     
     /// 待处理中需要在badgeValue处通知的个数

@@ -212,7 +212,12 @@ class NKComposeController: UITableViewController {
             showAlertWithTitle("请填写利率")
             return false
         }
-            
+        
+        if Double(rateField.text!) > 60 {
+            showAlertWithTitle("允许的最大年化利率为60%(5分利)")
+            return false
+        }
+        
         if timeSpanField.text!.isEmpty {
             showAlertWithTitle("请填写投资期限")
             return false
@@ -238,10 +243,48 @@ class NKComposeController: UITableViewController {
     
     private func addNewAccount() {
         
-        let account = NKAccount()
+        let account = accountFromInterface()
         
         // 每笔投资id
         account.id = NSUUID().UUIDString
+     
+        
+        NKLibraryAPI.sharedInstance.saveAccount(account)
+        
+    }
+    
+    private func fillText() {
+        // 记住两个状态,(否则用户只改其他地方保存,这两者为空)
+        selectedPlatform = account.platform
+        selectedRepayType = account.repayType
+        
+        platformCell.detailTextLabel?.text = account.compose_name().1
+        investField.text = account.compose_invest().1
+        rateField.text = account.compose_rate().1
+        timeSpanField.text = account.compose_timeSpan().1
+        dateField.text = account.compose_created().1
+        repayTypeField.text = account.compose_repayType().1
+        if account.desc == "" {
+            descTextView.text = "请输入项目备注"
+            descTextView.textColor = UIColor.flatGrayColor()
+        }else {
+            descTextView.text = account.desc
+        }
+        
+    }
+    
+    private func updateAccount() {
+        
+        let newAccount = accountFromInterface()
+        
+        newAccount.id = account.id
+        
+        NKLibraryAPI.sharedInstance.updateAccount(account, with: newAccount)
+        
+    }
+    
+    private func accountFromInterface() -> NKAccount {
+        let account = NKAccount()
         
         // 投资平台
         account.platform = selectedPlatform
@@ -275,26 +318,10 @@ class NKComposeController: UITableViewController {
             account.desc = descTextView.text
         }
         
-        NKLibraryAPI.sharedInstance.saveAccount(account)
-        NSNotificationCenter.defaultCenter().postNotificationName(updateBadgeValueNotification, object: nil)
-    }
-    
-    private func fillText() {
-        platformCell.detailTextLabel?.text = account.compose_name().1
-        investField.text = account.compose_invest().1
-        rateField.text = account.compose_rate().1
-        timeSpanField.text = account.compose_timeSpan().1
-        dateField.text = account.compose_created().1
-        repayTypeField.text = account.compose_repayType().1
-        if account.desc == "" {
-            
-        }
-        descTextView.text = ""
-    }
-    
-    private func updateAccount() {
+        return account
         
     }
+    
     
     // MARK: Tableview delegate
   

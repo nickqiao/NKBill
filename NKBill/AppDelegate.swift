@@ -12,25 +12,32 @@ import Chameleon
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    var badgeNum: Int {
+        return NKLibraryAPI.sharedInstance.getUnsolvedItemsCount()
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
         print("\(NSHomeDirectory())")
-
+        // 设置界面颜色
         customAppearce()
-        updateBadgeValue()
+        // 配置本地通知
         configureLocalNotice()
+
+        // 本地数据库发生变化需要做两件事,重新添加通知,更新badgeValue
+        NKLibraryAPI.sharedInstance.updateUIWith(String(self)) { [unowned self]() -> Void in
+            self.updateBadgeValue()
+            NKNotificationManager.updateLocalNotifications()
+        }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateBadgeValue", name: updateBadgeValueNotification, object: nil)
         return true
     }
     
-    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-       
+    deinit {
+        NKLibraryAPI.sharedInstance.removeClosure(String(self))
     }
-    
     
     private func customAppearce() {
         
@@ -78,9 +85,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tabVc = window?.rootViewController as! NKTabBarController
         let tbItem = tabVc.tabBar.items![1]
-        let num = NKLibraryAPI.sharedInstance.getUnsolvedItemsCount()
-        if num > 0 {
-            tbItem.badgeValue = "\(num)"
+        if badgeNum > 0 {
+            tbItem.badgeValue = "\(badgeNum)"
         }else {
             tbItem.badgeValue = nil
         }
@@ -93,9 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if NSUserDefaults.standardUserDefaults().boolForKey(FirstLaunchKey) == false {
             
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: FirstLaunchKey)
-            NSUserDefaults.standardUserDefaults().setInteger(9, forKey: NoticeTimeKey)
-            NKNotificationManager.updateLocalNotifications()
-            
+            NSUserDefaults.standardUserDefaults().setInteger(DefaultNoticeTime, forKey: NoticeTimeKey)
         }
     }
     

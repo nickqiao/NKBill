@@ -12,6 +12,24 @@ import RealmSwift
 class NKAccountManager: NSObject {
     
     let realm = try! Realm()
+    var tokens = [String : NotificationToken]()
+    
+    func updateUI(controller: String,with closure:() -> Void) {
+        
+        let token = realm.addNotificationBlock { (notification, realm) -> Void in
+            closure()
+        }
+        tokens[controller] = token
+        
+    }
+    
+    func removeClosure(controller: String) {
+        
+        if let token = tokens[controller] {
+            realm.removeNotification(token)
+        }
+        
+    }
     
     func addAccount(account: NKAccount) {
         let items = createItems(account)
@@ -35,11 +53,48 @@ class NKAccountManager: NSObject {
         }
     }
     
+    func updateAccount(oldAccount: NKAccount, with newAccount: NKAccount) {
+        
+        let newItems = createItems(newAccount)
+        
+        try! realm.write({ () -> Void in
+            
+            oldAccount.platform.sum = oldAccount.platform.sum - oldAccount.invest
+            newAccount.platform.sum = newAccount.platform.sum + newAccount.invest
+            let index = oldAccount.platform.accounts.indexOf(oldAccount)
+            oldAccount.platform.accounts.removeAtIndex(index!)
+            realm.delete(oldAccount.items)
+            
+            realm.add(newAccount,update: true)
+            newItems.forEach({ newAccount.items.append($0) })
+            realm.add(newItems)
+            newAccount.platform.accounts.append(newAccount)
+            realm.add(newAccount.platform)
+            
+        })
+    }
+    
 }
 
 
 // statics
 extension NKAccountManager {
+    
+    func getWeightRate() -> Double {
+        
+        var rate = 0.0
+        var x = 0.0
+        getAccounts().forEach { (account) -> () in
+            if account.repayType == RepayType.AverageCapital.rawValue {
+                x = x + Double(account.invest) * account.rate * 0.55
+            }else {
+                x = x + Double(account.invest) * account.rate
+            }
+            rate = x / Double(getSumInvest())
+        }
+        return rate
+    }
+    
     func getSumInvest() -> Int {
         return getAccounts().sum("invest")
     }

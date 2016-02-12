@@ -28,22 +28,25 @@ class NKIndexController: NKBaseViewController {
         // Do any additional setup after loading the view.
         tableView.registerNib(UINib(nibName: "NKIndexCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 64
+        tableView.backgroundColor = NKBackGroundColor()
+        NKLibraryAPI.sharedInstance.updateUIWith(String(self)) {[unowned self] () -> Void in
+            self.tableView.reloadData()
+        }
+
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tableView.reloadData()
-        tableView.backgroundColor = NKBackGroundColor()
- 
+    deinit {
+        NKLibraryAPI.sharedInstance.removeClosure(String(self))
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         passedInterestLabel.animate(from: 0, to: Int(NKLibraryAPI.sharedInstance.getPassedInterest()))
-        watingLabel.text = String(format: "%.2f",NKLibraryAPI.sharedInstance.getWatingInterest())
+        //watingLabel.text = String(format: "%.2f",NKLibraryAPI.sharedInstance.getWatingInterest())
         watingLabel.animate(from: 0, to: Int(NKLibraryAPI.sharedInstance.getWatingInterest()))
         investLabel.animate(from: 0, to: NKLibraryAPI.sharedInstance.getSumInvest())
+        weightRateLabel.animate(from: 0, to:Int( NKLibraryAPI.sharedInstance.getWeightRate() * 100))
     }
  
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -78,10 +81,15 @@ extension NKIndexController: UITableViewDataSource {
 }
 
 extension NKIndexController: UITableViewDelegate {
+    
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         selectedPlatform = platforms[indexPath.row]
         performSegueWithIdentifier("indexToRecord", sender: nil)
         return indexPath
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 }

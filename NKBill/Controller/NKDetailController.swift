@@ -16,9 +16,17 @@ class NKDetailController: UITableViewController {
     let detailItemIndentifier = "item"
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        NKLibraryAPI.sharedInstance.updateUIWith(String(self)) { [unowned self]() -> Void in
+            self.tableView.reloadData()
+        }
+
     }
 
+    deinit {
+        NKLibraryAPI.sharedInstance.removeClosure(String(self))
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "edit" {
             let nav = segue.destinationViewController as! NKNavigationController
@@ -38,7 +46,7 @@ class NKDetailController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
-            return 6
+            return 7
         }
         
         return account.items.count
@@ -88,6 +96,11 @@ class NKDetailController: UITableViewController {
             
         }
 
+        if indexPath.row == 6 { //备注
+            cell.textLabel?.text = account.compose_desc().0
+            cell.detailTextLabel?.text = account.compose_desc().1
+        }
+        
         return cell
         
     }

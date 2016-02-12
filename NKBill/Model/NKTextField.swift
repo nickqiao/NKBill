@@ -9,7 +9,7 @@
 import UIKit
 
 class NKTextField: UITextField {
-
+    // 去掉闪烁光标
     override func caretRectForPosition(position: UITextPosition) -> CGRect {
         return CGRectZero
     }
