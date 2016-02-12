@@ -40,40 +40,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func customAppearce() {
         
-//        // Global Tint Color
-//        
-//        window?.tintColor = UIColor.flatWhiteColor()
-//        window?.tintAdjustmentMode = .Normal
-//        
-//        // NavigationBar Item Style
-//        
-////        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.flatWhiteColor()], forState: .Normal)
-////        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.flatWhiteColor()], forState: .Disabled)
-//        
-//        // NavigationBar Title Style
-//        
-//        let shadow: NSShadow = {
-//            let shadow = NSShadow()
-//            shadow.shadowColor = UIColor.lightGrayColor()
-//            shadow.shadowOffset = CGSizeMake(0, 0)
-//            return shadow
-//        }()
-//        
-//        let textAttributes = [
-//            NSForegroundColorAttributeName: UIColor.flatWhiteColor(),
-//            NSShadowAttributeName: shadow,
-//            NSFontAttributeName: UIFont.boldSystemFontOfSize(17)
-//        ]
-//        
-//       UIApplication.sharedApplication().statusBarStyle = .LightContent
-//        UINavigationBar.appearance().titleTextAttributes = textAttributes
-//        UINavigationBar.appearance().barTintColor = UIColor.flatBlackColor()
-        //UINavigationBar.appearance().translucent = false
-        // TabBar
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        window?.tintColor = UIColor.flatBlackColor()
+        // NavigationBar Item Style
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.flatBlackColor()], forState: .Normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.flatBlackColor()], forState: .Disabled)
+        
+        let shadow: NSShadow = {
+            let shadow = NSShadow()
+            shadow.shadowColor = UIColor.lightGrayColor()
+            shadow.shadowOffset = CGSizeMake(0, 0)
+            return shadow
+        }()
+        let textAttributes = [
+            NSForegroundColorAttributeName: UIColor.flatBlackColor(),
+            NSShadowAttributeName: shadow,
+            NSFontAttributeName: UIFont.boldSystemFontOfSize(17)
+        ]
 
-//        UITabBar.appearance().tintColor = UIColor.flatBlackColor()
-//        UITabBar.appearance().barTintColor = UIColor.flatWhiteColor()
-        //UITabBar.appearance().translucent = false
+        UINavigationBar.appearance().titleTextAttributes = textAttributes
+        UINavigationBar.appearance().barTintColor = NKBlueColor()
+        
+        UITabBar.appearance().tintColor = NKBlueColor()
+        UITabBar.appearance().barTintColor = UIColor.flatWhiteColor()
+    
+        
     }
 
     // 更新badgeValue

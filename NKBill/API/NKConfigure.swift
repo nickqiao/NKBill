@@ -10,7 +10,8 @@ import UIKit
 
 let NoticeTimeKey = "NoticeTime"
 
-let DefaultNoticeTime = 1
+/// 默认本地通知时间
+let DefaultNoticeTime = 9
 
 let FirstLaunchKey = "firstLaunch"
 
@@ -22,6 +23,10 @@ func randomInRange(range: Range<Int>) -> Int {
 
 func NKBackGroundColor() ->UIColor {
     return UIColor(colorLiteralRed: 0.937255, green: 0.937255, blue: 0.956863, alpha: 1.0)
+}
+
+func NKBlueColor() -> UIColor {
+    return UIColor(colorLiteralRed: 0.0, green: 170.0 / 255.0, blue: 238.0 / 255.0, alpha: 1.0)
 }
 
 func allowsNotification() -> Bool {

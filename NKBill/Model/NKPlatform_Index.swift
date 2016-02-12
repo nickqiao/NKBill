@@ -11,12 +11,12 @@ import Foundation
 extension NKPlatform {
     
     func platSum() -> String {
-        return "投资总额:\(sum)元"
+        return "\(sum)元"
     }
     
     func ratioString() -> String {
         
-        return "投资占比:\(round(ratio * 100))%"
+        return "\(round(ratio * 100))%"
     }
     
 }

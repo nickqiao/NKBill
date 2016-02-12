@@ -76,12 +76,17 @@ class NKDetailController: UITableViewController {
         }
         if indexPath.row == 2 {
             cell.textLabel?.text = account.compose_rate().0
-            cell.detailTextLabel?.text = account.compose_rate().1
+            cell.detailTextLabel?.text = "\(account.compose_rate().1)%"
         }
         
         if indexPath.row == 3 {
             cell.textLabel?.text = account.compose_timeSpan().0
-            cell.detailTextLabel?.text = account.compose_timeSpan().1
+            if account.timeType == TimeType.DAY.rawValue {
+                cell.detailTextLabel?.text = "\(account.compose_timeSpan().1)天"
+            }else {
+                 cell.detailTextLabel?.text = "\(account.compose_timeSpan().1)个月"
+            }
+            
 
         }
         

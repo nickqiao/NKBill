@@ -38,6 +38,7 @@ class NKComposeController: UITableViewController {
         let accessory = UIToolbar(frame: CGRectMake(0, 0, 320, 44))
         let item0 = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil , action: nil)
         let item1 = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "inputAccessoryDone")
+        
         accessory.items = [item0,item1]
                 return accessory
         
@@ -125,6 +126,9 @@ class NKComposeController: UITableViewController {
     }
     
     private func selectRepayTypeCell() {
+        
+        view.endEditing(true)
+        
         repayTypeField.resignFirstResponder()
         
         if monthButton.selected == true {
@@ -172,6 +176,8 @@ class NKComposeController: UITableViewController {
             alertVc.addAction(action3)
             alertVc.addAction(action4)
             presentViewController(alertVc, animated: true, completion: nil)
+            //alertVc.view.tintColor = UIColor.blackColor()
+
         }
         
     }

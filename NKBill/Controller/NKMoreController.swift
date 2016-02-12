@@ -57,6 +57,7 @@ class NKMoreController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if allowsNotification() && indexPath.row == 1 {
+            
             performSegueWithIdentifier("noticeTime", sender: nil)
             
         }

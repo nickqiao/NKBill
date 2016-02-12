@@ -21,9 +21,6 @@ class NKPlatformController: UITableViewController {
         alert.addTextFieldWithConfigurationHandler { nameField -> Void in
             nameField.placeholder = "平台名称"
         }
-        alert.addTextFieldWithConfigurationHandler { descField -> Void in
-            descField.placeholder = "平台备注"
-        }
         
         let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil )
         let sureAction = UIAlertAction(title: "确定", style: .Default) { a -> Void in

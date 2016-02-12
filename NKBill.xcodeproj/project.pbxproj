@@ -48,7 +48,6 @@
 		01E1C1F61C5CCA7200EF6B5A /* NKAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1F51C5CCA7200EF6B5A /* NKAccount.swift */; };
 		01E1C1F81C5CCE0300EF6B5A /* NKPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1F71C5CCE0300EF6B5A /* NKPlatform.swift */; };
 		01E1C20A1C5CDFC400EF6B5A /* NKPlatformController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C2091C5CDFC400EF6B5A /* NKPlatformController.swift */; };
-		01E1C2101C5CE1CE00EF6B5A /* p2pbank.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01E1C20F1C5CE1CE00EF6B5A /* p2pbank.plist */; };
 		01E1C2161C5CF6B900EF6B5A /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 01E1C2151C5CF6B900EF6B5A /* Cartfile */; };
 		01E1C2181C5CF73A00EF6B5A /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */; };
 		01E1C2191C5CF73A00EF6B5A /* Chameleon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -118,7 +117,6 @@
 		01E1C1F51C5CCA7200EF6B5A /* NKAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKAccount.swift; sourceTree = "<group>"; };
 		01E1C1F71C5CCE0300EF6B5A /* NKPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPlatform.swift; sourceTree = "<group>"; };
 		01E1C2091C5CDFC400EF6B5A /* NKPlatformController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPlatformController.swift; sourceTree = "<group>"; };
-		01E1C20F1C5CE1CE00EF6B5A /* p2pbank.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = p2pbank.plist; sourceTree = "<group>"; };
 		01E1C2151C5CF6B900EF6B5A /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		01E1C21B1C5CF74C00EF6B5A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 				01E1C1D51C5CBBBB00EF6B5A /* Assets.xcassets */,
 				01E1C1D71C5CBBBB00EF6B5A /* LaunchScreen.storyboard */,
 				01E1C1DA1C5CBBBB00EF6B5A /* Info.plist */,
-				01E1C20F1C5CE1CE00EF6B5A /* p2pbank.plist */,
 			);
 			path = NKBill;
 			sourceTree = "<group>";
@@ -324,7 +321,6 @@
 				01E1C1D91C5CBBBB00EF6B5A /* LaunchScreen.storyboard in Resources */,
 				011525191C6205CB000D9539 /* NKDetailHeader.xib in Resources */,
 				011525051C60D38A000D9539 /* Main.storyboard in Resources */,
-				01E1C2101C5CE1CE00EF6B5A /* p2pbank.plist in Resources */,
 				01E1C1D61C5CBBBB00EF6B5A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

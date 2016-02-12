@@ -328,9 +328,9 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jEK-cl-677">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="jEK-cl-677">
                                 <rect key="frame" x="0.0" y="214" width="600" height="337"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" id="UnG-ps-kP4"/>
                                 </constraints>
@@ -423,6 +423,7 @@
                                 <segment title="已还"/>
                                 <segment title="逾期"/>
                             </segments>
+                            <color key="tintColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
@@ -460,7 +461,7 @@
         <scene sceneID="Ixx-g6-7CS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ziP-np-X4d" customClass="NKNavigationController" customModule="NKBill" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="待办事项" id="YNp-ms-AQO"/>
+                    <tabBarItem key="tabBarItem" title="待办事项" image="schedule" id="YNp-ms-AQO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KEQ-d8-vEJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -479,7 +480,7 @@
         <scene sceneID="JPb-RF-Im9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0mX-ay-Hnj" customClass="NKNavigationController" customModule="NKBill" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="首页" id="OzL-ar-fPb"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="index" id="OzL-ar-fPb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2nq-uc-k7K">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -498,7 +499,7 @@
         <scene sceneID="Zd1-qb-AyQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xRQ-d1-TZy" customClass="NKNavigationController" customModule="NKBill" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="更多" id="sWB-38-8py"/>
+                    <tabBarItem key="tabBarItem" title="更多" image="more" id="sWB-38-8py"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="h93-fX-lXB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -606,7 +607,7 @@
         <scene sceneID="e4J-Qr-j3b">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kq3-Pl-NTv" customClass="NKNavigationController" customModule="NKBill" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="记一笔" id="6A4-OA-9c4"/>
+                    <tabBarItem key="tabBarItem" title="记一笔" image="compose" id="6A4-OA-9c4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wvL-5b-NPp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -625,7 +626,7 @@
         <scene sceneID="Pjb-uD-DJY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gAy-Nn-Png" customClass="NKNavigationController" customModule="NKBill" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="投资记录" id="zA2-Ol-HLu"/>
+                    <tabBarItem key="tabBarItem" title="投资记录" image="record" id="zA2-Ol-HLu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jCr-DB-Gr9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1054,12 +1055,17 @@
         </scene>
     </scenes>
     <resources>
+        <image name="compose" width="25" height="25"/>
         <image name="default_platform" width="128" height="128"/>
         <image name="iconfont-checkbox-checked" width="1024" height="1024"/>
         <image name="iconfont-checkboxempty" width="1024" height="1024"/>
+        <image name="index" width="25" height="25"/>
+        <image name="more" width="25" height="25"/>
+        <image name="record" width="25" height="25"/>
+        <image name="schedule" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Got-1Z-cE5"/>
+        <segue reference="ms8-up-tjE"/>
         <segue reference="IAm-Ef-bgH"/>
     </inferredMetricsTieBreakers>
 </document>
