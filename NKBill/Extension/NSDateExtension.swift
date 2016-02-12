@@ -86,9 +86,9 @@ extension NSDate {
      - returns: 只包含年月日的时间
      */
     func NK_zeroMorning() -> NSDate {
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.TimeZone,.Era,.Day,.Month,.Year], fromDate: self)
-        return calendar.dateFromComponents(components)!
+        
+       return NSCalendar.currentCalendar().dateBySettingHour(0, minute: 0, second: 0, ofDate: self, options: NSCalendarOptions(rawValue: 0))!
+
     }
     
 }

@@ -15,7 +15,7 @@ class NKTabBarController: UITabBarController {
 
         // Do any additional setup after loading the view.
         self.delegate = self
-        
+        self.tabBar.items![0].selectedImage = UIImage(named: "index")
     }
 
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {

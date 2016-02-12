@@ -10,7 +10,7 @@ import UIKit
 
 let NoticeTimeKey = "NoticeTime"
 
-let DefaultNoticeTime = 9
+let DefaultNoticeTime = 1
 
 let FirstLaunchKey = "firstLaunch"
 
