@@ -14,7 +14,7 @@ class NKScheduleCell: UITableViewCell {
     @IBOutlet weak var repayDateLabel: UILabel!
     @IBOutlet weak var investLabel: UILabel!
     @IBOutlet weak var principleLabel: UILabel!
-    @IBOutlet weak var platIconView: UIImageView!
+    
     @IBOutlet weak var spanLabel: UILabel!
     @IBOutlet weak var interestLabel: UILabel!
     @IBOutlet weak var platNameLabel: UILabel!
@@ -40,6 +40,7 @@ class NKScheduleCell: UITableViewCell {
     override func awakeFromNib() {
                 super.awakeFromNib()
         // Initialization code
+        repayDateLabel.textColor = NKBlueColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

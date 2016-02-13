@@ -29,24 +29,15 @@ extension NKAccount {
     }
     
     func record_invest() -> String {
-        return "投资金额:\(invest)元"
+        return "\(invest)元"
     }
     
     func record_rate() -> String {
-        
-        switch timeType {
-        case TimeType.DAY.rawValue:
-            return "利率:\(rate * 100)%  期限:\(timeSpan)天"
-        case TimeType.MONTH.rawValue:
-            return "利率:\(rate * 100)%  期限:\(timeSpan)个月"
-        default:
-            return ""
-        }
-        
+        return "\(rate * 100)%"
     }
     
     func record_date() -> String {
-        return "投资日期:\(created.NK_formatDate())"
+        return "\(created.NK_formatDate2())"
     }
      
 }

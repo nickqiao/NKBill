@@ -25,16 +25,14 @@ class NKIndexController: NKBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        investLabel.textColor = UIColor.flatWhiteColor()
-        passedInterestLabel.textColor = UIColor.flatWhiteColor()
-        watingLabel.textColor = UIColor.flatWhiteColor()
-        weightRateLabel.textColor = UIColor.flatWhiteColor()
+        
+        configureHeader()
 
         // Do any additional setup after loading the view.
         tableView.registerNib(UINib(nibName: "NKIndexCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 64
         header.backgroundColor = NKBlueColor()
-        tableView.backgroundColor = NKBackGroundColor()
+        tableView.backgroundColor = UIColor.clearColor()
         NKLibraryAPI.sharedInstance.updateUIWith(String(self)) {[unowned self] () -> Void in
             self.tableView.reloadData()
         }
@@ -49,18 +47,34 @@ class NKIndexController: NKBaseViewController {
         super.viewDidAppear(animated)
         
         passedInterestLabel.animate(from: 0, to: Int(NKLibraryAPI.sharedInstance.getPassedInterest()))
-        //watingLabel.text = String(format: "%.2f",NKLibraryAPI.sharedInstance.getWatingInterest())
         watingLabel.animate(from: 0, to: Int(NKLibraryAPI.sharedInstance.getWatingInterest()))
         investLabel.animate(from: 0, to: NKLibraryAPI.sharedInstance.getSumInvest())
         weightRateLabel.animate(from: 0, to:Int( NKLibraryAPI.sharedInstance.getWeightRate() * 100))
+        
     }
  
+    @IBAction func showPieStatics(sender: AnyObject) {
+        
+    }
+
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let recordVc = segue.destinationViewController as! NKRecordController
+        if segue.identifier == "indexToRecord" {
+            let recordVc = segue.destinationViewController as! NKRecordController
+            
+            recordVc.dataSource = selectedPlatform
+        }
         
-        recordVc.dataSource = selectedPlatform
     }
+    
+    private func configureHeader() {
+        investLabel.textColor = UIColor.flatWhiteColor()
+        passedInterestLabel.textColor = UIColor.flatWhiteColor()
+        watingLabel.textColor = UIColor.flatWhiteColor()
+        weightRateLabel.textColor = UIColor.flatWhiteColor()
+    }
+    
 }
 
 extension NKIndexController: UITableViewDataSource {
@@ -81,13 +95,16 @@ extension NKIndexController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "投资平台"
-    }
+   
     
 }
 
 extension NKIndexController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        return NKIndexSectionHeader.indexSectionHeader()
+    }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         selectedPlatform = platforms[indexPath.row]

@@ -22,6 +22,13 @@ extension NSDate {
         return fmt.stringFromDate(self)
     }
     
+    func NK_formatDate2() -> String {
+        let fmt = NSDateFormatter()
+        fmt.locale = NSLocale(localeIdentifier: "zh_CN")
+        fmt.dateFormat = "yyyy.MM.dd"
+        return fmt.stringFromDate(self)
+    }
+    
     /**
      返回几个月后的时间
      

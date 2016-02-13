@@ -16,7 +16,7 @@ extension NKPlatform {
     
     func ratioString() -> String {
         
-        return String(format: "占比%.0f%%", round(ratio * 100000) / 1000  )
+        return String(format: "%.0f%%", round(ratio * 100000) / 1000  )
     }
     
     func numbersOfAccounts() -> String {

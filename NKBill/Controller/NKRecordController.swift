@@ -35,6 +35,8 @@ class NKRecordController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.registerNib(UINib(nibName: "NKAccountCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+        
         // Do any additional setup after loading the view.
         
         if let x = dataSource {

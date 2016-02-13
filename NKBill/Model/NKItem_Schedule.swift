@@ -15,19 +15,19 @@ extension NKItem {
     }
     
     func schedule_repayDate() -> String {
-        return String(format: "还款日期:%@", repayDate.NK_formatDate())
+        return String(format: "%@", repayDate.NK_formatDate2())
     }
     
     func schedule_interest() -> String {
-        return String(format: "应收利息:%.2f", interest)
+        return String(format: "%.2f", interest)
     }
     
     func schedule_principal() -> String {
-        return String(format: "应收本金:%.2f", principal)
+        return String(format: "%.2f", principal)
     }
     
     func schedule_sum() -> String {
-        return String(format: "还款金额:%.2f", principal + interest)
+        return String(format: "%.2f", principal + interest)
     }
     
     func schedule_progress() -> String {
