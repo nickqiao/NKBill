@@ -28,23 +28,31 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQz-T9-1ji">
+                        <rect key="frame" x="243.5" y="23" width="35.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Siw-DL-r6R">
-                        <rect key="frame" x="153.5" y="21.5" width="42" height="20.5"/>
+                        <rect key="frame" x="153" y="21" width="42" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQz-T9-1ji">
-                        <rect key="frame" x="237" y="21" width="42" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBI-6t-xax">
+                        <rect key="frame" x="124" y="15" width="26.5" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="tUE-GI-qEk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7vY-Rg-D2K"/>
+                    <constraint firstItem="zBI-6t-xax" firstAttribute="centerY" secondItem="MaC-QO-Fk7" secondAttribute="top" id="FKU-dz-woF"/>
                     <constraint firstItem="MaC-QO-Fk7" firstAttribute="leading" secondItem="tUE-GI-qEk" secondAttribute="trailing" constant="20" id="IO9-WY-1ZB"/>
                     <constraint firstItem="JQz-T9-1ji" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Juh-kH-bWb"/>
+                    <constraint firstItem="zBI-6t-xax" firstAttribute="leading" secondItem="MaC-QO-Fk7" secondAttribute="trailing" id="Po5-GL-2t2"/>
                     <constraint firstItem="Siw-DL-r6R" firstAttribute="leading" secondItem="MaC-QO-Fk7" secondAttribute="trailing" constant="40" id="Roz-vw-eZp"/>
                     <constraint firstItem="JQz-T9-1ji" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Wz4-LU-fKr"/>
                     <constraint firstAttribute="centerX" secondItem="Siw-DL-r6R" secondAttribute="centerX" id="ZDq-hR-JS7"/>
@@ -70,6 +78,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="investLabel" destination="Siw-DL-r6R" id="YwB-KP-D0f"/>
+                <outlet property="numberLabel" destination="zBI-6t-xax" id="kVi-WE-rI1"/>
                 <outlet property="orderLabel" destination="tUE-GI-qEk" id="4NY-2P-Hx7"/>
                 <outlet property="platLabel" destination="MaC-QO-Fk7" id="DF4-kF-g31"/>
                 <outlet property="ratioLabel" destination="JQz-T9-1ji" id="j5P-HM-afQ"/>

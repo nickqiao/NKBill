@@ -19,11 +19,16 @@ class NKDetailItemCell: UITableViewCell {
             repayDateLabel.text = item.Detail_repayDate()
             interestLabel.text = item.Detail_interest()
             principleLabel.text = item.Detail_principal()
-            if item.state == State.Overdue.rawValue {
+            
+            switch item.state{
+            case State.Overdue.rawValue:
                 stateLabel.textColor = UIColor.flatRedColor()
-            }else {
+            case State.Passed.rawValue:
+                stateLabel.textColor = UIColor.flatGreenColor()
+            default:
                 stateLabel.textColor = UIColor.flatBlackColor()
             }
+           
             stateLabel.text = item.Detail_state()
         }
     }

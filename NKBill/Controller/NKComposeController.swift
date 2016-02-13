@@ -17,8 +17,8 @@ class NKComposeController: UITableViewController {
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var rateField: UITextField!
 
-    @IBOutlet weak var monthButton: UIButton!
-    @IBOutlet weak var dayButton: UIButton!
+    @IBOutlet weak var dayOrMonthSegment: UISegmentedControl!
+    
     @IBOutlet weak var descTextView: UITextView!
     var account: NKAccount!
     var selectedPlatform: NKPlatform!
@@ -44,23 +44,6 @@ class NKComposeController: UITableViewController {
         
     }()
     
-    @IBAction func dayBtnClicked(sender: AnyObject) {
-        dayButton.selected = true
-        monthButton.selected = false
-        // 在选择时间单位是 天 时，还款方式只有两种，都是到期还本息
-        if let temp = selectedRepayType {
-            if temp == RepayType.InterestByMonth.rawValue || temp == RepayType.AverageCapital.rawValue {
-                selectedRepayType = nil
-                repayTypeField.text = ""
-            }
-        }
-     
-    }
-    
-    @IBAction func monthBtnClicked(sender: AnyObject) {
-        dayButton.selected = false
-        monthButton.selected = true
-    }
     
     // MARK: lifecycle
     override func viewDidLoad() {
@@ -96,6 +79,29 @@ class NKComposeController: UITableViewController {
          self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+//    @IBAction func dayOrMonthChanged(sender: AnyObject) {
+//        
+//        // 在选择时间单位是 天 时，还款方式只有两种，都是到期还本息
+//        if let temp = selectedRepayType {
+//            if temp == RepayType.InterestByMonth.rawValue || temp == RepayType.AverageCapital.rawValue {
+//                selectedRepayType = nil
+//                repayTypeField.text = ""
+//            }
+//        }
+
+    @IBAction func dayOrMonthChanged(sender: UISegmentedControl) {
+         // 在选择时间单位是 天 时，还款方式只有两种，都是到期还本息
+        if let temp = selectedRepayType {
+            
+            if temp == RepayType.InterestByMonth.rawValue || temp == RepayType.AverageCapital.rawValue {
+                selectedRepayType = nil
+                repayTypeField.text = ""
+            }
+        }
+
+    }
+        
+    //}
     @IBAction func unwindFromPlatform(segue: UIStoryboardSegue) {
         
         let platVc = segue.sourceViewController as! NKPlatformController
@@ -131,7 +137,7 @@ class NKComposeController: UITableViewController {
         
         repayTypeField.resignFirstResponder()
         
-        if monthButton.selected == true {
+        if dayOrMonthSegment.selectedSegmentIndex == 0 {
             let alertVc = UIAlertController(title: "选择还款方式", message: "", preferredStyle: .ActionSheet)
             let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
             let action1 = UIAlertAction(title: "等额本息", style: .Default) { (_) -> Void in
@@ -159,7 +165,7 @@ class NKComposeController: UITableViewController {
             presentViewController(alertVc, animated: true, completion: nil)
         }
         
-        if dayButton.selected == true {
+        if dayOrMonthSegment.selectedSegmentIndex == 1 {
             
             let alertVc = UIAlertController(title: "选择还款方式", message: "", preferredStyle: .ActionSheet)
             let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
@@ -197,8 +203,8 @@ class NKComposeController: UITableViewController {
         descTextView.text = "请输入项目备注"
         descTextView.textColor = UIColor.flatGrayColor()
         
-        monthButton.selected = true
-        dayButton.selected = false
+        dayOrMonthSegment.tintColor = NKBlueColor()
+        dayOrMonthSegment.selectedSegmentIndex = 0
         
     }
     
@@ -305,7 +311,7 @@ class NKComposeController: UITableViewController {
         account.timeSpan = Int(timeSpanField.text!)!
         
         // 投资期限的类型(月/日)
-        if monthButton.selected == true {
+        if dayOrMonthSegment.selectedSegmentIndex == 0 {
             account.timeType = TimeType.MONTH.rawValue
         }else {
             account.timeType = TimeType.DAY.rawValue
@@ -338,9 +344,9 @@ class NKComposeController: UITableViewController {
         switch indexPath.row {
         case 1:
             selectInvestCell()
-        case 3:
-            selectDateCell()
         case 4:
+            selectDateCell()
+        case 5:
             selectRepayTypeCell()
         
         default:

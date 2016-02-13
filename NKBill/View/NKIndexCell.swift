@@ -10,6 +10,7 @@ import UIKit
 
 class NKIndexCell: UITableViewCell {
 
+    @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var orderLabel: UILabel!
     @IBOutlet weak var ratioLabel: UILabel!
     @IBOutlet weak var investLabel: UILabel!
@@ -19,6 +20,10 @@ class NKIndexCell: UITableViewCell {
         super.awakeFromNib()
         
         // Initialization code
+        numberLabel.textColor = UIColor.whiteColor()
+        numberLabel.backgroundColor = NKBlueColor()
+        numberLabel.layer.cornerRadius = 1
+        numberLabel.layer.masksToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

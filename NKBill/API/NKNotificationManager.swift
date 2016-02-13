@@ -22,7 +22,7 @@ class NKNotificationManager {
             
             let s = String(format: "今日%@回款%@元", item.schedule_platName(),item.Detail_sum())
             let noticeDate = NSCalendar.currentCalendar().dateBySettingHour(clock, minute: 0, second: 0, ofDate: item.repayDate, options: NSCalendarOptions(rawValue: 0))
-            print(noticeDate)
+            
             presentLocalNotice(noticeDate!, alertString: s)
             
         }

@@ -10,6 +10,7 @@ import UIKit
 
 class NKIndexController: NKBaseViewController {
 
+    @IBOutlet weak var header: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var passedInterestLabel: UILabel!
@@ -24,10 +25,15 @@ class NKIndexController: NKBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        investLabel.textColor = UIColor.flatWhiteColor()
+        passedInterestLabel.textColor = UIColor.flatWhiteColor()
+        watingLabel.textColor = UIColor.flatWhiteColor()
+        weightRateLabel.textColor = UIColor.flatWhiteColor()
+
         // Do any additional setup after loading the view.
         tableView.registerNib(UINib(nibName: "NKIndexCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 64
+        header.backgroundColor = NKBlueColor()
         tableView.backgroundColor = NKBackGroundColor()
         NKLibraryAPI.sharedInstance.updateUIWith(String(self)) {[unowned self] () -> Void in
             self.tableView.reloadData()
@@ -71,6 +77,7 @@ extension NKIndexController: UITableViewDataSource {
         cell.platLabel.text = plat.name
         cell.ratioLabel.text = plat.ratioString()
         cell.investLabel.text = plat.platSum()
+        cell.numberLabel.text = plat.numbersOfAccounts()
         return cell
     }
     

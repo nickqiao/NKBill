@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let shadow: NSShadow = {
             let shadow = NSShadow()
-            shadow.shadowColor = UIColor.lightGrayColor()
+            shadow.shadowColor = UIColor.clearColor()
             shadow.shadowOffset = CGSizeMake(0, 0)
             return shadow
         }()
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
 
         UINavigationBar.appearance().titleTextAttributes = textAttributes
-        UINavigationBar.appearance().barTintColor = NKBlueColor()
+        //UINavigationBar.appearance().barTintColor = NKBlueColor()
         
         UITabBar.appearance().tintColor = NKBlueColor()
         UITabBar.appearance().barTintColor = UIColor.flatWhiteColor()
