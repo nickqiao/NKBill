@@ -124,7 +124,6 @@
 		01E1C2091C5CDFC400EF6B5A /* NKPlatformController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPlatformController.swift; sourceTree = "<group>"; };
 		01E1C2151C5CF6B900EF6B5A /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
-		01E1C21B1C5CF74C00EF6B5A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		01F8020A1C64862100246912 /* NKNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNotificationManager.swift; sourceTree = "<group>"; };
 		01FC3A9E1C5F242600176931 /* NKAccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKAccountManager.swift; sourceTree = "<group>"; };
 		01FC3AA01C5F496200176931 /* NKItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKItem.swift; sourceTree = "<group>"; };
@@ -182,7 +181,6 @@
 			children = (
 				018B92381C5E245B00236E16 /* RealmSwift.framework */,
 				018B92351C5E244C00236E16 /* Realm.framework */,
-				01E1C21B1C5CF74C00EF6B5A /* SwiftyJSON.framework */,
 				01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */,
 				01E1C2151C5CF6B900EF6B5A /* Cartfile */,
 				01E1C1CD1C5CBBBB00EF6B5A /* NKBill */,

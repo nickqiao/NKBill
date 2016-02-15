@@ -1,5 +1,3 @@
 github "ViccAlexander/Chameleon"
 
 github "realm/realm-cocoa"
-
-github "nixzhu/KeyboardMan" >= 0.5.2
