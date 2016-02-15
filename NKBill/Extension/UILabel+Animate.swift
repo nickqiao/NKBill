@@ -30,9 +30,9 @@ class TimerManager {
 let timers = TimerManager()
 
 public extension UILabel {
-    public func animate(from fromValue:Int, to toValue:Int, duration durationValue:Double = 1.0, useTimeFormat useTimeFromatValue:Bool = false, numberFormatter numberFormatterValue:NSNumberFormatter! = nil, appendText appendTextValue:String = "") {
+    public func animate(from fromValue:Double, to toValue:Double, duration durationValue:Double = 1.0, useTimeFormat useTimeFromatValue:Bool = false, numberFormatter numberFormatterValue:NSNumberFormatter! = nil, appendText appendTextValue:String = "") {
         
-        self.text = String(fromValue.hashValue)
+        self.text = String(fromValue)
         
         let interval:Double = 10/30
         let nsec:UInt64 = UInt64(interval) * NSEC_PER_SEC
@@ -70,7 +70,7 @@ public extension UILabel {
                 if (numberFormatterValue != nil) {
                     self.text = numberFormatterValue.stringFromNumber(easedValue)! + appendTextValue
                 } else {
-                    self.text = "\(Int(easedValue))\(appendTextValue)"
+                    self.text = "\(easedValue)\(appendTextValue)"
                 }
             }
         }

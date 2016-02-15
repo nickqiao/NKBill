@@ -46,10 +46,20 @@ class NKIndexController: NKBaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        passedInterestLabel.animate(from: 0, to: Int(NKLibraryAPI.sharedInstance.getPassedInterest()))
-        watingLabel.animate(from: 0, to: Int(NKLibraryAPI.sharedInstance.getWatingInterest()))
-        investLabel.animate(from: 0, to: NKLibraryAPI.sharedInstance.getSumInvest())
-        weightRateLabel.animate(from: 0, to:Int( NKLibraryAPI.sharedInstance.getWeightRate() * 100))
+        let numberFormatter = NSNumberFormatter()
+        numberFormatter.positiveFormat = "###,##0.00"
+        
+        passedInterestLabel.animate(from: 0, to: NKLibraryAPI.sharedInstance.getPassedInterest(), duration: 1.0, useTimeFormat: false, numberFormatter: numberFormatter, appendText: "")
+        
+        watingLabel.animate(from: 0.0, to: NKLibraryAPI.sharedInstance.getWatingInterest(), duration: 1.0, useTimeFormat: false, numberFormatter: numberFormatter, appendText: "")
+        
+        let numberFormatter2 = NSNumberFormatter()
+        numberFormatter2.positiveFormat = "###,###"
+        investLabel.animate(from: 0, to: Double(NKLibraryAPI.sharedInstance.getSumInvest()), duration: 1.0, useTimeFormat: false, numberFormatter: numberFormatter2, appendText: "")
+       
+        let percentFormatter = NSNumberFormatter()
+        percentFormatter.numberStyle = .PercentStyle
+        weightRateLabel.animate(from: 0, to:  NKLibraryAPI.sharedInstance.getWeightRate(), duration: 1, useTimeFormat: false, numberFormatter:percentFormatter, appendText:"")
         
     }
  

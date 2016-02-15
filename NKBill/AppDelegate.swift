@@ -26,7 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 配置本地通知
         configureLocalNotice()
 
-        NKLibraryAPI.sharedInstance.updateUIWith(String(self)) { [unowned self]() -> Void in
+        self.updateBadgeValue()
+        
+        NKLibraryAPI.sharedInstance.updateUIWith(String(self)) { () -> Void in
             self.updateBadgeValue()
             NKNotificationManager.updateLocalNotifications()
         }

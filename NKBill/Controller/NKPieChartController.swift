@@ -33,11 +33,10 @@ class NKPieChartController: UIViewController {
         pieChart.dataSource = self
         pieChart.animationSpeed = 1.0
         pieChart.startPieAngle = CGFloat(M_1_PI)
-        
+        pieChart.showLabel = true
         pieChart.showPercentage = true
         centerLabel.layer.cornerRadius = 25
         centerLabel.layer.masksToBounds = true
-        centerLabel.backgroundColor = UIColor.flatWhiteColor()
         centerLabel.text = "投资总额\n\(NKLibraryAPI.sharedInstance.getSumInvest())"
     }
 
@@ -67,6 +66,10 @@ extension NKPieChartController: XYPieChartDataSource {
     func pieChart(pieChart: XYPieChart!, valueForSliceAtIndex index: UInt) -> CGFloat {
         let p = platforms[Int(index)]
         return  CGFloat(p.ratio)
+    }
+    
+    func pieChart(pieChart: XYPieChart!, textForSliceAtIndex index: UInt) -> String! {
+        return "sd"
     }
     
     func pieChart(pieChart: XYPieChart!, colorForSliceAtIndex index: UInt) -> UIColor! {

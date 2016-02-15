@@ -84,6 +84,15 @@ extension NKScheduleController: UITableViewDataSource {
 }
 
 extension NKScheduleController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont.systemFontOfSize(12)
+        header.textLabel?.textColor = UIColor.grayColor()
+    }
+
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
