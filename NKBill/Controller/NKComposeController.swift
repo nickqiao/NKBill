@@ -259,7 +259,6 @@ class NKComposeController: UITableViewController {
         
         // 每笔投资id
         account.id = NSUUID().UUIDString
-     
         
         NKLibraryAPI.sharedInstance.saveAccount(account)
         
@@ -275,6 +274,7 @@ class NKComposeController: UITableViewController {
         rateField.text = account.compose_rate().1
         timeSpanField.text = account.compose_timeSpan().1
         dateField.text = account.compose_created().1
+        datePicker.date = account.created;
         repayTypeField.text = account.compose_repayType().1
         if account.desc == "" {
             descTextView.text = "请输入项目备注"

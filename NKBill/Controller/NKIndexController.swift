@@ -31,6 +31,10 @@ class NKIndexController: NKBaseViewController {
         // Do any additional setup after loading the view.
         tableView.registerNib(UINib(nibName: "NKIndexCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 64
+        let indexTableHeader = NKIndexTableHeader.indexTableHeader()
+        indexTableHeader.delegate = self
+        tableView.tableHeaderView = indexTableHeader
+        
         header.backgroundColor = NKBlueColor()
         tableView.backgroundColor = UIColor.clearColor()
         NKLibraryAPI.sharedInstance.updateUIWith(String(self)) {[unowned self] () -> Void in
@@ -124,6 +128,18 @@ extension NKIndexController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+}
+
+extension NKIndexController: NKIndexTableHeaderDelegate {
+    
+    func indexTableHeaderBarChartButtonClicked() {
+        performSegueWithIdentifier("barChart", sender: nil)
+    }
+    
+    func indexTableHeaderPieChartButtonClicked() {
+        performSegueWithIdentifier("pieChart", sender: nil)
     }
     
 }

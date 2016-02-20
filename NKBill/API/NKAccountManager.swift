@@ -80,13 +80,14 @@ class NKAccountManager: NSObject {
 // statics
 extension NKAccountManager {
     
+    /// 加权利率
     func getWeightRate() -> Double {
         
         var rate = 0.0
         var x = 0.0
         getAccounts().forEach { (account) -> () in
             if account.repayType == RepayType.AverageCapital.rawValue {
-                x = x + Double(account.invest) * account.rate * 0.55
+                x = x + Double(account.invest) * account.rate * 0.559
             }else {
                 x = x + Double(account.invest) * account.rate
             }
@@ -95,22 +96,23 @@ extension NKAccountManager {
         return rate
     }
     
+    /// 投资总额
     func getSumInvest() -> Int {
         return getAccounts().sum("invest")
     }
-    
+    /// 每个平台的投资总额
     func getSumInvestFromPlatform(platform: NKPlatform) -> Int{
         return getAccountsByPlatform(platform).sum("invest")
     }
-    
+    /// 待处理的数目
     func getUnsolvedItemsCount() -> Int {
         return getWaitingItems().filter("repayDate < %@",NSDate().NK_zeroMorning().NK_dateByAddingDays(1)).count
     }
-    
+    /// 已还利息
     func getPassedInterest() -> Double {
         return getPassedItems().sum("interest")
     }
-    
+    /// 未还利息
     func getWatingInterest() -> Double {
         return getWaitingItems().sum("interest") + getOverdueItems().sum("interest")
     }
@@ -120,15 +122,16 @@ extension NKAccountManager {
 // Accounts
 extension NKAccountManager {
     
-    
+    /// 按平台获取account
     func getAccountsByPlatform(platform:NKPlatform) -> Results<NKAccount> {
         return getAccounts().filter("platform == %@", platform)
     }
     
+    /// 按日期排序之后的account
     func getAccountsByDate() -> Results<NKAccount> {
         return getAccounts().sorted("created", ascending: false)
     }
-    
+    ///  获取所有account
     func getAccounts() -> Results<NKAccount> {
         return realm.objects(NKAccount)
     }
@@ -137,47 +140,68 @@ extension NKAccountManager {
 
 // Item
 extension NKAccountManager {
-    
+    /// 获取需要通知的items
     func getNeedNoticeItems() -> Results<NKItem> {
         return getWaitingItems().filter("repayDate > %@",NSDate().NK_zeroMorning())
     }
-    
+    /// 今天之前的待还item
     func getBeforeWatingItems() -> Results<NKItem> {
         return getWaitingItems().filter("repayDate < %@",NSDate().NK_zeroMorning())
     }
-    
+    /// 今天的待还item
     func getTodayWatingItems() -> Results<NKItem> {
         return getWaitingItems().filter("repayDate > %@ AND repayDate < %@",NSDate().NK_zeroMorning(),NSDate().NK_zeroMorning().NK_dateByAddingDays(1))
     }
-    
+    /// 从今天算起的一个月内的item
     func getInAmonthWatingItems() -> Results<NKItem> {
         return getWaitingItems().filter("repayDate <= %@ AND repayDate > %@",NSDate().NK_dateByAddingMonths(1),NSDate().NK_zeroMorning().NK_dateByAddingDays(1))
     }
-    
+    /// 一个月后的item
     func getOneMonthLaterWatingItems() -> Results<NKItem> {
         return getWaitingItems().filter("repayDate > %@",NSDate().NK_dateByAddingMonths(1))
     }
-    
+    /// 逾期的item
     func getOverdueItems() -> Results<NKItem> {
         return getAllItems().filter("state == %@",State.Overdue.rawValue).sorted("repayDate", ascending: true)
     }
-    
+    /// 所有的待还
     func getWaitingItems() -> Results<NKItem> {
         return getAllItems().filter("state == %@",State.Waiting.rawValue).sorted("repayDate", ascending: true)
     }
-    
+    /// 所有的已还item
     func getPassedItems() -> Results<NKItem> {
         return getAllItems().filter("state == %@",State.Passed.rawValue).sorted("repayDate", ascending: false)
     }
-    
+    /// 所有的item
     func getAllItems() -> Results<NKItem> {
         return realm.objects(NKItem)
     }
-    
+    /// 改变item状态
     func changeItemState(item: NKItem,toState:State) {
         try! realm.write({ () -> Void in
             item.state = toState.rawValue
         })
+    }
+    
+    /**
+     这个月之前多少月到之后多少月之间的item
+   
+     */
+    func getItems(month month: Int,year: Int) -> Results<NKItem> {
+        
+        
+        let date1 = NSDate.NK_dateFrom(year: year, month: month)
+        
+        return getAllItems().filter("repayDate <= %@ AND repayDate >= %@" , date1.NK_dateByAddingMonths(1),date1)
+    }
+    /// 获得某个月的利息
+    func getSumInterest(month month: Int,year:Int) -> Double {
+        return getItems(month: month, year: year).sum("interest")
+    }
+    
+    /// 获得某个月的本金
+    func getSumPrinciple(month month: Int,year:Int) -> Double {
+        return getItems(month: month, year: year).sum("principal")
     }
     
 }

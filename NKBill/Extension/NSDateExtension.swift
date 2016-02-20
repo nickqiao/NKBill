@@ -10,6 +10,22 @@ import Foundation
 
 extension NSDate {
     
+    private func componets() -> NSDateComponents {
+        return NSCalendar.currentCalendar().components([.Era,.Day,.Month,.Year], fromDate: self)
+    }
+    
+    func year() -> Int {
+        return componets().year
+    }
+    
+    func month() -> Int {
+        return componets().month
+    }
+    
+    func day() -> Int {
+        return componets().day
+    }
+    
     /**
      这个app中采取的时间格式
      
@@ -96,6 +112,27 @@ extension NSDate {
         
        return NSCalendar.currentCalendar().dateBySettingHour(0, minute: 0, second: 0, ofDate: self, options: NSCalendarOptions(rawValue: 0))!
 
+    }
+    
+    /// 当前日的月初，比如今天是2月20日下午6点，调次函数之后返回 2月1日0点
+    func NK_startOfMonth() -> NSDate {
+        
+        let calendar = NSCalendar.currentCalendar()
+        let currentDateComponents =  calendar.components([.Month,.Year], fromDate: self)
+        let startOfMonth = calendar.dateFromComponents(currentDateComponents)
+        
+        return startOfMonth!
+    }
+    
+     /// 按年和月生成时间
+    static func NK_dateFrom(year y: Int , month : Int) -> NSDate {
+        
+        let calendar = NSCalendar.currentCalendar()
+        let components = NSDateComponents()
+        components.year = y
+        components.month = month
+        return calendar.dateFromComponents(components)!
+        
     }
     
 }

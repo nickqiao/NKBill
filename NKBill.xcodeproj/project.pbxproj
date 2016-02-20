@@ -32,6 +32,11 @@
 		018B92371C5E244C00236E16 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92351C5E244C00236E16 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		018B92391C5E245B00236E16 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92381C5E245B00236E16 /* RealmSwift.framework */; };
 		018B923A1C5E245B00236E16 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92381C5E245B00236E16 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		018DF91B1C78471D00FA9F62 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018DF91A1C78471D00FA9F62 /* Charts.framework */; };
+		018DF91C1C78471D00FA9F62 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018DF91A1C78471D00FA9F62 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		018DF91E1C78479A00FA9F62 /* NKBarChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018DF91D1C78479A00FA9F62 /* NKBarChartController.swift */; };
+		018DF9201C789E1200FA9F62 /* NKIndexTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018DF91F1C789E1200FA9F62 /* NKIndexTableHeader.swift */; };
+		018DF9221C789E2F00FA9F62 /* NKIndexTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 018DF9211C789E2F00FA9F62 /* NKIndexTableHeader.xib */; };
 		01A2791B1C63851C000FC9E1 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2791A1C63851C000FC9E1 /* CircularProgressView.swift */; };
 		01A2791D1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2791C1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift */; };
 		01E1C1CF1C5CBBBB00EF6B5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1CE1C5CBBBB00EF6B5A /* AppDelegate.swift */; };
@@ -72,6 +77,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				018B92371C5E244C00236E16 /* Realm.framework in Embed Frameworks */,
+				018DF91C1C78471D00FA9F62 /* Charts.framework in Embed Frameworks */,
 				018B923A1C5E245B00236E16 /* RealmSwift.framework in Embed Frameworks */,
 				01E1C2191C5CF73A00EF6B5A /* Chameleon.framework in Embed Frameworks */,
 			);
@@ -104,6 +110,10 @@
 		018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKLibraryAPI.swift; sourceTree = "<group>"; };
 		018B92351C5E244C00236E16 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		018B92381C5E245B00236E16 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		018DF91A1C78471D00FA9F62 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
+		018DF91D1C78479A00FA9F62 /* NKBarChartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKBarChartController.swift; sourceTree = "<group>"; };
+		018DF91F1C789E1200FA9F62 /* NKIndexTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKIndexTableHeader.swift; sourceTree = "<group>"; };
+		018DF9211C789E2F00FA9F62 /* NKIndexTableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKIndexTableHeader.xib; sourceTree = "<group>"; };
 		01A2791A1C63851C000FC9E1 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		01A2791C1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKChooseNoticeTimeController.swift; sourceTree = "<group>"; };
 		01E1C1CB1C5CBBBB00EF6B5A /* NKBill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NKBill.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				018B92361C5E244C00236E16 /* Realm.framework in Frameworks */,
+				018DF91B1C78471D00FA9F62 /* Charts.framework in Frameworks */,
 				018B92391C5E245B00236E16 /* RealmSwift.framework in Frameworks */,
 				01E1C2181C5CF73A00EF6B5A /* Chameleon.framework in Frameworks */,
 			);
@@ -179,6 +190,7 @@
 		01E1C1C21C5CBBBB00EF6B5A = {
 			isa = PBXGroup;
 			children = (
+				018DF91A1C78471D00FA9F62 /* Charts.framework */,
 				018B92381C5E245B00236E16 /* RealmSwift.framework */,
 				018B92351C5E244C00236E16 /* Realm.framework */,
 				01E1C2171C5CF73A00EF6B5A /* Chameleon.framework */,
@@ -229,6 +241,8 @@
 				011525101C61F2C9000D9539 /* NKDetailItemCell.swift */,
 				011525161C62040A000D9539 /* NKDetailHeader.swift */,
 				011525181C6205CB000D9539 /* NKDetailHeader.xib */,
+				018DF91F1C789E1200FA9F62 /* NKIndexTableHeader.swift */,
+				018DF9211C789E2F00FA9F62 /* NKIndexTableHeader.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -265,6 +279,7 @@
 				01E1C1F31C5CBF5E00EF6B5A /* NKMoreController.swift */,
 				01A2791C1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift */,
 				460A142B1C6F907A0011C8E3 /* NKPieChartController.swift */,
+				018DF91D1C78479A00FA9F62 /* NKBarChartController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -352,6 +367,7 @@
 				460A14211C6F66720011C8E3 /* NKIndexSectionHeader.xib in Resources */,
 				011524FF1C60AECC000D9539 /* NKIndexCell.xib in Resources */,
 				0115250D1C61C3AD000D9539 /* NKScheduleCell.xib in Resources */,
+				018DF9221C789E2F00FA9F62 /* NKIndexTableHeader.xib in Resources */,
 				01E1C2161C5CF6B900EF6B5A /* Cartfile in Resources */,
 				01E1C1D91C5CBBBB00EF6B5A /* LaunchScreen.storyboard in Resources */,
 				011525191C6205CB000D9539 /* NKDetailHeader.xib in Resources */,
@@ -415,7 +431,9 @@
 				011744571C69E78200CD0A7D /* NSDateExtension.swift in Sources */,
 				01F8020B1C64862100246912 /* NKNotificationManager.swift in Sources */,
 				011525111C61F2C9000D9539 /* NKDetailItemCell.swift in Sources */,
+				018DF91E1C78479A00FA9F62 /* NKBarChartController.swift in Sources */,
 				01E1C1F21C5CBF4800EF6B5A /* NKRecordController.swift in Sources */,
+				018DF9201C789E1200FA9F62 /* NKIndexTableHeader.swift in Sources */,
 				011524F91C60A6FD000D9539 /* NKAccount_Record.swift in Sources */,
 				01E1C20A1C5CDFC400EF6B5A /* NKPlatformController.swift in Sources */,
 				01A2791B1C63851C000FC9E1 /* CircularProgressView.swift in Sources */,

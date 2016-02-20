@@ -136,5 +136,40 @@ extension NKLibraryAPI {
     func changeItemState(item: NKItem,toState:State) {
         accountManager.changeItemState(item, toState: toState)
     }
+
+    /// 今年每月还款的利息和
+    
+    func getThisYearMonthInterest() -> [Double] {
+        let year = NSDate().year()
+        
+       return  (1...12).map({accountManager.getSumInterest(month: $0, year:year) })
+    }
+    
+    func getThisYearMonthItems() -> [Results<NKItem>] {
+        let year = NSDate().year()
+        return  (1...12).map({accountManager.getItems(month: $0, year:year ) })
+    }
+    
+    /// 明年每月还款的利息和
+    func getNextYearMonthInterest() -> [Double] {
+        let year = NSDate().year()
+        return  (1...12).map({accountManager.getSumInterest(month: $0, year:year + 1) })
+    }
+    func getNextYearMonthItems() -> [Results<NKItem>] {
+        let year = NSDate().year()
+        return  (1...12).map({accountManager.getItems(month: $0, year:year + 1) })
+    }
+
+    /// 去年每月还款的利息和
+    func getLastYearMonthInterest() -> [Double]{
+        let year = NSDate().year()
+        return  (1...12).map({accountManager.getSumInterest(month: $0, year:year - 1) })
+    }
+    
+    func getLastYearMonthItems() -> [Results<NKItem>] {
+        let year = NSDate().year()
+        return  (1...12).map({accountManager.getItems(month: $0, year:year - 1) })
+    }
+
     
 }
