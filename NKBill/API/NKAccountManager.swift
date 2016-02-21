@@ -96,6 +96,10 @@ extension NKAccountManager {
         return rate
     }
     
+    func getWatingSumInvest() -> Double {
+        return getAllItems().filter("state == %@ OR state == %@",State.Overdue.rawValue,State.Waiting.rawValue).sum("principal")
+    }
+    
     /// 投资总额
     func getSumInvest() -> Int {
         return getAccounts().sum("invest")
@@ -135,6 +139,12 @@ extension NKAccountManager {
     func getAccounts() -> Results<NKAccount> {
         return realm.objects(NKAccount)
     }
+    
+    ///  获取所有account
+    func getAccountsByRate(from from: Double,to: Double) -> Double {
+        return getAccounts().filter("rate > %@ AND rate <= %@",from,to).sum("invest")
+    }
+    
 }
 
 

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import StoreKit
 class NKMoreController: UITableViewController {
 
     
@@ -32,7 +32,7 @@ class NKMoreController: UITableViewController {
         if section == 0 {
             return allowsNotification() ? 2 : 1
         }
-        return 1
+        return 3
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -57,9 +57,28 @@ class NKMoreController: UITableViewController {
             cell?.accessoryType = .DisclosureIndicator
             return cell!
         }
-       
-        cell?.textLabel?.text = "欢迎留言QQ"
-        cell?.detailTextLabel?.text = "393533945"
+        
+        if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                cell?.textLabel?.text = "欢迎评分留言"
+                cell?.detailTextLabel?.text = ""
+                cell?.accessoryType = .DisclosureIndicator
+            }
+            
+            if indexPath.row == 1 {
+                cell?.textLabel?.text = "作者致用户的一封信"
+                cell?.detailTextLabel?.text = ""
+                cell?.accessoryType = .DisclosureIndicator
+            }
+            
+            if indexPath.row == 2 {
+                cell?.textLabel?.text = "作者QQ"
+                cell?.detailTextLabel?.text = "静水流:393533945"
+            }
+            
+        }
+
+        
         return cell!
         
     }
@@ -73,11 +92,22 @@ class NKMoreController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if allowsNotification() && indexPath.row == 1 {
+        if allowsNotification() && indexPath.row == 1 && indexPath.section == 0{
             
             performSegueWithIdentifier("noticeTime", sender: nil)
             
         }
+        
+        if (indexPath.section == 1) {
+            if indexPath.row == 0 {
+                let s = String(format: "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1084361782&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8")
+                UIApplication.sharedApplication().openURL(NSURL(string:s)!)
+            }
+            if indexPath.row == 1 {
+                performSegueWithIdentifier("letter", sender: nil)
+            }
+        }
+       
     }
     
 }

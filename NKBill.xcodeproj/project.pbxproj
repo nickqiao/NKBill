@@ -35,8 +35,10 @@
 		018DF91B1C78471D00FA9F62 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018DF91A1C78471D00FA9F62 /* Charts.framework */; };
 		018DF91C1C78471D00FA9F62 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018DF91A1C78471D00FA9F62 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		018DF91E1C78479A00FA9F62 /* NKBarChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018DF91D1C78479A00FA9F62 /* NKBarChartController.swift */; };
-		018DF9201C789E1200FA9F62 /* NKIndexTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018DF91F1C789E1200FA9F62 /* NKIndexTableHeader.swift */; };
-		018DF9221C789E2F00FA9F62 /* NKIndexTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 018DF9211C789E2F00FA9F62 /* NKIndexTableHeader.xib */; };
+		018DF9241C79BA5800FA9F62 /* NKAnalyzeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018DF9231C79BA5800FA9F62 /* NKAnalyzeController.swift */; };
+		018DF9261C79CB0600FA9F62 /* NKIconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018DF9251C79CB0600FA9F62 /* NKIconLabel.swift */; };
+		018DF9281C79E04500FA9F62 /* NKLetterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018DF9271C79E04500FA9F62 /* NKLetterController.swift */; };
+		018DF92A1C79EA0000FA9F62 /* letter.html in Resources */ = {isa = PBXBuildFile; fileRef = 018DF9291C79EA0000FA9F62 /* letter.html */; };
 		01A2791B1C63851C000FC9E1 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2791A1C63851C000FC9E1 /* CircularProgressView.swift */; };
 		01A2791D1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2791C1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift */; };
 		01E1C1CF1C5CBBBB00EF6B5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1CE1C5CBBBB00EF6B5A /* AppDelegate.swift */; };
@@ -111,8 +113,10 @@
 		018B92381C5E245B00236E16 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		018DF91A1C78471D00FA9F62 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		018DF91D1C78479A00FA9F62 /* NKBarChartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKBarChartController.swift; sourceTree = "<group>"; };
-		018DF91F1C789E1200FA9F62 /* NKIndexTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKIndexTableHeader.swift; sourceTree = "<group>"; };
-		018DF9211C789E2F00FA9F62 /* NKIndexTableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKIndexTableHeader.xib; sourceTree = "<group>"; };
+		018DF9231C79BA5800FA9F62 /* NKAnalyzeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKAnalyzeController.swift; sourceTree = "<group>"; };
+		018DF9251C79CB0600FA9F62 /* NKIconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKIconLabel.swift; sourceTree = "<group>"; };
+		018DF9271C79E04500FA9F62 /* NKLetterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKLetterController.swift; sourceTree = "<group>"; };
+		018DF9291C79EA0000FA9F62 /* letter.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = letter.html; sourceTree = "<group>"; };
 		01A2791A1C63851C000FC9E1 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		01A2791C1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKChooseNoticeTimeController.swift; sourceTree = "<group>"; };
 		01E1C1CB1C5CBBBB00EF6B5A /* NKBill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NKBill.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +220,7 @@
 				01E1C1E01C5CBC3000EF6B5A /* View */,
 				01E1C1D51C5CBBBB00EF6B5A /* Assets.xcassets */,
 				01E1C1D71C5CBBBB00EF6B5A /* LaunchScreen.storyboard */,
+				018DF9291C79EA0000FA9F62 /* letter.html */,
 				01E1C1DA1C5CBBBB00EF6B5A /* Info.plist */,
 			);
 			path = NKBill;
@@ -236,8 +241,7 @@
 				011525101C61F2C9000D9539 /* NKDetailItemCell.swift */,
 				011525161C62040A000D9539 /* NKDetailHeader.swift */,
 				011525181C6205CB000D9539 /* NKDetailHeader.xib */,
-				018DF91F1C789E1200FA9F62 /* NKIndexTableHeader.swift */,
-				018DF9211C789E2F00FA9F62 /* NKIndexTableHeader.xib */,
+				018DF9251C79CB0600FA9F62 /* NKIconLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -275,6 +279,8 @@
 				01A2791C1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift */,
 				460A142B1C6F907A0011C8E3 /* NKPieChartController.swift */,
 				018DF91D1C78479A00FA9F62 /* NKBarChartController.swift */,
+				018DF9231C79BA5800FA9F62 /* NKAnalyzeController.swift */,
+				018DF9271C79E04500FA9F62 /* NKLetterController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -344,12 +350,12 @@
 				460A14211C6F66720011C8E3 /* NKIndexSectionHeader.xib in Resources */,
 				011524FF1C60AECC000D9539 /* NKIndexCell.xib in Resources */,
 				0115250D1C61C3AD000D9539 /* NKScheduleCell.xib in Resources */,
-				018DF9221C789E2F00FA9F62 /* NKIndexTableHeader.xib in Resources */,
 				01E1C2161C5CF6B900EF6B5A /* Cartfile in Resources */,
 				01E1C1D91C5CBBBB00EF6B5A /* LaunchScreen.storyboard in Resources */,
 				011525191C6205CB000D9539 /* NKDetailHeader.xib in Resources */,
 				460A142E1C6FAE290011C8E3 /* NKAccountCell.xib in Resources */,
 				011525051C60D38A000D9539 /* Main.storyboard in Resources */,
+				018DF92A1C79EA0000FA9F62 /* letter.html in Resources */,
 				01E1C1D61C5CBBBB00EF6B5A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,9 +395,11 @@
 				0117442F1C68B01F00CD0A7D /* NKTextField.swift in Sources */,
 				011524F41C609A6F000D9539 /* NKAccountCell.swift in Sources */,
 				01E1C1E41C5CBC8600EF6B5A /* NKBaseViewController.swift in Sources */,
+				018DF9261C79CB0600FA9F62 /* NKIconLabel.swift in Sources */,
 				01E1C1F41C5CBF5E00EF6B5A /* NKMoreController.swift in Sources */,
 				01E1C1E81C5CBCCD00EF6B5A /* NKTabBarController.swift in Sources */,
 				01FC3AA51C5F63CC00176931 /* NKAlgorithm.swift in Sources */,
+				018DF9281C79E04500FA9F62 /* NKLetterController.swift in Sources */,
 				01A2791D1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift in Sources */,
 				0115250F1C61F119000D9539 /* NKDetailController.swift in Sources */,
 				460A141F1C6F66560011C8E3 /* NKIndexSectionHeader.swift in Sources */,
@@ -409,8 +417,8 @@
 				011525111C61F2C9000D9539 /* NKDetailItemCell.swift in Sources */,
 				018DF91E1C78479A00FA9F62 /* NKBarChartController.swift in Sources */,
 				01E1C1F21C5CBF4800EF6B5A /* NKRecordController.swift in Sources */,
-				018DF9201C789E1200FA9F62 /* NKIndexTableHeader.swift in Sources */,
 				011524F91C60A6FD000D9539 /* NKAccount_Record.swift in Sources */,
+				018DF9241C79BA5800FA9F62 /* NKAnalyzeController.swift in Sources */,
 				01E1C20A1C5CDFC400EF6B5A /* NKPlatformController.swift in Sources */,
 				01A2791B1C63851C000FC9E1 /* CircularProgressView.swift in Sources */,
 				01E1C1E61C5CBCAA00EF6B5A /* NKNavigationController.swift in Sources */,

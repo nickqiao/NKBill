@@ -16,7 +16,18 @@ class NKPieChartController: UIViewController {
   
     @IBOutlet weak var pieChart: PieChartView!
     
-    private lazy var sliceColors = [UIColor.flatGreenColor(),UIColor.flatRedColor(),UIColor.flatSkyBlueColor(),UIColor.flatYellowColor(),UIColor.flatBrownColor()]
+    private lazy var sliceColors = [
+        UIColor.flatGreenColor(),
+        UIColor.flatRedColor(),
+        UIColor.flatCoffeeColor(),
+        UIColor.flatSkyBlueColor(),
+        UIColor.flatYellowColor(),
+        UIColor.flatBlueColor(),
+        UIColor.flatBlackColor(),
+        UIColor.flatLimeColor(),
+        UIColor.flatMaroonColor(),
+        UIColor.flatMintColor()
+    ]
     
     private lazy var platforms = NKLibraryAPI.sharedInstance.getInvestedPlatforms()
     
@@ -80,7 +91,7 @@ class NKPieChartController: UIViewController {
         for i in 0..<count {
             yValues += [BarChartDataEntry(value: platforms[i].ratio, xIndex:i )]
             xValues += ["\(platforms[i].name)"]
-            colors += [sliceColors[i % count]]
+            colors += [sliceColors[i % sliceColors.count]]
         }
         
         let dataSet = PieChartDataSet(yVals: yValues, label: "平台名称")

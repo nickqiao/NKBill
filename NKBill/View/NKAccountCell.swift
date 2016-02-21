@@ -11,7 +11,7 @@ import UIKit
 class NKAccountCell: UITableViewCell {
 
     @IBOutlet weak var circleProgressView: CircularProgressView!
-    @IBOutlet weak var platNameLabel: UILabel!
+    @IBOutlet weak var platNameLabel: NKIconLabel!
     @IBOutlet weak var investLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     

@@ -17,7 +17,7 @@ class NKScheduleCell: UITableViewCell {
     
     @IBOutlet weak var spanLabel: UILabel!
     @IBOutlet weak var interestLabel: UILabel!
-    @IBOutlet weak var platNameLabel: UILabel!
+    @IBOutlet weak var platNameLabel: NKIconLabel!
     
     var item: NKItem? {
         didSet {
@@ -41,10 +41,6 @@ class NKScheduleCell: UITableViewCell {
                 super.awakeFromNib()
         // Initialization code
         repayDateLabel.textColor = NKBlueColor()
-        platNameLabel.layer.cornerRadius = 3.0
-        platNameLabel.layer.borderWidth = 1.0
-        platNameLabel.layer.borderColor = UIColor.flatGrayColor().CGColor
-        platNameLabel.layer.masksToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

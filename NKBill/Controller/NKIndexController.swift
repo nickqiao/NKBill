@@ -10,6 +10,8 @@ import UIKit
 
 class NKIndexController: NKBaseViewController {
 
+   
+   
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,10 +33,7 @@ class NKIndexController: NKBaseViewController {
         // Do any additional setup after loading the view.
         tableView.registerNib(UINib(nibName: "NKIndexCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 64
-        let indexTableHeader = NKIndexTableHeader.indexTableHeader()
-        indexTableHeader.delegate = self
-        tableView.tableHeaderView = indexTableHeader
-        
+                
         header.backgroundColor = NKBlueColor()
         tableView.backgroundColor = UIColor.clearColor()
         NKLibraryAPI.sharedInstance.updateUIWith(String(self)) {[unowned self] () -> Void in
@@ -59,7 +58,7 @@ class NKIndexController: NKBaseViewController {
         
         let numberFormatter2 = NSNumberFormatter()
         numberFormatter2.positiveFormat = "###,###"
-        investLabel.animate(from: 0, to: Double(NKLibraryAPI.sharedInstance.getSumInvest()), duration: 1.0, useTimeFormat: false, numberFormatter: numberFormatter2, appendText: "")
+        investLabel.animate(from: 0, to: Double(NKLibraryAPI.sharedInstance.getWatingSumInvest()), duration: 1.0, useTimeFormat: false, numberFormatter: numberFormatter2, appendText: "")
        
         let percentFormatter = NSNumberFormatter()
         percentFormatter.numberStyle = .PercentStyle
@@ -67,10 +66,6 @@ class NKIndexController: NKBaseViewController {
         
     }
  
-    @IBAction func showPieStatics(sender: AnyObject) {
-        
-    }
-
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -130,16 +125,9 @@ extension NKIndexController: UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.backgroundColor = NKBackGroundColor()
+    }
+    
 }
 
-extension NKIndexController: NKIndexTableHeaderDelegate {
-    
-    func indexTableHeaderBarChartButtonClicked() {
-        performSegueWithIdentifier("barChart", sender: nil)
-    }
-    
-    func indexTableHeaderPieChartButtonClicked() {
-        performSegueWithIdentifier("pieChart", sender: nil)
-    }
-    
-}

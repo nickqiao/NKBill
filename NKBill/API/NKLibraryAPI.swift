@@ -67,10 +67,18 @@ extension NKLibraryAPI {
 
 extension NKLibraryAPI {
     
+    func getAccountsByRate(from from: Double,to: Double) -> Double {
+        return accountManager.getAccountsByRate(from: from, to: to)
+    }
+    
     func getAccountsByDate() -> Results<NKAccount>{
         return accountManager.getAccountsByDate()
     }
     
+    func getWatingSumInvest() -> Double {
+        return accountManager.getWatingSumInvest()
+    }
+    /// 此数值是算了等额本息回款的金额
     func getSumInvest() -> Int {
         return accountManager.getSumInvest()
     }

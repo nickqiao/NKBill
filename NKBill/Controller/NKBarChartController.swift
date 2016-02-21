@@ -29,6 +29,8 @@ class NKBarChartController: UIViewController {
         
         configureCharts()
         
+        segment.tintColor = NKBlueColor()
+        
     }
 
     @IBAction func segValueChanged(sender: UISegmentedControl) {
