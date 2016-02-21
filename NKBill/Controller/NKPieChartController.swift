@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Charts
 
 class NKPieChartController: UIViewController {
     
-    @IBOutlet weak var centerLabel: UILabel!
+    
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var pieChart: XYPieChart!
+  
+    @IBOutlet weak var pieChart: PieChartView!
     
     private lazy var sliceColors = [UIColor.flatGreenColor(),UIColor.flatRedColor(),UIColor.flatSkyBlueColor(),UIColor.flatYellowColor(),UIColor.flatBrownColor()]
     
@@ -29,24 +31,73 @@ class NKPieChartController: UIViewController {
         tableView.registerNib(UINib(nibName: "NKAccountCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 64
         // Do any additional setup after loading the view.
-        pieChart.delegate = self
-        pieChart.dataSource = self
-        pieChart.animationSpeed = 1.0
-        pieChart.startPieAngle = CGFloat(M_1_PI)
-        pieChart.showLabel = true
-        pieChart.showPercentage = true
-        centerLabel.layer.cornerRadius = 25
-        centerLabel.layer.masksToBounds = true
-        centerLabel.text = "投资总额\n\(NKLibraryAPI.sharedInstance.getSumInvest())"
+        configurePieChart()
+        setData()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        pieChart.reloadData()
+        
     }
     
-    @IBAction func disimiss(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func configurePieChart() {
+        pieChart.delegate = self
+        
+        pieChart.drawSliceTextEnabled = false
+        
+        pieChart.usePercentValuesEnabled = true
+        pieChart.holeTransparent = true
+        pieChart.holeRadiusPercent = 0.58
+        pieChart.transparentCircleRadiusPercent = 0.61
+        pieChart.descriptionText = ""
+        
+        pieChart.setExtraOffsets(left: 5.0, top: 10.0, right: 5.0, bottom: 5.0)
+        pieChart.drawCenterTextEnabled = true
+        
+        pieChart.centerText = "投资总额\n\(NKLibraryAPI.sharedInstance.getSumInvest())"
+        
+        pieChart.drawHoleEnabled = true
+        pieChart.rotationAngle = 0.0;
+        pieChart.rotationEnabled = true
+        pieChart.highlightPerTapEnabled = true
+    
+        
+        let l = pieChart.legend;
+        l.position = .LeftOfChart;
+        l.xEntrySpace = 7.0;
+        l.yEntrySpace = 0.0;
+        l.yOffset = 0.0;
+        
+        pieChart.animate(xAxisDuration: 1.4, easingOption:.EaseOutBack)
+        
+    }
+    
+    private func setData() {
+        let count = platforms.count
+        var yValues:[BarChartDataEntry] = []
+        var xValues:[String] = []
+        var colors: [UIColor] = []
+        for i in 0..<count {
+            yValues += [BarChartDataEntry(value: platforms[i].ratio, xIndex:i )]
+            xValues += ["\(platforms[i].name)"]
+            colors += [sliceColors[i % count]]
+        }
+        
+        let dataSet = PieChartDataSet(yVals: yValues, label: "平台名称")
+        dataSet.sliceSpace = 2.0
+        dataSet.colors = colors
+        
+        let data = PieChartData(xVals: xValues, dataSet: dataSet)
+        let pFormatter = NSNumberFormatter()
+        pFormatter.numberStyle = .PercentStyle;
+        pFormatter.maximumFractionDigits = 1
+        pFormatter.multiplier = 1.0
+        pFormatter.percentSymbol = " %";
+        data.setValueFormatter(pFormatter)
+        data.setValueFont(UIFont(name: "HelveticaNeue-Light", size: 11.0))
+        data.setValueTextColor(UIColor.whiteColor())
+        pieChart.data = data
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -58,37 +109,18 @@ class NKPieChartController: UIViewController {
     
 }
 
-extension NKPieChartController: XYPieChartDataSource {
-    func numberOfSlicesInPieChart(pieChart: XYPieChart!) -> UInt {
-        return UInt(platforms.count)
-    }
-    
-    func pieChart(pieChart: XYPieChart!, valueForSliceAtIndex index: UInt) -> CGFloat {
-        let p = platforms[Int(index)]
-        return  CGFloat(p.ratio)
-    }
-    
-    func pieChart(pieChart: XYPieChart!, textForSliceAtIndex index: UInt) -> String! {
-        return "sd"
-    }
-    
-    func pieChart(pieChart: XYPieChart!, colorForSliceAtIndex index: UInt) -> UIColor! {
-        return sliceColors[ Int(index) % sliceColors.count]
-    }
-    
-}
-
-
-extension NKPieChartController: XYPieChartDelegate {
-    
-    func pieChart(pieChart: XYPieChart!, didSelectSliceAtIndex index: UInt) {
-        selectedPlatform = platforms[Int(index)]
-        centerLabel.text = "\(selectedPlatform!.name)\n\(selectedPlatform!.sum)"
+extension NKPieChartController: ChartViewDelegate {
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+        
+        selectedPlatform = platforms[entry.xIndex]
+        pieChart.centerText = "\(selectedPlatform!.name)\n\(selectedPlatform!.sum)"
         tableView.reloadData()
     }
     
-    func pieChart(pieChart: XYPieChart!, willDeselectSliceAtIndex index: UInt) {
-        centerLabel.text = "投资总额\n\(NKLibraryAPI.sharedInstance.getSumInvest())"
+    func chartValueNothingSelected(chartView: ChartViewBase) {
+        selectedPlatform = nil
+        pieChart.centerText = "投资总额\n\(NKLibraryAPI.sharedInstance.getSumInvest())"
+        tableView.reloadData()
     }
     
 }

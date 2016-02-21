@@ -8,66 +8,65 @@
 
 import UIKit
 import Charts
+
 class NKBarChartController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+  
+    
     @IBOutlet weak var chartView: BarChartView!
     
-    private lazy var lastYear = (
-        NKLibraryAPI.sharedInstance.getLastYearMonthInterest(),
-        NKLibraryAPI.sharedInstance.getLastYearMonthItems()
-    )
-    private lazy var  thisYear = (
-        NKLibraryAPI.sharedInstance.getThisYearMonthInterest(),
-        NKLibraryAPI.sharedInstance.getThisYearMonthItems()
-    )
-    private lazy var nextYear = (
-        NKLibraryAPI.sharedInstance.getNextYearMonthInterest(),
-        NKLibraryAPI.sharedInstance.getNextYearMonthInterest()
-    )
-    
-    var selectedItems: [NKItem] = []
+    static let span = 4
+    @IBOutlet weak var segment: UISegmentedControl!
+    private var xyValues = NKLibraryAPI.sharedInstance.getInterestAndItem(beforeAndAfter: span)
     
     let reuseIdentifier = "schedule"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-        navigationItem.title = "每月利息"
+        navigationItem.title = "报表分析"
         // Do any additional setup after loading the view.
         
-        tableView.registerNib(UINib(nibName: "NKScheduleCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         configureCharts()
-        
         
     }
 
+    @IBAction func segValueChanged(sender: UISegmentedControl) {
+        
+        
+    }
+    
     private func configureCharts() {
-        chartView.delegate = self
-        chartView.descriptionText = "单位:元"
-        
-        
+        chartView.backgroundColor = NKBackGroundColor()
+        chartView.pinchZoomEnabled = true
+        chartView.descriptionText = ""
         chartView.xAxis.labelPosition = .Bottom
-        
+        chartView.xAxis.labelFont = UIFont.systemFontOfSize(8.0)
         chartView.rightAxis.enabled = false
-        
+        chartView.xAxis.drawGridLinesEnabled = false
         
         chartView.legend.position = .AboveChartLeft
         chartView.legend.form = .Square;
         chartView.legend.formSize = 8.0;
 //        chartView.legend.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
         chartView.legend.xEntrySpace = 4.0;
+       
         
         chartView.animate(yAxisDuration: 2.0)
         
-        let xVals = (1...12).map({"\($0)月"})
+        let xVals = xyValues.map { (t) -> String in
+            if t.date.month() == 1 {
+                return "\(t.date.year())年"
+            }else {
+                return "\(t.date.month())月"
+            }
+        }
         
         var yVals: [BarChartDataEntry] = []
         
-        (1...thisYear.0.count).forEach({yVals.append(BarChartDataEntry(value:thisYear.0[$0 - 1], xIndex: $0 - 1))})
+        (1...2 * NKBarChartController.span).forEach({yVals.append(BarChartDataEntry(value:xyValues[$0 - 1].sum, xIndex: $0 - 1))})
         
-        let set1 = BarChartDataSet(yVals: yVals, label: "?")
+        let set1 = BarChartDataSet(yVals: yVals, label: "每月利息")
         set1.barSpace = 0.35
         set1.setColor(UIColor.flatGreenColor())
         set1.valueFont = UIFont.systemFontOfSize(10.0)
@@ -75,30 +74,11 @@ class NKBarChartController: UIViewController {
         
     }
 
-}
-
-extension NKBarChartController: ChartViewDelegate {
-    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
-        
-    }
-}
-
-extension NKBarChartController :UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectedItems.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! NKScheduleCell
-        cell.item = selectedItems[indexPath.row]
-        return cell
-    }
+  
     
 }
 
-extension NKBarChartController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-}
+
+
+

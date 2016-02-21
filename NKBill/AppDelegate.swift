@@ -19,13 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        //print("\(NSHomeDirectory())")
-        
-       print(NSDate().year())
-        print(NSDate().month())
-        print(NSDate().day())
-        print(NSDate.NK_dateFrom(year: 2016, month: 1))
 
         // 设置界面颜色
         customAppearce()

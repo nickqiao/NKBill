@@ -63,7 +63,6 @@
 		01FC3AA81C60493300176931 /* NKConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3AA71C60493300176931 /* NKConfigure.swift */; };
 		460A141F1C6F66560011C8E3 /* NKIndexSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A141E1C6F66560011C8E3 /* NKIndexSectionHeader.swift */; };
 		460A14211C6F66720011C8E3 /* NKIndexSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 460A14201C6F66720011C8E3 /* NKIndexSectionHeader.xib */; };
-		460A142A1C6F8D520011C8E3 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 460A14291C6F8D520011C8E3 /* XYPieChart.m */; };
 		460A142C1C6F907A0011C8E3 /* NKPieChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A142B1C6F907A0011C8E3 /* NKPieChartController.swift */; };
 		460A142E1C6FAE290011C8E3 /* NKAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 460A142D1C6FAE290011C8E3 /* NKAccountCell.xib */; };
 		46112BF01C626F52009E9AF1 /* NKScheduleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46112BEF1C626F52009E9AF1 /* NKScheduleDataSource.swift */; };
@@ -141,9 +140,6 @@
 		01FC3AA71C60493300176931 /* NKConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKConfigure.swift; sourceTree = "<group>"; };
 		460A141E1C6F66560011C8E3 /* NKIndexSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKIndexSectionHeader.swift; sourceTree = "<group>"; };
 		460A14201C6F66720011C8E3 /* NKIndexSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKIndexSectionHeader.xib; sourceTree = "<group>"; };
-		460A14231C6F8D280011C8E3 /* NKBill-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NKBill-Bridging-Header.h"; sourceTree = "<group>"; };
-		460A14281C6F8D520011C8E3 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
-		460A14291C6F8D520011C8E3 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		460A142B1C6F907A0011C8E3 /* NKPieChartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPieChartController.swift; sourceTree = "<group>"; };
 		460A142D1C6FAE290011C8E3 /* NKAccountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKAccountCell.xib; sourceTree = "<group>"; };
 		46112BEF1C626F52009E9AF1 /* NKScheduleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKScheduleDataSource.swift; sourceTree = "<group>"; };
@@ -213,7 +209,6 @@
 			children = (
 				01E1C1CE1C5CBBBB00EF6B5A /* AppDelegate.swift */,
 				011525041C60D38A000D9539 /* Main.storyboard */,
-				460A14221C6F8D0E0011C8E3 /* Third */,
 				011744521C69E78200CD0A7D /* Extension */,
 				018B922C1C5DCC6F00236E16 /* API */,
 				01E1C1E21C5CBC4A00EF6B5A /* Controller */,
@@ -282,24 +277,6 @@
 				018DF91D1C78479A00FA9F62 /* NKBarChartController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		460A14221C6F8D0E0011C8E3 /* Third */ = {
-			isa = PBXGroup;
-			children = (
-				460A14271C6F8D520011C8E3 /* XYPieChart */,
-				460A14231C6F8D280011C8E3 /* NKBill-Bridging-Header.h */,
-			);
-			path = Third;
-			sourceTree = "<group>";
-		};
-		460A14271C6F8D520011C8E3 /* XYPieChart */ = {
-			isa = PBXGroup;
-			children = (
-				460A14281C6F8D520011C8E3 /* XYPieChart.h */,
-				460A14291C6F8D520011C8E3 /* XYPieChart.m */,
-			);
-			path = XYPieChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,7 +393,6 @@
 				01E1C1E81C5CBCCD00EF6B5A /* NKTabBarController.swift in Sources */,
 				01FC3AA51C5F63CC00176931 /* NKAlgorithm.swift in Sources */,
 				01A2791D1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift in Sources */,
-				460A142A1C6F8D520011C8E3 /* XYPieChart.m in Sources */,
 				0115250F1C61F119000D9539 /* NKDetailController.swift in Sources */,
 				460A141F1C6F66560011C8E3 /* NKIndexSectionHeader.swift in Sources */,
 				011744581C69E78200CD0A7D /* UILabel+Animate.swift in Sources */,
@@ -566,7 +542,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				STRIP_STYLE = "non-global";
-				SWIFT_OBJC_BRIDGING_HEADER = "NKBill/Third/NKBill-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -591,7 +566,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				STRIP_STYLE = "non-global";
-				SWIFT_OBJC_BRIDGING_HEADER = "NKBill/Third/NKBill-Bridging-Header.h";
 			};
 			name = Release;
 		};

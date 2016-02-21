@@ -183,12 +183,17 @@ extension NKAccountManager {
         })
     }
     
-    /**
-     这个月之前多少月到之后多少月之间的item
-   
-     */
+    /// 一段时间内的item
+    func getItems(from from: NSDate  ,to: NSDate) -> Results<NKItem> {
+        return getAllItems().filter("repayDate <= %@ AND repayDate >= %@" , to,from)
+    }
+    
+    func getInterestSumAndItems(from from: NSDate  ,to: NSDate) -> (sum:Double,items:Results<NKItem>) {
+        return (getItems(from: from, to: to).sum("interest"),getItems(from: from, to: to))
+    }
+    
+    /// 获得某年某月的item
     func getItems(month month: Int,year: Int) -> Results<NKItem> {
-        
         
         let date1 = NSDate.NK_dateFrom(year: year, month: month)
         

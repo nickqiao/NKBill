@@ -136,40 +136,30 @@ extension NKLibraryAPI {
     func changeItemState(item: NKItem,toState:State) {
         accountManager.changeItemState(item, toState: toState)
     }
-
-    /// 今年每月还款的利息和
     
-    func getThisYearMonthInterest() -> [Double] {
-        let year = NSDate().year()
+    
+    /// 获得当前前后month个月,比如month传入12,获得当前日前后一年的数据
+    func getInterestAndItem(beforeAndAfter month:Int) -> [(date:NSDate,sum:Double,items:Results<NKItem>)] {
+     
+        var empty: [(date:NSDate,sum:Double,items:Results<NKItem>)] = []
         
-       return  (1...12).map({accountManager.getSumInterest(month: $0, year:year) })
-    }
-    
-    func getThisYearMonthItems() -> [Results<NKItem>] {
-        let year = NSDate().year()
-        return  (1...12).map({accountManager.getItems(month: $0, year:year ) })
-    }
-    
-    /// 明年每月还款的利息和
-    func getNextYearMonthInterest() -> [Double] {
-        let year = NSDate().year()
-        return  (1...12).map({accountManager.getSumInterest(month: $0, year:year + 1) })
-    }
-    func getNextYearMonthItems() -> [Results<NKItem>] {
-        let year = NSDate().year()
-        return  (1...12).map({accountManager.getItems(month: $0, year:year + 1) })
-    }
+        for i in (-1 * month)...(month - 1) {
+            
+            let d = NSDate().NK_startOfMonth().NK_dateByAddingMonths(i)
+            
+            let d1 = d.NK_dateByAddingMonths(1)
+            
+            empty += [(
+                d,
+                accountManager.getInterestSumAndItems(from: d, to: d1).sum,
+                accountManager.getInterestSumAndItems(from: d, to: d1).items
+                )]
 
-    /// 去年每月还款的利息和
-    func getLastYearMonthInterest() -> [Double]{
-        let year = NSDate().year()
-        return  (1...12).map({accountManager.getSumInterest(month: $0, year:year - 1) })
+        }
+        
+        return empty
     }
-    
-    func getLastYearMonthItems() -> [Results<NKItem>] {
-        let year = NSDate().year()
-        return  (1...12).map({accountManager.getItems(month: $0, year:year - 1) })
-    }
+  
 
     
 }
