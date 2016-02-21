@@ -10,6 +10,8 @@ import UIKit
 
 class NKIndexController: NKBaseViewController {
 
+    @IBOutlet weak var fenxiButton: UIButton!
+    @IBOutlet weak var peizhiButton: NKCircleCornerButton!
    
    
     @IBOutlet weak var header: UIView!
@@ -30,6 +32,8 @@ class NKIndexController: NKBaseViewController {
         
         configureHeader()
 
+        peizhiButton.backgroundColor = UIColor.flatOrangeColor()
+        //fenxiButton.backgroundColor = NKBlueColor()
         // Do any additional setup after loading the view.
         tableView.registerNib(UINib(nibName: "NKIndexCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 64

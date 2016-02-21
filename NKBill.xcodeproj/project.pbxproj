@@ -39,6 +39,7 @@
 		018DF9261C79CB0600FA9F62 /* NKIconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018DF9251C79CB0600FA9F62 /* NKIconLabel.swift */; };
 		018DF9281C79E04500FA9F62 /* NKLetterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018DF9271C79E04500FA9F62 /* NKLetterController.swift */; };
 		018DF92A1C79EA0000FA9F62 /* letter.html in Resources */ = {isa = PBXBuildFile; fileRef = 018DF9291C79EA0000FA9F62 /* letter.html */; };
+		018DF92C1C79F86600FA9F62 /* NKCircleCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018DF92B1C79F86600FA9F62 /* NKCircleCornerButton.swift */; };
 		01A2791B1C63851C000FC9E1 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2791A1C63851C000FC9E1 /* CircularProgressView.swift */; };
 		01A2791D1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2791C1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift */; };
 		01E1C1CF1C5CBBBB00EF6B5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1CE1C5CBBBB00EF6B5A /* AppDelegate.swift */; };
@@ -117,6 +118,7 @@
 		018DF9251C79CB0600FA9F62 /* NKIconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKIconLabel.swift; sourceTree = "<group>"; };
 		018DF9271C79E04500FA9F62 /* NKLetterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKLetterController.swift; sourceTree = "<group>"; };
 		018DF9291C79EA0000FA9F62 /* letter.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = letter.html; sourceTree = "<group>"; };
+		018DF92B1C79F86600FA9F62 /* NKCircleCornerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKCircleCornerButton.swift; sourceTree = "<group>"; };
 		01A2791A1C63851C000FC9E1 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		01A2791C1C639BD6000FC9E1 /* NKChooseNoticeTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKChooseNoticeTimeController.swift; sourceTree = "<group>"; };
 		01E1C1CB1C5CBBBB00EF6B5A /* NKBill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NKBill.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +244,7 @@
 				011525161C62040A000D9539 /* NKDetailHeader.swift */,
 				011525181C6205CB000D9539 /* NKDetailHeader.xib */,
 				018DF9251C79CB0600FA9F62 /* NKIconLabel.swift */,
+				018DF92B1C79F86600FA9F62 /* NKCircleCornerButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				011525151C6200F1000D9539 /* NKItem_Schedule.swift in Sources */,
 				01FC3AA81C60493300176931 /* NKConfigure.swift in Sources */,
 				01E1C1F81C5CCE0300EF6B5A /* NKPlatform.swift in Sources */,
+				018DF92C1C79F86600FA9F62 /* NKCircleCornerButton.swift in Sources */,
 				011744571C69E78200CD0A7D /* NSDateExtension.swift in Sources */,
 				01F8020B1C64862100246912 /* NKNotificationManager.swift in Sources */,
 				011525111C61F2C9000D9539 /* NKDetailItemCell.swift in Sources */,

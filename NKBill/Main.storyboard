@@ -231,7 +231,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqq-Hw-REQ">
                                 <rect key="frame" x="0.0" y="184" width="600" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YR-DR-6vm">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YR-DR-6vm" customClass="NKCircleCornerButton" customModule="NKBill" customModuleProvider="target">
                                         <rect key="frame" x="130" y="7" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="hr6-Mx-8hB"/>
@@ -242,9 +242,8 @@
                                             <segue destination="kZQ-U4-IC1" kind="show" id="gwL-Fl-h36"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oy-PK-fUF">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oy-PK-fUF" customClass="NKCircleCornerButton" customModule="NKBill" customModuleProvider="target">
                                         <rect key="frame" x="280" y="7" width="40" height="40"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="Zsu-rm-els"/>
                                             <constraint firstAttribute="height" constant="40" id="tkA-Rc-nkH"/>
@@ -254,13 +253,15 @@
                                             <segue destination="f97-Ox-UcB" kind="show" id="VPm-tM-tEc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAg-np-fTp">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAg-np-fTp" customClass="NKCircleCornerButton" customModule="NKBill" customModuleProvider="target">
                                         <rect key="frame" x="430" y="7" width="40" height="40"/>
+                                        <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="uBG-Tq-xMq"/>
                                             <constraint firstAttribute="width" constant="40" id="xYf-iJ-8dO"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" backgroundImage="icon_fenxi"/>
                                         <connections>
                                             <segue destination="lbn-yd-C8o" kind="show" id="GYM-y5-wG9"/>
                                         </connections>
@@ -352,9 +353,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="首页" id="j5u-5Z-mW6"/>
                     <connections>
+                        <outlet property="fenxiButton" destination="JAg-np-fTp" id="3G0-Vh-ty8"/>
                         <outlet property="header" destination="USa-NT-lPB" id="6sf-as-YJj"/>
                         <outlet property="investLabel" destination="tTq-f2-6gf" id="kko-Dl-bDP"/>
                         <outlet property="passedInterestLabel" destination="akA-mr-XL4" id="sE5-QC-W4d"/>
+                        <outlet property="peizhiButton" destination="4oy-PK-fUF" id="FY8-bn-e1y"/>
                         <outlet property="tableView" destination="jEK-cl-677" id="eGR-NQ-i0i"/>
                         <outlet property="watingLabel" destination="tdP-iZ-A0H" id="HIm-dL-62B"/>
                         <outlet property="weightRateLabel" destination="Fpf-bu-dut" id="j7P-em-3YS"/>
@@ -1210,9 +1213,10 @@
     </scenes>
     <resources>
         <image name="compose" width="25" height="25"/>
+        <image name="icon_fenxi" width="1024" height="1024"/>
         <image name="index" width="25" height="25"/>
-        <image name="index_bar" width="256" height="256"/>
-        <image name="index_pie" width="512" height="512"/>
+        <image name="index_bar" width="1024" height="1024"/>
+        <image name="index_pie" width="1024" height="1024"/>
         <image name="more" width="25" height="25"/>
         <image name="record" width="25" height="25"/>
         <image name="schedule" width="25" height="25"/>
