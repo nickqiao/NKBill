@@ -99,7 +99,7 @@ class NKAnalyzeController: UIViewController {
     
         
         let dataSet = PieChartDataSet(yVals: yValues, label: "年化利率范围")
-        dataSet.sliceSpace = 2.0
+        dataSet.sliceSpace = 0.0
         dataSet.colors = sliceColors
         
         let data = PieChartData(xVals: xValues, dataSet: dataSet)

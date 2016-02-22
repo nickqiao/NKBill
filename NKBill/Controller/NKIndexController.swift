@@ -32,7 +32,7 @@ class NKIndexController: NKBaseViewController {
         
         configureHeader()
 
-        peizhiButton.backgroundColor = UIColor.flatOrangeColor()
+        peizhiButton.backgroundColor = UIColor.flatYellowColor()
         //fenxiButton.backgroundColor = NKBlueColor()
         // Do any additional setup after loading the view.
         tableView.registerNib(UINib(nibName: "NKIndexCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)

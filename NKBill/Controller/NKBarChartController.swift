@@ -11,12 +11,11 @@ import Charts
 
 class NKBarChartController: UIViewController {
 
-  
-    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var chartView: BarChartView!
     
     static let span = 4
-    @IBOutlet weak var segment: UISegmentedControl!
+    private var selectedItems: [NKItem] = []
     private var xyValues = NKLibraryAPI.sharedInstance.getInterestAndItem(beforeAndAfter: span)
     
     let reuseIdentifier = "schedule"
@@ -29,16 +28,13 @@ class NKBarChartController: UIViewController {
         
         configureCharts()
         
-        segment.tintColor = NKBlueColor()
-        
-    }
-
-    @IBAction func segValueChanged(sender: UISegmentedControl) {
-        
+        tableView.registerNib(UINib(nibName: "NKScheduleCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         
     }
     
     private func configureCharts() {
+        
+        chartView.delegate = self
         chartView.backgroundColor = NKBackGroundColor()
         chartView.pinchZoomEnabled = true
         chartView.descriptionText = ""
@@ -76,11 +72,36 @@ class NKBarChartController: UIViewController {
         
     }
 
-    
-  
-    
 }
 
+extension NKBarChartController: ChartViewDelegate {
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+        selectedItems.removeAll()
+        print(entry.xIndex)
+       Array( xyValues[entry.xIndex].items).forEach({ selectedItems += [$0] })
+        tableView.reloadData()
+    }
+    
+    func chartValueNothingSelected(chartView: ChartViewBase) {
+        selectedItems.removeAll()
+        tableView.reloadData()
+    }
+}
 
+extension NKBarChartController: UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(selectedItems.count)
+        return selectedItems.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        print(indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIndentifier) as! NKScheduleCell
+        cell.item = selectedItems[indexPath.row]
+        return cell
 
-
+    }
+}

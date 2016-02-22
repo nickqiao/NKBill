@@ -95,7 +95,7 @@ class NKPieChartController: UIViewController {
         }
         
         let dataSet = PieChartDataSet(yVals: yValues, label: "平台名称")
-        dataSet.sliceSpace = 2.0
+        dataSet.sliceSpace = 0.0
         dataSet.colors = colors
         
         let data = PieChartData(xVals: xValues, dataSet: dataSet)
