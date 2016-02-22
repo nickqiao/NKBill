@@ -13,10 +13,12 @@ class NKBarChartController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var chartView: BarChartView!
-    
-    static let span = 4
-    private var selectedItems: [NKItem] = []
-    private var xyValues = NKLibraryAPI.sharedInstance.getInterestAndItem(beforeAndAfter: span)
+
+    private var selectedIndex = 2
+    private var xyValues = NKLibraryAPI.sharedInstance.getInterestAndItem(before: 2, after: 6)
+    var yVals: [BarChartDataEntry] = []
+    var xVals:[String] = []
+    var titles: [String] = []
     
     let reuseIdentifier = "schedule"
     
@@ -24,12 +26,18 @@ class NKBarChartController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "报表分析"
-        // Do any additional setup after loading the view.
         
         configureCharts()
+        // 为饼状图配置数据
+        setData()
         
-        tableView.registerNib(UINib(nibName: "NKScheduleCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-        
+        tableView.registerNib(UINib(nibName: "NKScheduleCell", bundle: nil), forCellReuseIdentifier: reuseIndentifier)
+        self.tableView.rowHeight = 64
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        chartView.highlightValue(xIndex: selectedIndex, dataSetIndex: 0, callDelegate: true)
     }
     
     private func configureCharts() {
@@ -46,23 +54,26 @@ class NKBarChartController: UIViewController {
         chartView.legend.position = .AboveChartLeft
         chartView.legend.form = .Square;
         chartView.legend.formSize = 8.0;
-//        chartView.legend.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
+        chartView.legend.font =  UIFont(name: "HelveticaNeue-Light", size: 11.0)!
         chartView.legend.xEntrySpace = 4.0;
        
+        chartView.animate(yAxisDuration: 1.5)
+    }
+
+    private func setData() {
         
-        chartView.animate(yAxisDuration: 2.0)
+        let count = xyValues.count
         
-        let xVals = xyValues.map { (t) -> String in
+        for i in 0..<count {
+            let t = xyValues[i]
             if t.date.month() == 1 {
-                return "\(t.date.year())年"
+                xVals += ["\(t.date.year())年"]
             }else {
-                return "\(t.date.month())月"
+                xVals += ["\(t.date.month())月"]
             }
+            titles += ["\(t.date.year())年\(t.date.month())月回款项目"]
+            yVals += [BarChartDataEntry(value: t.sum, xIndex: i)]
         }
-        
-        var yVals: [BarChartDataEntry] = []
-        
-        (1...2 * NKBarChartController.span).forEach({yVals.append(BarChartDataEntry(value:xyValues[$0 - 1].sum, xIndex: $0 - 1))})
         
         let set1 = BarChartDataSet(yVals: yVals, label: "每月利息")
         set1.barSpace = 0.35
@@ -71,37 +82,56 @@ class NKBarChartController: UIViewController {
         chartView.data = BarChartData(xVals: xVals, dataSet: set1 )
         
     }
-
+    
 }
 
 extension NKBarChartController: ChartViewDelegate {
+    
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
-        selectedItems.removeAll()
-        print(entry.xIndex)
-       Array( xyValues[entry.xIndex].items).forEach({ selectedItems += [$0] })
-        tableView.reloadData()
+        
+        selectedIndex = entry.xIndex
+        tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Right)
+        
     }
     
     func chartValueNothingSelected(chartView: ChartViewBase) {
-        selectedItems.removeAll()
-        tableView.reloadData()
+        selectedIndex = 2
+        tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Right)
+
     }
 }
 
 extension NKBarChartController: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(selectedItems.count)
-        return selectedItems.count
+        if selectedIndex >= 0 {
+            return xyValues[selectedIndex].items.count
+        }
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print(indexPath)
+        
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIndentifier) as! NKScheduleCell
-        cell.item = selectedItems[indexPath.row]
-        return cell
+        if selectedIndex >= 0 {
+            cell.item = xyValues[selectedIndex].items[indexPath.row]
+        }
+       return cell
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if selectedIndex >= 0 {
+            return titles[selectedIndex]
+        }
+        return ""
+    }
+    
+}
 
+extension NKBarChartController : UITableViewDelegate {
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont.systemFontOfSize(12)
+        header.textLabel?.textColor = UIColor.redColor()
     }
 }

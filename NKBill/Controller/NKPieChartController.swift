@@ -125,13 +125,13 @@ extension NKPieChartController: ChartViewDelegate {
         
         selectedPlatform = platforms[entry.xIndex]
         pieChart.centerText = "\(selectedPlatform!.name)\n\(selectedPlatform!.sum)"
-        tableView.reloadData()
+        tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Top)
     }
     
     func chartValueNothingSelected(chartView: ChartViewBase) {
         selectedPlatform = nil
         pieChart.centerText = "投资总额\n\(NKLibraryAPI.sharedInstance.getSumInvest())"
-        tableView.reloadData()
+        tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Top)
     }
     
 }
@@ -155,6 +155,10 @@ extension NKPieChartController: UITableViewDataSource {
 
     }
     
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "平台项目"
+    }
+    
     private func configureCell(cell:NKAccountCell, account:NKAccount) {
         
         cell.platNameLabel.text = account.record_name()
@@ -166,6 +170,7 @@ extension NKPieChartController: UITableViewDataSource {
     }
 
     
+    
 }
 
 extension NKPieChartController: UITableViewDelegate {
@@ -174,4 +179,13 @@ extension NKPieChartController: UITableViewDelegate {
         selectedAccount = selectedPlatform?.accounts[indexPath.row]
         performSegueWithIdentifier("pieToDetail", sender: nil)
     }
+    
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont.systemFontOfSize(12)
+        header.textLabel?.textColor = UIColor.redColor()
+    }
+   
+    
 }

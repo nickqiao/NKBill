@@ -147,11 +147,11 @@ extension NKLibraryAPI {
     
     
     /// 获得当前前后month个月,比如month传入12,获得当前日前后一年的数据
-    func getInterestAndItem(beforeAndAfter month:Int) -> [(date:NSDate,sum:Double,items:Results<NKItem>)] {
+    func getInterestAndItem(before before:Int, after:Int) -> [(date:NSDate,sum:Double,items:Results<NKItem>)] {
      
         var empty: [(date:NSDate,sum:Double,items:Results<NKItem>)] = []
         
-        for i in (-1 * month)...(month - 1) {
+        for i in (-1 * before)...(after - 1) {
             
             let d = NSDate().NK_startOfMonth().NK_dateByAddingMonths(i)
             
