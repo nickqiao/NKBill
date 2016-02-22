@@ -79,15 +79,6 @@ class NKComposeController: UITableViewController {
          self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-//    @IBAction func dayOrMonthChanged(sender: AnyObject) {
-//        
-//        // 在选择时间单位是 天 时，还款方式只有两种，都是到期还本息
-//        if let temp = selectedRepayType {
-//            if temp == RepayType.InterestByMonth.rawValue || temp == RepayType.AverageCapital.rawValue {
-//                selectedRepayType = nil
-//                repayTypeField.text = ""
-//            }
-//        }
 
     @IBAction func dayOrMonthChanged(sender: UISegmentedControl) {
          // 在选择时间单位是 天 时，还款方式只有两种，都是到期还本息
@@ -101,7 +92,7 @@ class NKComposeController: UITableViewController {
 
     }
         
-    //}
+    
     @IBAction func unwindFromPlatform(segue: UIStoryboardSegue) {
         
         let platVc = segue.sourceViewController as! NKPlatformController
@@ -182,7 +173,6 @@ class NKComposeController: UITableViewController {
             alertVc.addAction(action3)
             alertVc.addAction(action4)
             presentViewController(alertVc, animated: true, completion: nil)
-            //alertVc.view.tintColor = UIColor.blackColor()
 
         }
         
