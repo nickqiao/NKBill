@@ -13,9 +13,8 @@ let reuseIndentifier = "platform"
 class NKPlatformController: UITableViewController {
 
     private lazy var platforms = NKLibraryAPI.sharedInstance.getPlatforms()
-    
-    
     var selectedPlatform: NKPlatform!
+    
     @IBAction func addPlatform(sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "添加平台", message: nil , preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler { nameField -> Void in

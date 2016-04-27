@@ -57,7 +57,7 @@ class NKPieChartController: UIViewController {
         pieChart.drawSliceTextEnabled = false
         
         pieChart.usePercentValuesEnabled = true
-        pieChart.holeTransparent = true
+        //pieChart.holeTransparent = true
         pieChart.holeRadiusPercent = 0.58
         pieChart.transparentCircleRadiusPercent = 0.61
         pieChart.descriptionText = ""
