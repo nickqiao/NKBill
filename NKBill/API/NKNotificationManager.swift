@@ -16,7 +16,7 @@ class NKNotificationManager {
         
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         let items = NKLibraryAPI.sharedInstance.getNeedNoticeItems()
-        let clock = NSUserDefaults.standardUserDefaults().integerForKey(NoticeTimeKey)
+        let clock = NSUserDefaults.standardUserDefaults().integerForKey(Constant.Notice.NoticeTimeKey)
         
         items.forEach { item -> () in
             

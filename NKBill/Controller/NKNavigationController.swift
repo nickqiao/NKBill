@@ -14,7 +14,7 @@ class NKNavigationController: UINavigationController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-     navigationBar.setBackgroundImage(UIImage.fromColor(NKBlueColor()), forBarMetrics: .Default)
+     navigationBar.setBackgroundImage(UIImage.fromColor(Constant.Color.ThemeBlueColor), forBarMetrics: .Default)
         navigationBar.translucent = false
         self.navigationBar.shadowImage = UIImage(named: "TransparentPixel")
     }

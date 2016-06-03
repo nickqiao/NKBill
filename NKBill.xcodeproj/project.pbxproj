@@ -53,6 +53,18 @@
 		0136BDCC1D01459700BFF1C5 /* CVSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BDB01D01459700BFF1C5 /* CVSet.swift */; };
 		0136BDCD1D01459700BFF1C5 /* CVShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BDB11D01459700BFF1C5 /* CVShape.swift */; };
 		0136BDCE1D01459700BFF1C5 /* CVWeekdaySymbolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BDB21D01459700BFF1C5 /* CVWeekdaySymbolType.swift */; };
+		0136BDD31D01A10B00BFF1C5 /* NKScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BDD21D01A10B00BFF1C5 /* NKScheduleController.swift */; };
+		0136BDD51D01A13900BFF1C5 /* NKWaitingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BDD41D01A13900BFF1C5 /* NKWaitingController.swift */; };
+		0136BDD71D01A14D00BFF1C5 /* NKOverdueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BDD61D01A14D00BFF1C5 /* NKOverdueController.swift */; };
+		0136BDD91D01A15D00BFF1C5 /* NKPassedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BDD81D01A15D00BFF1C5 /* NKPassedController.swift */; };
+		0136BDDB1D01A33A00BFF1C5 /* NKWaitingController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0136BDDA1D01A33A00BFF1C5 /* NKWaitingController.storyboard */; };
+		0136BE181D01AAE900BFF1C5 /* WMFooldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE0C1D01AAE900BFF1C5 /* WMFooldView.m */; };
+		0136BE191D01AAE900BFF1C5 /* WMMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE0E1D01AAE900BFF1C5 /* WMMenuItem.m */; };
+		0136BE1A1D01AAE900BFF1C5 /* WMMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE101D01AAE900BFF1C5 /* WMMenuView.m */; };
+		0136BE1B1D01AAE900BFF1C5 /* WMProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE121D01AAE900BFF1C5 /* WMProgressView.m */; };
+		0136BE1C1D01AAE900BFF1C5 /* WMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE141D01AAE900BFF1C5 /* WMScrollView.m */; };
+		0136BE1D1D01AAE900BFF1C5 /* WMPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE171D01AAE900BFF1C5 /* WMPageController.m */; };
+		0136BE1F1D01ABF200BFF1C5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE1E1D01ABF200BFF1C5 /* Constant.swift */; };
 		018B922E1C5DCCF500236E16 /* NKPlatformManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */; };
 		018B92301C5DD14C00236E16 /* NKLibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */; };
 		018B92361C5E244C00236E16 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92351C5E244C00236E16 /* Realm.framework */; };
@@ -76,7 +88,6 @@
 		01E1C1E61C5CBCAA00EF6B5A /* NKNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1E51C5CBCAA00EF6B5A /* NKNavigationController.swift */; };
 		01E1C1E81C5CBCCD00EF6B5A /* NKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1E71C5CBCCD00EF6B5A /* NKTabBarController.swift */; };
 		01E1C1EC1C5CBE8300EF6B5A /* NKIndexController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1EB1C5CBE8300EF6B5A /* NKIndexController.swift */; };
-		01E1C1EE1C5CBEE500EF6B5A /* NKScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1ED1C5CBEE500EF6B5A /* NKScheduleController.swift */; };
 		01E1C1F01C5CBF0F00EF6B5A /* NKComposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1EF1C5CBF0F00EF6B5A /* NKComposeController.swift */; };
 		01E1C1F21C5CBF4800EF6B5A /* NKRecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1F11C5CBF4800EF6B5A /* NKRecordController.swift */; };
 		01E1C1F41C5CBF5E00EF6B5A /* NKMoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1C1F31C5CBF5E00EF6B5A /* NKMoreController.swift */; };
@@ -95,7 +106,6 @@
 		460A14211C6F66720011C8E3 /* NKIndexSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 460A14201C6F66720011C8E3 /* NKIndexSectionHeader.xib */; };
 		460A142C1C6F907A0011C8E3 /* NKPieChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A142B1C6F907A0011C8E3 /* NKPieChartController.swift */; };
 		460A142E1C6FAE290011C8E3 /* NKAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 460A142D1C6FAE290011C8E3 /* NKAccountCell.xib */; };
-		46112BF01C626F52009E9AF1 /* NKScheduleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46112BEF1C626F52009E9AF1 /* NKScheduleDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -162,6 +172,26 @@
 		0136BDB01D01459700BFF1C5 /* CVSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVSet.swift; sourceTree = "<group>"; };
 		0136BDB11D01459700BFF1C5 /* CVShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVShape.swift; sourceTree = "<group>"; };
 		0136BDB21D01459700BFF1C5 /* CVWeekdaySymbolType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVWeekdaySymbolType.swift; sourceTree = "<group>"; };
+		0136BDD21D01A10B00BFF1C5 /* NKScheduleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKScheduleController.swift; sourceTree = "<group>"; };
+		0136BDD41D01A13900BFF1C5 /* NKWaitingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKWaitingController.swift; sourceTree = "<group>"; };
+		0136BDD61D01A14D00BFF1C5 /* NKOverdueController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKOverdueController.swift; sourceTree = "<group>"; };
+		0136BDD81D01A15D00BFF1C5 /* NKPassedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPassedController.swift; sourceTree = "<group>"; };
+		0136BDDA1D01A33A00BFF1C5 /* NKWaitingController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NKWaitingController.storyboard; sourceTree = "<group>"; };
+		0136BE051D01AAA800BFF1C5 /* NKBill-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NKBill-Bridging-Header.h"; sourceTree = "<group>"; };
+		0136BE0B1D01AAE900BFF1C5 /* WMFooldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMFooldView.h; sourceTree = "<group>"; };
+		0136BE0C1D01AAE900BFF1C5 /* WMFooldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMFooldView.m; sourceTree = "<group>"; };
+		0136BE0D1D01AAE900BFF1C5 /* WMMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMMenuItem.h; sourceTree = "<group>"; };
+		0136BE0E1D01AAE900BFF1C5 /* WMMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMMenuItem.m; sourceTree = "<group>"; };
+		0136BE0F1D01AAE900BFF1C5 /* WMMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMMenuView.h; sourceTree = "<group>"; };
+		0136BE101D01AAE900BFF1C5 /* WMMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMMenuView.m; sourceTree = "<group>"; };
+		0136BE111D01AAE900BFF1C5 /* WMProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMProgressView.h; sourceTree = "<group>"; };
+		0136BE121D01AAE900BFF1C5 /* WMProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMProgressView.m; sourceTree = "<group>"; };
+		0136BE131D01AAE900BFF1C5 /* WMScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMScrollView.h; sourceTree = "<group>"; };
+		0136BE141D01AAE900BFF1C5 /* WMScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMScrollView.m; sourceTree = "<group>"; };
+		0136BE151D01AAE900BFF1C5 /* WMPageConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPageConst.h; sourceTree = "<group>"; };
+		0136BE161D01AAE900BFF1C5 /* WMPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPageController.h; sourceTree = "<group>"; };
+		0136BE171D01AAE900BFF1C5 /* WMPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPageController.m; sourceTree = "<group>"; };
+		0136BE1E1D01ABF200BFF1C5 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPlatformManager.swift; sourceTree = "<group>"; };
 		018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKLibraryAPI.swift; sourceTree = "<group>"; };
 		018B92351C5E244C00236E16 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -184,7 +214,6 @@
 		01E1C1E51C5CBCAA00EF6B5A /* NKNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNavigationController.swift; sourceTree = "<group>"; };
 		01E1C1E71C5CBCCD00EF6B5A /* NKTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKTabBarController.swift; sourceTree = "<group>"; };
 		01E1C1EB1C5CBE8300EF6B5A /* NKIndexController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKIndexController.swift; sourceTree = "<group>"; };
-		01E1C1ED1C5CBEE500EF6B5A /* NKScheduleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKScheduleController.swift; sourceTree = "<group>"; };
 		01E1C1EF1C5CBF0F00EF6B5A /* NKComposeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKComposeController.swift; sourceTree = "<group>"; };
 		01E1C1F11C5CBF4800EF6B5A /* NKRecordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKRecordController.swift; sourceTree = "<group>"; };
 		01E1C1F31C5CBF5E00EF6B5A /* NKMoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKMoreController.swift; sourceTree = "<group>"; };
@@ -202,7 +231,6 @@
 		460A14201C6F66720011C8E3 /* NKIndexSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKIndexSectionHeader.xib; sourceTree = "<group>"; };
 		460A142B1C6F907A0011C8E3 /* NKPieChartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPieChartController.swift; sourceTree = "<group>"; };
 		460A142D1C6FAE290011C8E3 /* NKAccountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKAccountCell.xib; sourceTree = "<group>"; };
-		46112BEF1C626F52009E9AF1 /* NKScheduleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKScheduleDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +261,7 @@
 		0136BD961D01459700BFF1C5 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				0136BE091D01AAE900BFF1C5 /* WMPageController */,
 				0136BD971D01459700BFF1C5 /* CVCalendar */,
 			);
 			path = Third;
@@ -272,6 +301,46 @@
 			path = CVCalendar;
 			sourceTree = "<group>";
 		};
+		0136BDD11D01A0D200BFF1C5 /* Schedual */ = {
+			isa = PBXGroup;
+			children = (
+				0136BDD21D01A10B00BFF1C5 /* NKScheduleController.swift */,
+				0136BDD41D01A13900BFF1C5 /* NKWaitingController.swift */,
+				0136BDDA1D01A33A00BFF1C5 /* NKWaitingController.storyboard */,
+				0136BDD61D01A14D00BFF1C5 /* NKOverdueController.swift */,
+				0136BDD81D01A15D00BFF1C5 /* NKPassedController.swift */,
+			);
+			path = Schedual;
+			sourceTree = "<group>";
+		};
+		0136BE091D01AAE900BFF1C5 /* WMPageController */ = {
+			isa = PBXGroup;
+			children = (
+				0136BE0A1D01AAE900BFF1C5 /* WMMenuView */,
+				0136BE151D01AAE900BFF1C5 /* WMPageConst.h */,
+				0136BE161D01AAE900BFF1C5 /* WMPageController.h */,
+				0136BE171D01AAE900BFF1C5 /* WMPageController.m */,
+			);
+			path = WMPageController;
+			sourceTree = "<group>";
+		};
+		0136BE0A1D01AAE900BFF1C5 /* WMMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				0136BE0B1D01AAE900BFF1C5 /* WMFooldView.h */,
+				0136BE0C1D01AAE900BFF1C5 /* WMFooldView.m */,
+				0136BE0D1D01AAE900BFF1C5 /* WMMenuItem.h */,
+				0136BE0E1D01AAE900BFF1C5 /* WMMenuItem.m */,
+				0136BE0F1D01AAE900BFF1C5 /* WMMenuView.h */,
+				0136BE101D01AAE900BFF1C5 /* WMMenuView.m */,
+				0136BE111D01AAE900BFF1C5 /* WMProgressView.h */,
+				0136BE121D01AAE900BFF1C5 /* WMProgressView.m */,
+				0136BE131D01AAE900BFF1C5 /* WMScrollView.h */,
+				0136BE141D01AAE900BFF1C5 /* WMScrollView.m */,
+			);
+			path = WMMenuView;
+			sourceTree = "<group>";
+		};
 		018B922C1C5DCC6F00236E16 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,7 +378,9 @@
 		01E1C1CD1C5CBBBB00EF6B5A /* NKBill */ = {
 			isa = PBXGroup;
 			children = (
+				0136BE051D01AAA800BFF1C5 /* NKBill-Bridging-Header.h */,
 				01E1C1CE1C5CBBBB00EF6B5A /* AppDelegate.swift */,
+				0136BE1E1D01ABF200BFF1C5 /* Constant.swift */,
 				011525041C60D38A000D9539 /* Main.storyboard */,
 				0136BD961D01459700BFF1C5 /* Third */,
 				011744521C69E78200CD0A7D /* Extension */,
@@ -358,7 +429,6 @@
 				011525121C61FCF2000D9539 /* NKItem_Detail.swift */,
 				01E1C1F71C5CCE0300EF6B5A /* NKPlatform.swift */,
 				011525001C60B0A0000D9539 /* NKPlatform_Index.swift */,
-				46112BEF1C626F52009E9AF1 /* NKScheduleDataSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -366,11 +436,11 @@
 		01E1C1E21C5CBC4A00EF6B5A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0136BDD11D01A0D200BFF1C5 /* Schedual */,
 				01E1C1E31C5CBC8600EF6B5A /* NKBaseViewController.swift */,
 				01E1C1E51C5CBCAA00EF6B5A /* NKNavigationController.swift */,
 				01E1C1E71C5CBCCD00EF6B5A /* NKTabBarController.swift */,
 				01E1C1EB1C5CBE8300EF6B5A /* NKIndexController.swift */,
-				01E1C1ED1C5CBEE500EF6B5A /* NKScheduleController.swift */,
 				01E1C1EF1C5CBF0F00EF6B5A /* NKComposeController.swift */,
 				01E1C2091C5CDFC400EF6B5A /* NKPlatformController.swift */,
 				01E1C1F11C5CBF4800EF6B5A /* NKRecordController.swift */,
@@ -414,7 +484,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = NK;
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = NickChen;
 				TargetAttributes = {
@@ -457,6 +527,7 @@
 				011525051C60D38A000D9539 /* Main.storyboard in Resources */,
 				018DF92A1C79EA0000FA9F62 /* letter.html in Resources */,
 				01E1C1D61C5CBBBB00EF6B5A /* Assets.xcassets in Resources */,
+				0136BDDB1D01A33A00BFF1C5 /* NKWaitingController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,20 +554,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0136BDD51D01A13900BFF1C5 /* NKWaitingController.swift in Sources */,
 				011744561C69E78200CD0A7D /* Easing.swift in Sources */,
 				0136BDCC1D01459700BFF1C5 /* CVSet.swift in Sources */,
 				011525171C62040A000D9539 /* NKDetailHeader.swift in Sources */,
 				460A142C1C6F907A0011C8E3 /* NKPieChartController.swift in Sources */,
 				011525131C61FCF2000D9539 /* NKItem_Detail.swift in Sources */,
 				01E1C1F61C5CCA7200EF6B5A /* NKAccount.swift in Sources */,
+				0136BE1A1D01AAE900BFF1C5 /* WMMenuView.m in Sources */,
 				0136BDB71D01459700BFF1C5 /* CVCalendarDayViewControlCoordinator.swift in Sources */,
 				0136BDCE1D01459700BFF1C5 /* CVWeekdaySymbolType.swift in Sources */,
 				011524F71C60A6D7000D9539 /* NKAccount_Compose.swift in Sources */,
 				01E1C1EC1C5CBE8300EF6B5A /* NKIndexController.swift in Sources */,
+				0136BE191D01AAE900BFF1C5 /* WMMenuItem.m in Sources */,
+				0136BDD71D01A14D00BFF1C5 /* NKOverdueController.swift in Sources */,
 				01FC3A9F1C5F242600176931 /* NKAccountManager.swift in Sources */,
 				0136BDCB1D01459700BFF1C5 /* CVSelectionType.swift in Sources */,
 				0115250C1C61C3AD000D9539 /* NKScheduleCell.swift in Sources */,
 				0117442F1C68B01F00CD0A7D /* NKTextField.swift in Sources */,
+				0136BDD31D01A10B00BFF1C5 /* NKScheduleController.swift in Sources */,
 				0136BDC21D01459700BFF1C5 /* CVCalendarViewAppearanceDelegate.swift in Sources */,
 				011524F41C609A6F000D9539 /* NKAccountCell.swift in Sources */,
 				0136BDC71D01459700BFF1C5 /* CVCalendarWeekView.swift in Sources */,
@@ -518,12 +594,13 @@
 				460A141F1C6F66560011C8E3 /* NKIndexSectionHeader.swift in Sources */,
 				011744581C69E78200CD0A7D /* UILabel+Animate.swift in Sources */,
 				018B92301C5DD14C00236E16 /* NKLibraryAPI.swift in Sources */,
+				0136BE1B1D01AAE900BFF1C5 /* WMProgressView.m in Sources */,
 				0136BDBA1D01459700BFF1C5 /* CVCalendarMenuViewDelegate.swift in Sources */,
 				011525011C60B0A0000D9539 /* NKPlatform_Index.swift in Sources */,
+				0136BE1D1D01AAE900BFF1C5 /* WMPageController.m in Sources */,
 				0136BDCA1D01459700BFF1C5 /* CVScrollDirection.swift in Sources */,
 				018B922E1C5DCCF500236E16 /* NKPlatformManager.swift in Sources */,
 				0136BDB61D01459700BFF1C5 /* CVCalendarDayView.swift in Sources */,
-				46112BF01C626F52009E9AF1 /* NKScheduleDataSource.swift in Sources */,
 				01E1C1F01C5CBF0F00EF6B5A /* NKComposeController.swift in Sources */,
 				0136BDBE1D01459700BFF1C5 /* CVCalendarView.swift in Sources */,
 				011525151C6200F1000D9539 /* NKItem_Schedule.swift in Sources */,
@@ -544,16 +621,19 @@
 				011524F91C60A6FD000D9539 /* NKAccount_Record.swift in Sources */,
 				0136BDC41D01459700BFF1C5 /* CVCalendarViewPresentationMode.swift in Sources */,
 				0136BDC11D01459700BFF1C5 /* CVCalendarViewAppearance.swift in Sources */,
+				0136BE1F1D01ABF200BFF1C5 /* Constant.swift in Sources */,
 				018DF9241C79BA5800FA9F62 /* NKAnalyzeController.swift in Sources */,
 				01E1C20A1C5CDFC400EF6B5A /* NKPlatformController.swift in Sources */,
 				01A2791B1C63851C000FC9E1 /* CircularProgressView.swift in Sources */,
 				01E1C1E61C5CBCAA00EF6B5A /* NKNavigationController.swift in Sources */,
+				0136BDD91D01A15D00BFF1C5 /* NKPassedController.swift in Sources */,
 				0136BDC91D01459700BFF1C5 /* CVRange.swift in Sources */,
 				0136BDC61D01459700BFF1C5 /* CVCalendarWeekday.swift in Sources */,
+				0136BE1C1D01AAE900BFF1C5 /* WMScrollView.m in Sources */,
 				01FC3AA11C5F496200176931 /* NKItem.swift in Sources */,
+				0136BE181D01AAE900BFF1C5 /* WMFooldView.m in Sources */,
 				011524FE1C60AECC000D9539 /* NKIndexCell.swift in Sources */,
 				01E1C1CF1C5CBBBB00EF6B5A /* AppDelegate.swift in Sources */,
-				01E1C1EE1C5CBEE500EF6B5A /* NKScheduleController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,6 +758,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				STRIP_STYLE = "non-global";
+				SWIFT_OBJC_BRIDGING_HEADER = "NKBill/NKBill-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -702,6 +783,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				STRIP_STYLE = "non-global";
+				SWIFT_OBJC_BRIDGING_HEADER = "NKBill/NKBill-Bridging-Header.h";
 			};
 			name = Release;
 		};

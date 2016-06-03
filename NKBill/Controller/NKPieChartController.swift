@@ -38,7 +38,7 @@ class NKPieChartController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.backgroundColor = NKBackGroundColor()
+        tableView.backgroundColor = Constant.Color.BGColor
         tableView.registerNib(UINib(nibName: "NKAccountCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 64
         // Do any additional setup after loading the view.

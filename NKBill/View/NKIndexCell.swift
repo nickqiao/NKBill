@@ -21,7 +21,7 @@ class NKIndexCell: UITableViewCell {
         
         // Initialization code
         numberLabel.textColor = UIColor.whiteColor()
-        numberLabel.backgroundColor = NKBlueColor()
+        numberLabel.backgroundColor = Constant.Color.ThemeBlueColor
         numberLabel.layer.cornerRadius = 1
         numberLabel.layer.masksToBounds = true
     }

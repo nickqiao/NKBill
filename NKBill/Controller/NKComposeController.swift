@@ -192,7 +192,7 @@ class NKComposeController: UITableViewController {
         descTextView.text = "请输入项目备注"
         descTextView.textColor = UIColor.flatGrayColor()
         
-        dayOrMonthSegment.tintColor = NKBlueColor()
+        dayOrMonthSegment.tintColor = Constant.Color.ThemeBlueColor
         dayOrMonthSegment.selectedSegmentIndex = 0
         
     }

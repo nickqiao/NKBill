@@ -43,7 +43,7 @@ class NKBarChartController: UIViewController {
     private func configureCharts() {
         
         chartView.delegate = self
-        chartView.backgroundColor = NKBackGroundColor()
+        chartView.backgroundColor = Constant.Color.BGColor
         chartView.pinchZoomEnabled = true
         chartView.descriptionText = ""
         chartView.xAxis.labelPosition = .Bottom
@@ -66,12 +66,12 @@ class NKBarChartController: UIViewController {
         
         for i in 0..<count {
             let t = xyValues[i]
-            if t.date.month() == 1 {
-                xVals += ["\(t.date.year())年"]
+            if t.date.month == 1 {
+                xVals += ["\(t.date.year)年"]
             }else {
-                xVals += ["\(t.date.month())月"]
+                xVals += ["\(t.date.month)月"]
             }
-            titles += ["\(t.date.year())年\(t.date.month())月回款项目"]
+            titles += ["\(t.date.year)年\(t.date.month)月回款项目"]
             yVals += [BarChartDataEntry(value: t.sum, xIndex: i)]
         }
         

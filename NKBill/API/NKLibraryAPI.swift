@@ -120,7 +120,10 @@ extension NKLibraryAPI {
     func getWaitingItems() -> Results<NKItem> {
         return accountManager.getWaitingItems()
     }
-    
+    // 获得某一天的WaitingItem
+    func getWaitingItemsByDate(date : NSDate) -> Results<NKItem> {
+        return getWaitingItems().filter("repayDate > %@ AND repayDate < %@",date.NK_zeroMorning(),date.NK_zeroMorning().NK_dateByAddingDays(1))
+    }
     func getBeforeWatingItems() -> Results<NKItem> {
         return accountManager.getBeforeWatingItems()
     }

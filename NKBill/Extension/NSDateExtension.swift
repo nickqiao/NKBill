@@ -10,20 +10,20 @@ import Foundation
 
 extension NSDate {
     
-    private func componets() -> NSDateComponents {
+    private var componet : NSDateComponents {
         return NSCalendar.currentCalendar().components([.Era,.Day,.Month,.Year], fromDate: self)
     }
     
-    func year() -> Int {
-        return componets().year
+    var year : Int {
+        return componet.year
     }
     
-    func month() -> Int {
-        return componets().month
+    var month : Int {
+        return componet.month
     }
     
-    func day() -> Int {
-        return componets().day
+    var day : Int {
+        return componet.day
     }
     
     /**
@@ -103,6 +103,10 @@ extension NSDate {
         let other = calendar.dateFromComponents(componets2)
         return (today?.isEqualToDate(other!))!
     }
+    // 同一天
+    func isSameDay(date : NSDate) -> Bool {
+        return ((self.year == date.year) && (self.month == date.month) && (self.day == date.day))
+    }
     /**
      每天的零点,只包含年月日的时间（时分秒均为0）
      
@@ -136,3 +140,5 @@ extension NSDate {
     }
     
 }
+
+

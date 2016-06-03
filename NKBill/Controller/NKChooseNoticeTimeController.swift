@@ -10,7 +10,7 @@ import UIKit
 
 class NKChooseNoticeTimeController: UITableViewController {
 
-    lazy var selectedIndex = NSUserDefaults.standardUserDefaults().integerForKey(NoticeTimeKey)
+    lazy var selectedIndex = NSUserDefaults.standardUserDefaults().integerForKey(Constant.Notice.NoticeTimeKey)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class NKChooseNoticeTimeController: UITableViewController {
     
     @IBAction func back(sender: UIBarButtonItem) {
         
-        if selectedIndex != NSUserDefaults.standardUserDefaults().integerForKey(NoticeTimeKey) {
+        if selectedIndex != NSUserDefaults.standardUserDefaults().integerForKey(Constant.Notice.NoticeTimeKey) {
             let al = UIAlertController(title: "是否保存修改的通知时间", message: nil, preferredStyle: .Alert)
             
             let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: {[unowned self] (_) -> Void in
@@ -92,7 +92,7 @@ class NKChooseNoticeTimeController: UITableViewController {
 
     // MARK:Private
     private func saveNoticeTime() {
-        NSUserDefaults.standardUserDefaults().setInteger(selectedIndex, forKey: NoticeTimeKey)
+        NSUserDefaults.standardUserDefaults().setInteger(selectedIndex, forKey: Constant.Notice.NoticeTimeKey)
         NKNotificationManager.updateLocalNotifications()
     }
 }

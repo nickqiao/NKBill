@@ -40,7 +40,7 @@ class NKScheduleCell: UITableViewCell {
     override func awakeFromNib() {
                 super.awakeFromNib()
         // Initialization code
-        repayDateLabel.textColor = NKBlueColor()
+        repayDateLabel.textColor = Constant.Color.ThemeBlueColor
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -38,7 +38,7 @@ class NKIndexController: NKBaseViewController {
         tableView.registerNib(UINib(nibName: "NKIndexCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 64
                 
-        header.backgroundColor = NKBlueColor()
+        header.backgroundColor = Constant.Color.ThemeBlueColor
         tableView.backgroundColor = UIColor.clearColor()
         NKLibraryAPI.sharedInstance.updateUIWith(String(self)) {[unowned self] () -> Void in
             self.tableView.reloadData()
@@ -130,7 +130,7 @@ extension NKIndexController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.backgroundColor = NKBackGroundColor()
+        view.backgroundColor = Constant.Color.BGColor
     }
     
 }

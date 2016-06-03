@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = textAttributes
         //UINavigationBar.appearance().barTintColor = NKBlueColor()
         
-        UITabBar.appearance().tintColor = NKBlueColor()
+        UITabBar.appearance().tintColor = Constant.Color.ThemeBlueColor
         UITabBar.appearance().barTintColor = UIColor.flatWhiteColor()
     
         
@@ -89,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if NSUserDefaults.standardUserDefaults().boolForKey(FirstLaunchKey) == false {
             
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: FirstLaunchKey)
-            NSUserDefaults.standardUserDefaults().setInteger(DefaultNoticeTime, forKey: NoticeTimeKey)
+            NSUserDefaults.standardUserDefaults().setInteger(DefaultNoticeTime, forKey: Constant.Notice.NoticeTimeKey)
         }
     }
     
