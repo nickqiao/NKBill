@@ -9,22 +9,25 @@
 import UIKit
 
 class NKScheduleController : WMPageController {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.menuViewStyle = .Foold
+        
+        self.menuHeight = 44
+        self.menuItemWidth = 80
+        self.progressColor = Constant.Color.ThemeBlueColor
+        self.menuBGColor = Constant.Color.BGColor
+        self.titleSizeNormal = 14.0
+        self.titleSizeSelected = 18.0
+        self.titleColorNormal = UIColor.flatGrayColor()
+        self.titleColorSelected = UIColor.flatWhiteColor()
+        self.progressHeight = 3.0
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        self.menuViewStyle = .Foold
-        
-        self.menuHeight = 64
-        self.menuItemWidth = 120
-        //self.progressColor = UIColor(hexString: "#a3dff0")
-        self.menuBGColor = Constant.Color.ThemeBlueColor
-        self.titleSizeNormal = 14.0
-        self.titleSizeSelected = 18.0
-        //self.titleColorNormal = UIColor(hexString: "#d3d9db")
-        //self.titleColorSelected = UIColor(hexString: "#839ca3")
-        self.progressHeight = 3.0
- 
     }
 
     override func numbersOfChildControllersInPageController(pageController: WMPageController!) -> Int {

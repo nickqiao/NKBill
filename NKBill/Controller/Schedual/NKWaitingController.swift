@@ -11,7 +11,7 @@ import RealmSwift
 class NKWaitingController: NKBaseViewController {
 
     static func WaitingController() -> NKWaitingController {
-        let sb = UIStoryboard(name:"NKWaitingController" , bundle: nil)
+        let sb = UIStoryboard(name:String.className(NKWaitingController) , bundle: nil)
         return sb.instantiateViewControllerWithIdentifier("ff") as! NKWaitingController
     }
     
@@ -23,33 +23,21 @@ class NKWaitingController: NKBaseViewController {
     
     var selectedItem: NKItem!
     private var selectedDate = NSDate()
-    
     private var state = State.Waiting
-    private var t = NKLibraryAPI.sharedInstance.getWaitingItems()
+    private var allWaitingItems = NKLibraryAPI.sharedInstance.getWaitingItems()
     private var items : Results<NKItem> {
-        switch state {
-        case .Overdue:
-            return NKLibraryAPI.sharedInstance.getOverdueItems()
-        case .Passed:
-            return  NKLibraryAPI.sharedInstance.getPassedItems()
-        case .Waiting:
             return  NKLibraryAPI.sharedInstance.getWaitingItemsByDate(selectedDate)
-        }
     }
-    
-    let reuseIndentifier = "schedule"
-    let cellNibName = "NKScheduleCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.tableView.registerNib(UINib(nibName: cellNibName, bundle: nil), forCellReuseIdentifier: reuseIndentifier)
+        self.tableView.registerCellNib(NKScheduleCell)
         tableView.rowHeight = 64
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = Constant.Color.BGColor
-        //segment.addTarget(self, action: #selector(self.segmentChangeValue(_:)), forControlEvents: .ValueChanged)
         NKLibraryAPI.sharedInstance.updateUIWith(String(self)) { [unowned self]() -> Void in
             self.tableView.reloadData()
             self.calendarView.contentController.refreshPresentedMonth()
@@ -75,9 +63,6 @@ class NKWaitingController: NKBaseViewController {
         monthLabel.font = UIFont.systemFontOfSize(14.0)
     }
     
-    
-   
-
 }
 
 extension NKWaitingController: UITableViewDataSource {
@@ -92,7 +77,7 @@ extension NKWaitingController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIndentifier) as! NKScheduleCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(NKScheduleCell.identifier) as! NKScheduleCell
         cell.item = items[indexPath.row]
         return cell
     }
@@ -198,7 +183,7 @@ extension NKWaitingController : CVCalendarViewDelegate {
         
         var show = false
         
-        t.forEach { (item) in
+        allWaitingItems.forEach { (item) in
             if dayView.date != nil{
                 if dayView.date.convertedDate()!.isSameDay(item.repayDate) {
                     show = true
@@ -220,7 +205,7 @@ extension NKWaitingController : CVCalendarViewDelegate {
     }
     
     func dotMarker(sizeOnDayView dayView: DayView) -> CGFloat {
-        return 17
+        return 15
     }
     
 }

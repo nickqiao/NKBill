@@ -20,7 +20,7 @@ public class NKBaseTableViewCell: UITableViewCell {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        layer.addSublayer(bottomDottedLine)
+        //layer.addSublayer(bottomDottedLine)
         setup()
     }
     
@@ -37,7 +37,7 @@ public class NKBaseTableViewCell: UITableViewCell {
     }
     
     public class func height() -> CGFloat {
-        return 48
+        return 64
     }
     
     public func setData(data: Any?) {
