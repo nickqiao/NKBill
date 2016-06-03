@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NKAccountCell: UITableViewCell {
+class NKAccountCell: NKBaseTableViewCell {
 
     @IBOutlet weak var circleProgressView: CircularProgressView!
     @IBOutlet weak var platNameLabel: NKIconLabel!

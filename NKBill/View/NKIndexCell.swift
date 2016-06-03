@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NKIndexCell: UITableViewCell {
+class NKIndexCell: NKBaseTableViewCell {
 
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var orderLabel: UILabel!

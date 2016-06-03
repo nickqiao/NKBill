@@ -86,10 +86,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configureLocalNotice() {
         
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge,.Alert,.Sound], categories: nil))
-        if NSUserDefaults.standardUserDefaults().boolForKey(FirstLaunchKey) == false {
+        if NSUserDefaults.standardUserDefaults().boolForKey(Constant.Login.FirstLaunchKey) == false {
             
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: FirstLaunchKey)
-            NSUserDefaults.standardUserDefaults().setInteger(DefaultNoticeTime, forKey: Constant.Notice.NoticeTimeKey)
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: Constant.Login.FirstLaunchKey)
+            NSUserDefaults.standardUserDefaults().setInteger(Constant.Notice.DefaultNoticeTime, forKey: Constant.Notice.NoticeTimeKey)
         }
     }
     

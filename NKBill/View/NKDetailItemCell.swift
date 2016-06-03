@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NKDetailItemCell: UITableViewCell {
+class NKDetailItemCell: NKBaseTableViewCell {
     @IBOutlet weak var repayDateLabel: UILabel!
     @IBOutlet weak var interestLabel: UILabel!
     @IBOutlet weak var principleLabel: UILabel!

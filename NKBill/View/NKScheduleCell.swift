@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NKScheduleCell: UITableViewCell {
+class NKScheduleCell: NKBaseTableViewCell {
 
     @IBOutlet weak var unreadIcon: UIImageView!
     @IBOutlet weak var repayDateLabel: UILabel!

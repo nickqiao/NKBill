@@ -65,6 +65,10 @@
 		0136BE1C1D01AAE900BFF1C5 /* WMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE141D01AAE900BFF1C5 /* WMScrollView.m */; };
 		0136BE1D1D01AAE900BFF1C5 /* WMPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE171D01AAE900BFF1C5 /* WMPageController.m */; };
 		0136BE1F1D01ABF200BFF1C5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE1E1D01ABF200BFF1C5 /* Constant.swift */; };
+		0136BE241D01BC6E00BFF1C5 /* NKBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE231D01BC6E00BFF1C5 /* NKBaseTableViewCell.swift */; };
+		0136BE261D01BD3D00BFF1C5 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE251D01BD3D00BFF1C5 /* String+Extension.swift */; };
+		0136BE281D01BE5600BFF1C5 /* UITableView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE271D01BE5600BFF1C5 /* UITableView+extension.swift */; };
+		0136BE2A1D01BE5D00BFF1C5 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BE291D01BE5D00BFF1C5 /* UIView+extension.swift */; };
 		018B922E1C5DCCF500236E16 /* NKPlatformManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */; };
 		018B92301C5DD14C00236E16 /* NKLibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */; };
 		018B92361C5E244C00236E16 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B92351C5E244C00236E16 /* Realm.framework */; };
@@ -101,7 +105,6 @@
 		01FC3A9F1C5F242600176931 /* NKAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3A9E1C5F242600176931 /* NKAccountManager.swift */; };
 		01FC3AA11C5F496200176931 /* NKItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3AA01C5F496200176931 /* NKItem.swift */; };
 		01FC3AA51C5F63CC00176931 /* NKAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3AA41C5F63CC00176931 /* NKAlgorithm.swift */; };
-		01FC3AA81C60493300176931 /* NKConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3AA71C60493300176931 /* NKConfigure.swift */; };
 		460A141F1C6F66560011C8E3 /* NKIndexSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A141E1C6F66560011C8E3 /* NKIndexSectionHeader.swift */; };
 		460A14211C6F66720011C8E3 /* NKIndexSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 460A14201C6F66720011C8E3 /* NKIndexSectionHeader.xib */; };
 		460A142C1C6F907A0011C8E3 /* NKPieChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A142B1C6F907A0011C8E3 /* NKPieChartController.swift */; };
@@ -192,6 +195,10 @@
 		0136BE161D01AAE900BFF1C5 /* WMPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPageController.h; sourceTree = "<group>"; };
 		0136BE171D01AAE900BFF1C5 /* WMPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPageController.m; sourceTree = "<group>"; };
 		0136BE1E1D01ABF200BFF1C5 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		0136BE231D01BC6E00BFF1C5 /* NKBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKBaseTableViewCell.swift; sourceTree = "<group>"; };
+		0136BE251D01BD3D00BFF1C5 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		0136BE271D01BE5600BFF1C5 /* UITableView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+extension.swift"; sourceTree = "<group>"; };
+		0136BE291D01BE5D00BFF1C5 /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPlatformManager.swift; sourceTree = "<group>"; };
 		018B922F1C5DD14C00236E16 /* NKLibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKLibraryAPI.swift; sourceTree = "<group>"; };
 		018B92351C5E244C00236E16 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -226,7 +233,6 @@
 		01FC3A9E1C5F242600176931 /* NKAccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKAccountManager.swift; sourceTree = "<group>"; };
 		01FC3AA01C5F496200176931 /* NKItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKItem.swift; sourceTree = "<group>"; };
 		01FC3AA41C5F63CC00176931 /* NKAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKAlgorithm.swift; sourceTree = "<group>"; };
-		01FC3AA71C60493300176931 /* NKConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKConfigure.swift; sourceTree = "<group>"; };
 		460A141E1C6F66560011C8E3 /* NKIndexSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKIndexSectionHeader.swift; sourceTree = "<group>"; };
 		460A14201C6F66720011C8E3 /* NKIndexSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKIndexSectionHeader.xib; sourceTree = "<group>"; };
 		460A142B1C6F907A0011C8E3 /* NKPieChartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKPieChartController.swift; sourceTree = "<group>"; };
@@ -254,6 +260,9 @@
 				011744531C69E78200CD0A7D /* Easing.swift */,
 				011744541C69E78200CD0A7D /* NSDateExtension.swift */,
 				011744551C69E78200CD0A7D /* UILabel+Animate.swift */,
+				0136BE251D01BD3D00BFF1C5 /* String+Extension.swift */,
+				0136BE271D01BE5600BFF1C5 /* UITableView+extension.swift */,
+				0136BE291D01BE5D00BFF1C5 /* UIView+extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -348,7 +357,6 @@
 				018B922D1C5DCCF500236E16 /* NKPlatformManager.swift */,
 				01FC3A9E1C5F242600176931 /* NKAccountManager.swift */,
 				01FC3AA41C5F63CC00176931 /* NKAlgorithm.swift */,
-				01FC3AA71C60493300176931 /* NKConfigure.swift */,
 				01F8020A1C64862100246912 /* NKNotificationManager.swift */,
 			);
 			path = API;
@@ -413,6 +421,7 @@
 				011525181C6205CB000D9539 /* NKDetailHeader.xib */,
 				018DF9251C79CB0600FA9F62 /* NKIconLabel.swift */,
 				018DF92B1C79F86600FA9F62 /* NKCircleCornerButton.swift */,
+				0136BE231D01BC6E00BFF1C5 /* NKBaseTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -605,7 +614,6 @@
 				0136BDBE1D01459700BFF1C5 /* CVCalendarView.swift in Sources */,
 				011525151C6200F1000D9539 /* NKItem_Schedule.swift in Sources */,
 				0136BDC81D01459700BFF1C5 /* CVDate.swift in Sources */,
-				01FC3AA81C60493300176931 /* NKConfigure.swift in Sources */,
 				01E1C1F81C5CCE0300EF6B5A /* NKPlatform.swift in Sources */,
 				018DF92C1C79F86600FA9F62 /* NKCircleCornerButton.swift in Sources */,
 				0136BDB91D01459700BFF1C5 /* CVCalendarMenuView.swift in Sources */,
@@ -626,10 +634,14 @@
 				01E1C20A1C5CDFC400EF6B5A /* NKPlatformController.swift in Sources */,
 				01A2791B1C63851C000FC9E1 /* CircularProgressView.swift in Sources */,
 				01E1C1E61C5CBCAA00EF6B5A /* NKNavigationController.swift in Sources */,
+				0136BE2A1D01BE5D00BFF1C5 /* UIView+extension.swift in Sources */,
 				0136BDD91D01A15D00BFF1C5 /* NKPassedController.swift in Sources */,
 				0136BDC91D01459700BFF1C5 /* CVRange.swift in Sources */,
+				0136BE261D01BD3D00BFF1C5 /* String+Extension.swift in Sources */,
 				0136BDC61D01459700BFF1C5 /* CVCalendarWeekday.swift in Sources */,
 				0136BE1C1D01AAE900BFF1C5 /* WMScrollView.m in Sources */,
+				0136BE241D01BC6E00BFF1C5 /* NKBaseTableViewCell.swift in Sources */,
+				0136BE281D01BE5600BFF1C5 /* UITableView+extension.swift in Sources */,
 				01FC3AA11C5F496200176931 /* NKItem.swift in Sources */,
 				0136BE181D01AAE900BFF1C5 /* WMFooldView.m in Sources */,
 				011524FE1C60AECC000D9539 /* NKIndexCell.swift in Sources */,
