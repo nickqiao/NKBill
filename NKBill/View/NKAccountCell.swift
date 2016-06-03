@@ -21,7 +21,6 @@ class NKAccountCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         circleProgressView.trackTint = UIColor.flatBlackColor()
-       
         circleProgressView.progressTint = UIColor.flatGreenColor()
     }
 

@@ -44,7 +44,7 @@ class NKScheduleController: NKBaseViewController {
         self.tableView.registerNib(UINib(nibName: cellNibName, bundle: nil), forCellReuseIdentifier: reuseIndentifier)
         tableView.rowHeight = 64
         tableView.backgroundColor = NKBackGroundColor()
-        segment.addTarget(self, action: "segmentChangeValue:", forControlEvents: .ValueChanged)
+        segment.addTarget(self, action: #selector(NKScheduleController.segmentChangeValue(_:)), forControlEvents: .ValueChanged)
         NKLibraryAPI.sharedInstance.updateUIWith(String(self)) { [unowned self]() -> Void in
             self.tableView.reloadData()
         }

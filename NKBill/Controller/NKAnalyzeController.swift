@@ -38,7 +38,7 @@ class NKAnalyzeController: UIViewController {
         pieChart.drawSliceTextEnabled = false
         
         pieChart.usePercentValuesEnabled = true
-        pieChart.holeTransparent = true
+        //pieChart.holeTransparent = true
         pieChart.holeRadiusPercent = 0.0
         pieChart.transparentCircleRadiusPercent = 0.0
         pieChart.descriptionText = ""

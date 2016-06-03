@@ -26,7 +26,7 @@ class NKAccountManager: NSObject {
     func removeClosure(controller: String) {
         
         if let token = tokens[controller] {
-            realm.removeNotification(token)
+           token.stop()
         }
         
     }

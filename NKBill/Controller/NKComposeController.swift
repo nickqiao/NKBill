@@ -28,7 +28,7 @@ class NKComposeController: UITableViewController {
         
         let picker = UIDatePicker()
         picker.datePickerMode = .Date
-        picker.addTarget(self , action: "datePickerChanged:", forControlEvents: .ValueChanged)
+        picker.addTarget(self , action: #selector(NKComposeController.datePickerChanged(_:)), forControlEvents: .ValueChanged)
         return picker
         
     }()
@@ -37,8 +37,7 @@ class NKComposeController: UITableViewController {
         
         let accessory = UIToolbar(frame: CGRectMake(0, 0, 320, 44))
         let item0 = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil , action: nil)
-        let item1 = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "inputAccessoryDone")
-        
+        let item1 = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(NKComposeController.inputAccessoryDone))
         accessory.items = [item0,item1]
                 return accessory
         
