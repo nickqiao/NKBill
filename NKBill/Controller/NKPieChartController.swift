@@ -12,7 +12,7 @@ import Charts
 class NKPieChartController: UIViewController {
     
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: NKBaseTableView!
   
     @IBOutlet weak var pieChart: PieChartView!
     

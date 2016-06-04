@@ -269,19 +269,19 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="报表分析" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIW-a2-0Bj">
                                         <rect key="frame" x="96" y="47" width="48" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="平台配置" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCA-yt-5tY">
                                         <rect key="frame" x="276" y="47" width="48" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="利率分布" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQd-tb-EiS">
                                         <rect key="frame" x="456" y="47" width="48" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -302,7 +302,7 @@
                                     <constraint firstItem="nQd-tb-EiS" firstAttribute="top" secondItem="hCA-yt-5tY" secondAttribute="top" id="zmy-1D-CfB"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jEK-cl-677">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jEK-cl-677" customClass="NKBaseTableView" customModule="NKBill" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="248" width="600" height="303"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -380,7 +380,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lAA-y0-3k1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lAA-y0-3k1" customClass="NKBaseTableView" customModule="NKBill" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="304" width="600" height="247"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -450,10 +450,10 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SjO-YH-3Xy" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="64" width="600" height="300"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="SjO-YH-3Xy" firstAttribute="top" secondItem="zNS-aU-w7O" secondAttribute="bottom" id="Yuc-dR-Kfi"/>
                             <constraint firstItem="SjO-YH-3Xy" firstAttribute="height" secondItem="2jP-P7-jzn" secondAttribute="height" multiplier="0.5" id="j9I-Mv-3Wi"/>
@@ -485,10 +485,10 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="240"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rt8-ie-ObC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rt8-ie-ObC" customClass="NKBaseTableView" customModule="NKBill" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="304" width="600" height="247"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="kZQ-U4-IC1" id="2DA-9Z-b44"/>
                                     <outlet property="delegate" destination="kZQ-U4-IC1" id="8MV-Mg-Cqz"/>
@@ -669,7 +669,6 @@
                     <navigationItem key="navigationItem" title="更多" id="WRb-UB-xWA"/>
                     <connections>
                         <segue destination="Iv5-Ec-0ac" kind="show" identifier="noticeTime" id="RPb-n4-GVU"/>
-                        <segue destination="h5o-6H-toi" kind="show" identifier="letter" id="LpP-t7-C6u"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KUW-lv-5f2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -715,39 +714,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gcq-aY-NEn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1515" y="2015"/>
-        </scene>
-        <!--Letter Controller-->
-        <scene sceneID="M3o-jc-Lfy">
-            <objects>
-                <viewController id="h5o-6H-toi" customClass="NKLetterController" customModule="NKBill" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1iy-ER-hJQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="lJM-PY-xKc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XPr-Gy-upM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nbq-zS-q6P">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="lJM-PY-xKc" firstAttribute="top" secondItem="Nbq-zS-q6P" secondAttribute="bottom" id="Wtu-sp-vMP"/>
-                            <constraint firstItem="Nbq-zS-q6P" firstAttribute="leading" secondItem="XPr-Gy-upM" secondAttribute="leading" id="m4q-aA-Opl"/>
-                            <constraint firstItem="Nbq-zS-q6P" firstAttribute="top" secondItem="1iy-ER-hJQ" secondAttribute="bottom" id="meH-j9-mZF"/>
-                            <constraint firstAttribute="trailing" secondItem="Nbq-zS-q6P" secondAttribute="trailing" id="oWE-E1-w8G"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="webView" destination="Nbq-zS-q6P" id="uEQ-a6-FAm"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ney-6C-RuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1443" y="2848"/>
         </scene>
         <!--记一笔-->
         <scene sceneID="e4J-Qr-j3b">
@@ -1188,7 +1154,7 @@
         <image name="schedule" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ms8-up-tjE"/>
+        <segue reference="Got-1Z-cE5"/>
         <segue reference="J5T-0k-VSg"/>
         <segue reference="5xa-st-2Cq"/>
     </inferredMetricsTieBreakers>

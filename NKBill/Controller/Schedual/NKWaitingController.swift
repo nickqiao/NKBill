@@ -19,9 +19,8 @@ class NKWaitingController: NKBaseViewController {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: NKBaseTableView!
     
-    var selectedItem: NKItem!
     private var selectedDate = NSDate()
     private var state = State.Waiting
     private var allWaitingItems = NKLibraryAPI.sharedInstance.getWaitingItems()
@@ -34,7 +33,6 @@ class NKWaitingController: NKBaseViewController {
         
         // Do any additional setup after loading the view.
         self.tableView.registerCellNib(NKScheduleCell)
-        tableView.rowHeight = 64
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = Constant.Color.BGColor
@@ -86,66 +84,14 @@ extension NKWaitingController: UITableViewDataSource {
 
 extension NKWaitingController: UITableViewDelegate {
     
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        selectedItem = items[indexPath.row]
-        
-        showActionSheet()
+        UIAlertManager.showAcitonSheet(items[indexPath.row])
     }
     
-    func showActionSheet() {
-        
-        let sheet = UIAlertController(title: "处理该笔还款状态", message: nil, preferredStyle: .ActionSheet)
-        
-        let watingHandler = UIAlertAction(title: "未还", style: .Default){(_) -> Void in
-            
-            NKLibraryAPI.sharedInstance.changeItemState(self.selectedItem, toState: .Waiting)
-        }
-        
-        let passedHandler = UIAlertAction(title: "已还", style: .Default){(_) -> Void in
-            
-            NKLibraryAPI.sharedInstance.changeItemState(self.selectedItem, toState: .Passed)
-        }
-        
-        let overDueHandler = UIAlertAction(title: "逾期", style: .Default){(_) -> Void in
-            
-            NKLibraryAPI.sharedInstance.changeItemState(self.selectedItem, toState: .Overdue)
-        }
-        
-        let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
-        
-        
-        switch selectedItem.state {
-            
-        case State.Waiting.rawValue:
-            if selectedItem.repayDate.timeIntervalSince1970 < NSDate().timeIntervalSince1970 {
-                sheet.addAction(passedHandler)
-                sheet.addAction(overDueHandler)
-                sheet.addAction(cancelAction)
-                presentViewController(sheet, animated: true, completion: nil)
-            }else {
-                sheet.addAction(passedHandler)
-                sheet.addAction(cancelAction)
-                presentViewController(sheet, animated: true, completion: nil)
-                
-            }
-        case State.Passed.rawValue:
-            sheet.addAction(watingHandler)
-            sheet.addAction(overDueHandler)
-            sheet.addAction(cancelAction)
-            presentViewController(sheet, animated: true, completion: nil)
-        case State.Overdue.rawValue:
-            sheet.addAction(watingHandler)
-            sheet.addAction(passedHandler)
-            sheet.addAction(cancelAction)
-            presentViewController(sheet, animated: true, completion: nil)
-        default:
-            break
-            
-        }
-        
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return NKBaseTableViewCell.height()
     }
     
 }

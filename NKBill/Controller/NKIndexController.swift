@@ -15,7 +15,7 @@ class NKIndexController: NKBaseViewController {
    
    
     @IBOutlet weak var header: UIView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: NKBaseTableView!
     
     @IBOutlet weak var passedInterestLabel: UILabel!
     @IBOutlet weak var weightRateLabel: UILabel!

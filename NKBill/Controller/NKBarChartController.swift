@@ -11,7 +11,7 @@ import Charts
 
 class NKBarChartController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: NKBaseTableView!
     @IBOutlet weak var chartView: BarChartView!
 
     private var selectedIndex = 2
@@ -51,7 +51,8 @@ class NKBarChartController: UIViewController {
         chartView.rightAxis.enabled = false
         chartView.xAxis.drawGridLinesEnabled = false
         
-        chartView.legend.position = .AboveChartLeft
+        chartView.legend.horizontalAlignment = .Left
+        chartView.legend.verticalAlignment = .Top
         chartView.legend.form = .Square;
         chartView.legend.formSize = 8.0;
         chartView.legend.font =  UIFont(name: "HelveticaNeue-Light", size: 11.0)!

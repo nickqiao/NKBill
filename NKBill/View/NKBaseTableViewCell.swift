@@ -20,7 +20,7 @@ public class NKBaseTableViewCell: UITableViewCell {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        //layer.addSublayer(bottomDottedLine)
+        layer.addSublayer(bottomDottedLine)
         setup()
     }
     
@@ -63,16 +63,16 @@ public class NKBaseTableViewCell: UITableViewCell {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-//        let mdotteShapePath = CGPathCreateMutable()
-//        bottomDottedLine.fillColor = UIColor.clearColor().CGColor
-//        bottomDottedLine.strokeColor = MACommonConstants.Color.cellBottomLineColor.CGColor
-//        bottomDottedLine.lineWidth = 1.0
-//        CGPathMoveToPoint(mdotteShapePath, nil, 0, CGRectGetHeight(bounds) - 1)
-//        CGPathAddLineToPoint(mdotteShapePath, nil, CGRectGetWidth(bounds), CGRectGetHeight(bounds) - 1)
-//        bottomDottedLine.path = mdotteShapePath
-//        let arr :NSArray = NSArray(array: [2,1])
-//        bottomDottedLine.lineDashPhase = 1.0
-//        bottomDottedLine.lineDashPattern = arr as? [NSNumber]
+        let mdotteShapePath = CGPathCreateMutable()
+        bottomDottedLine.fillColor = UIColor.clearColor().CGColor
+        bottomDottedLine.strokeColor = UIColor.flatGrayColor().CGColor
+        bottomDottedLine.lineWidth = 1.0
+        CGPathMoveToPoint(mdotteShapePath, nil, 0, CGRectGetHeight(bounds) - 1)
+        CGPathAddLineToPoint(mdotteShapePath, nil, CGRectGetWidth(bounds), CGRectGetHeight(bounds) - 1)
+        bottomDottedLine.path = mdotteShapePath
+        let arr :NSArray = NSArray(array: [2,1])
+        bottomDottedLine.lineDashPhase = 1.0
+        bottomDottedLine.lineDashPattern = arr as? [NSNumber]
     }
 
 }

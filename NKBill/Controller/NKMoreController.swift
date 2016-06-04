@@ -32,7 +32,7 @@ class NKMoreController: UITableViewController {
         if section == 0 {
             return allowsNotification() ? 2 : 1
         }
-        return 3
+        return 2
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -66,16 +66,10 @@ class NKMoreController: UITableViewController {
             }
             
             if indexPath.row == 1 {
-                cell?.textLabel?.text = "作者致用户的一封信"
-                cell?.detailTextLabel?.text = ""
-                cell?.accessoryType = .DisclosureIndicator
-            }
-            
-            if indexPath.row == 2 {
                 cell?.textLabel?.text = "作者QQ"
                 cell?.detailTextLabel?.text = "静水流:393533945"
             }
-            
+
         }
 
         
@@ -103,9 +97,7 @@ class NKMoreController: UITableViewController {
                 let s = String(format: "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1084361782&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8")
                 UIApplication.sharedApplication().openURL(NSURL(string:s)!)
             }
-            if indexPath.row == 1 {
-                performSegueWithIdentifier("letter", sender: nil)
-            }
+          
         }
        
     }
