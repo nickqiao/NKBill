@@ -33,13 +33,10 @@ class NKIndexController: NKBaseViewController {
         configureHeader()
 
         peizhiButton.backgroundColor = UIColor.flatYellowColor()
-        //fenxiButton.backgroundColor = NKBlueColor()
-        // Do any additional setup after loading the view.
         tableView.registerNib(UINib(nibName: "NKIndexCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 64
                 
         header.backgroundColor = Constant.Color.ThemeBlueColor
-        tableView.backgroundColor = UIColor.clearColor()
         NKLibraryAPI.sharedInstance.updateUIWith(String(self)) {[unowned self] () -> Void in
             self.tableView.reloadData()
         }
@@ -116,7 +113,7 @@ extension NKIndexController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        return NKIndexSectionHeader.indexSectionHeader()
+        return NKIndexSectionHeader.loadNib()
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {

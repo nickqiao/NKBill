@@ -1,3 +1,4 @@
 github "ViccAlexander/Chameleon" "2.1.0"
+github "yankodimitrov/SwiftPasscodeLock" "v1.0.1"
 github "danielgindi/ios-charts" "v2.2.5"
 github "realm/realm-cocoa" "v1.0.0"

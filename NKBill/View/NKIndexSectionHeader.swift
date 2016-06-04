@@ -10,9 +10,4 @@ import UIKit
 
 class NKIndexSectionHeader: UIView {
 
-    static func indexSectionHeader() -> NKIndexSectionHeader {
-        return NSBundle.mainBundle().loadNibNamed("NKIndexSectionHeader", owner: nil, options: nil).last as! NKIndexSectionHeader
-    }
-
-
 }

@@ -29,6 +29,11 @@
 		012745EB1D02A8AC00DBA895 /* UIAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012745EA1D02A8AC00DBA895 /* UIAlertManager.swift */; };
 		012745ED1D02AB9100DBA895 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012745EC1D02AB9100DBA895 /* UIApplication+Extension.swift */; };
 		012745F01D02B25300DBA895 /* NKBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012745EF1D02B25300DBA895 /* NKBaseTableView.swift */; };
+		012745F71D02F5EB00DBA895 /* PasscodeLockConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012745F41D02F5EB00DBA895 /* PasscodeLockConfiguration.swift */; };
+		012745F91D02F5EB00DBA895 /* UserDefaultsPasscodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012745F61D02F5EB00DBA895 /* UserDefaultsPasscodeRepository.swift */; };
+		012745FB1D02F79D00DBA895 /* PasscodeLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012745FA1D02F79D00DBA895 /* PasscodeLock.framework */; };
+		012745FC1D02F79D00DBA895 /* PasscodeLock.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 012745FA1D02F79D00DBA895 /* PasscodeLock.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		012746001D03079D00DBA895 /* PasscodeVcManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012745FF1D03079D00DBA895 /* PasscodeVcManager.swift */; };
 		0136BDB41D01459700BFF1C5 /* CVAuxiliaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BD981D01459700BFF1C5 /* CVAuxiliaryView.swift */; };
 		0136BDB51D01459700BFF1C5 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BD991D01459700BFF1C5 /* CVCalendarContentViewController.swift */; };
 		0136BDB61D01459700BFF1C5 /* CVCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BD9A1D01459700BFF1C5 /* CVCalendarDayView.swift */; };
@@ -120,6 +125,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				018B92371C5E244C00236E16 /* Realm.framework in Embed Frameworks */,
+				012745FC1D02F79D00DBA895 /* PasscodeLock.framework in Embed Frameworks */,
 				018DF91C1C78471D00FA9F62 /* Charts.framework in Embed Frameworks */,
 				018B923A1C5E245B00236E16 /* RealmSwift.framework in Embed Frameworks */,
 				01E1C2191C5CF73A00EF6B5A /* Chameleon.framework in Embed Frameworks */,
@@ -152,6 +158,10 @@
 		012745EA1D02A8AC00DBA895 /* UIAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertManager.swift; sourceTree = "<group>"; };
 		012745EC1D02AB9100DBA895 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		012745EF1D02B25300DBA895 /* NKBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKBaseTableView.swift; sourceTree = "<group>"; };
+		012745F41D02F5EB00DBA895 /* PasscodeLockConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeLockConfiguration.swift; sourceTree = "<group>"; };
+		012745F61D02F5EB00DBA895 /* UserDefaultsPasscodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsPasscodeRepository.swift; sourceTree = "<group>"; };
+		012745FA1D02F79D00DBA895 /* PasscodeLock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PasscodeLock.framework; path = Carthage/Build/iOS/PasscodeLock.framework; sourceTree = "<group>"; };
+		012745FF1D03079D00DBA895 /* PasscodeVcManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeVcManager.swift; sourceTree = "<group>"; };
 		0136BD981D01459700BFF1C5 /* CVAuxiliaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVAuxiliaryView.swift; sourceTree = "<group>"; };
 		0136BD991D01459700BFF1C5 /* CVCalendarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentViewController.swift; sourceTree = "<group>"; };
 		0136BD9A1D01459700BFF1C5 /* CVCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarDayView.swift; sourceTree = "<group>"; };
@@ -247,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				018B92361C5E244C00236E16 /* Realm.framework in Frameworks */,
+				012745FB1D02F79D00DBA895 /* PasscodeLock.framework in Frameworks */,
 				018DF91B1C78471D00FA9F62 /* Charts.framework in Frameworks */,
 				018B92391C5E245B00236E16 /* RealmSwift.framework in Frameworks */,
 				01E1C2181C5CF73A00EF6B5A /* Chameleon.framework in Frameworks */,
@@ -277,6 +288,16 @@
 				012745EF1D02B25300DBA895 /* NKBaseTableView.swift */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		012745F31D02F5C000DBA895 /* PassCode */ = {
+			isa = PBXGroup;
+			children = (
+				012745F41D02F5EB00DBA895 /* PasscodeLockConfiguration.swift */,
+				012745F61D02F5EB00DBA895 /* UserDefaultsPasscodeRepository.swift */,
+				012745FF1D03079D00DBA895 /* PasscodeVcManager.swift */,
+			);
+			name = PassCode;
 			sourceTree = "<group>";
 		};
 		0136BD961D01459700BFF1C5 /* Third */ = {
@@ -378,6 +399,7 @@
 		01E1C1C21C5CBBBB00EF6B5A = {
 			isa = PBXGroup;
 			children = (
+				012745FA1D02F79D00DBA895 /* PasscodeLock.framework */,
 				018DF91A1C78471D00FA9F62 /* Charts.framework */,
 				018B92381C5E245B00236E16 /* RealmSwift.framework */,
 				018B92351C5E244C00236E16 /* Realm.framework */,
@@ -457,6 +479,7 @@
 		01E1C1E21C5CBC4A00EF6B5A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				012745F31D02F5C000DBA895 /* PassCode */,
 				0136BDD11D01A0D200BFF1C5 /* Schedual */,
 				01E1C1E31C5CBC8600EF6B5A /* NKBaseViewController.swift */,
 				01E1C1E51C5CBCAA00EF6B5A /* NKNavigationController.swift */,
@@ -589,9 +612,11 @@
 				0136BDD71D01A14D00BFF1C5 /* NKOverdueController.swift in Sources */,
 				01FC3A9F1C5F242600176931 /* NKAccountManager.swift in Sources */,
 				0136BDCB1D01459700BFF1C5 /* CVSelectionType.swift in Sources */,
+				012745F91D02F5EB00DBA895 /* UserDefaultsPasscodeRepository.swift in Sources */,
 				0115250C1C61C3AD000D9539 /* NKScheduleCell.swift in Sources */,
 				0117442F1C68B01F00CD0A7D /* NKTextField.swift in Sources */,
 				0136BDD31D01A10B00BFF1C5 /* NKScheduleController.swift in Sources */,
+				012745F71D02F5EB00DBA895 /* PasscodeLockConfiguration.swift in Sources */,
 				0136BDC21D01459700BFF1C5 /* CVCalendarViewAppearanceDelegate.swift in Sources */,
 				011524F41C609A6F000D9539 /* NKAccountCell.swift in Sources */,
 				0136BDC71D01459700BFF1C5 /* CVCalendarWeekView.swift in Sources */,
@@ -635,6 +660,7 @@
 				011525111C61F2C9000D9539 /* NKDetailItemCell.swift in Sources */,
 				0136BDBB1D01459700BFF1C5 /* CVCalendarMonthContentViewController.swift in Sources */,
 				018DF91E1C78479A00FA9F62 /* NKBarChartController.swift in Sources */,
+				012746001D03079D00DBA895 /* PasscodeVcManager.swift in Sources */,
 				0136BDC51D01459700BFF1C5 /* CVCalendarWeekContentViewController.swift in Sources */,
 				01E1C1F21C5CBF4800EF6B5A /* NKRecordController.swift in Sources */,
 				011524F91C60A6FD000D9539 /* NKAccount_Record.swift in Sources */,

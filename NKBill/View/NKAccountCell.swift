@@ -14,8 +14,8 @@ class NKAccountCell: NKBaseTableViewCell {
     @IBOutlet weak var platNameLabel: NKIconLabel!
     @IBOutlet weak var investLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
-    
     @IBOutlet weak var dateLabel: UILabel!
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()

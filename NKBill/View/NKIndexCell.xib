@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -43,16 +43,9 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBI-6t-xax">
                         <rect key="frame" x="90" y="15" width="27" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HFP-5C-dhG">
-                        <rect key="frame" x="12" y="63" width="308" height="1"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="0.5" id="2AZ-3n-Szh"/>
-                        </constraints>
-                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="OnA-Uv-pDn">
                         <rect key="frame" x="297" y="24" width="15" height="15"/>
                         <constraints>
@@ -62,7 +55,6 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="HFP-5C-dhG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="6fp-eK-NQt"/>
                     <constraint firstItem="tUE-GI-qEk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7vY-Rg-D2K"/>
                     <constraint firstItem="zBI-6t-xax" firstAttribute="centerY" secondItem="MaC-QO-Fk7" secondAttribute="top" id="FKU-dz-woF"/>
                     <constraint firstAttribute="trailingMargin" secondItem="OnA-Uv-pDn" secondAttribute="trailing" id="GSA-mQ-Z4z"/>
@@ -71,7 +63,6 @@
                     <constraint firstItem="OnA-Uv-pDn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="30" id="MbP-Pf-V2v"/>
                     <constraint firstItem="zBI-6t-xax" firstAttribute="leading" secondItem="MaC-QO-Fk7" secondAttribute="trailing" id="Po5-GL-2t2"/>
                     <constraint firstItem="Siw-DL-r6R" firstAttribute="leading" secondItem="MaC-QO-Fk7" secondAttribute="trailing" constant="40" id="Roz-vw-eZp"/>
-                    <constraint firstAttribute="bottom" secondItem="HFP-5C-dhG" secondAttribute="bottom" id="Tr0-JZ-zyw"/>
                     <constraint firstItem="JQz-T9-1ji" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Wz4-LU-fKr"/>
                     <constraint firstAttribute="centerX" secondItem="Siw-DL-r6R" secondAttribute="centerX" id="ZDq-hR-JS7"/>
                     <constraint firstAttribute="bottomMargin" secondItem="JQz-T9-1ji" secondAttribute="bottom" constant="5" id="adx-Hx-dxs"/>
@@ -81,7 +72,6 @@
                     <constraint firstItem="tUE-GI-qEk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="fgu-1G-PDj"/>
                     <constraint firstItem="OnA-Uv-pDn" firstAttribute="leading" secondItem="JQz-T9-1ji" secondAttribute="trailing" constant="10" id="gcN-Bz-qeI"/>
                     <constraint firstItem="MaC-QO-Fk7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hSZ-mE-HXl"/>
-                    <constraint firstAttribute="trailing" secondItem="HFP-5C-dhG" secondAttribute="trailing" id="qS2-e3-SPf"/>
                     <constraint firstItem="Siw-DL-r6R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="centerXWithinMargins" id="rmh-yj-w1e"/>
                     <constraint firstItem="JQz-T9-1ji" firstAttribute="leading" secondItem="Siw-DL-r6R" secondAttribute="leading" id="sOo-Cc-Lc2"/>
                     <constraint firstItem="Siw-DL-r6R" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="w8T-LV-1Mq"/>

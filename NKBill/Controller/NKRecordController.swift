@@ -36,6 +36,7 @@ class NKRecordController: UITableViewController {
         super.viewDidLoad()
 
         tableView.separatorStyle = .None
+        tableView.backgroundColor = Constant.Color.BGColor
         tableView.registerNib(UINib(nibName: "NKAccountCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         
         // Do any additional setup after loading the view.
@@ -46,7 +47,7 @@ class NKRecordController: UITableViewController {
             dataSource = defaultDatasource()
             title = dataSource?.title
         }
-        tableView.backgroundColor = Constant.Color.BGColor
+        
     }
     
     override func viewWillAppear(animated: Bool) {

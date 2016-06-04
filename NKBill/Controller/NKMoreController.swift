@@ -8,14 +8,16 @@
 
 import UIKit
 import StoreKit
+import PasscodeLock
+
 class NKMoreController: UITableViewController {
 
-    
+    private var sw : UISwitch =  UISwitch()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+       
+        sw.addTarget(self, action: #selector(self.switchAcition(_:)), forControlEvents: .ValueChanged)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -24,13 +26,26 @@ class NKMoreController: UITableViewController {
         tableView.reloadData()
     }
     
+    func switchAcition(sw : UISwitch) {
+        
+        if sw.on == true {
+            PasscodeVcManager.sharedInstance.showSetcodeVc()
+        }else {
+            PasscodeVcManager.sharedInstance.showDeleteCodeVc()
+        }
+        
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return allowsNotification() ? 2 : 1
+        }
+        if section == 1 {
+            return 1
         }
         return 2
     }
@@ -59,6 +74,14 @@ class NKMoreController: UITableViewController {
         }
         
         if indexPath.section == 1 {
+            let cell = UITableViewCell(style: .Default, reuseIdentifier: "")
+            cell.textLabel?.text = "设置密码"
+            sw.on = UserDefaultsPasscodeRepository().hasPasscode
+            cell.accessoryView = sw
+            return cell
+        }
+        
+        if indexPath.section == 2 {
             if indexPath.row == 0 {
                 cell?.textLabel?.text = "欢迎评分留言"
                 cell?.detailTextLabel?.text = ""
@@ -77,9 +100,11 @@ class NKMoreController: UITableViewController {
         
     }
 
+   
+    
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "如果您要关闭或开启微信的消息通知,请在iPhone的\"设置\"-\"通知\"功能中,找到应用程序更改"
+            return "如果您要关闭或开启网贷笔记的消息通知,请在iPhone的\"设置\"-\"通知\"功能中,找到应用程序更改"
         }
         return nil
     }

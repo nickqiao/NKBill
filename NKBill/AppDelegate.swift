@@ -8,6 +8,7 @@
 
 import UIKit
 import Chameleon
+import PasscodeLock
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,10 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var badgeNum: Int {
         return NKLibraryAPI.sharedInstance.getUnsolvedItemsCount()
     }
+    
+    lazy var passcodeLockPresenter: PasscodeLockPresenter = {
+        
+        let configuration = PasscodeLockConfiguration()
+        let presenter = PasscodeLockPresenter(mainWindow: self.window, configuration: configuration)
+        
+        return presenter
+    }()
 
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
+        passcodeLockPresenter.presentPasscodeLock()
+            
         // 设置界面颜色
         customAppearce()
         // 配置本地通知
@@ -33,6 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return true
+    }
+    
+    func applicationDidEnterBackground(application: UIApplication) {
+        passcodeLockPresenter.presentPasscodeLock()
     }
     
     deinit {
@@ -86,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configureLocalNotice() {
         
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge,.Alert,.Sound], categories: nil))
-        if NSUserDefaults.standardUserDefaults().boolForKey(Constant.Login.FirstLaunchKey) == false {
+        if Constant.Login.Logined == false {
             
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: Constant.Login.FirstLaunchKey)
             NSUserDefaults.standardUserDefaults().setInteger(Constant.Notice.DefaultNoticeTime, forKey: Constant.Notice.NoticeTimeKey)

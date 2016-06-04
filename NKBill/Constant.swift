@@ -10,8 +10,14 @@ import Foundation
 
 struct Constant {
     
+    
+    
     struct Login {
         static let FirstLaunchKey = "firstLaunch"
+        // 登录过
+        static var Logined : Bool {
+           return NSUserDefaults.standardUserDefaults().boolForKey(Constant.Login.FirstLaunchKey)
+        }
     }
     
     struct Color {
@@ -20,13 +26,12 @@ struct Constant {
     }
     
     struct Font {
-        
+        static let cellFont = UIColor(colorLiteralRed: 92, green: 94, blue: 102, alpha: 1.0)
     }
     
     // 回款计划模块
     struct Schedual {
         static let titles = ["待还","已还","逾期"]
-        
     }
     
     struct Notice {
@@ -49,3 +54,5 @@ func allowsNotification() -> Bool {
     }
     return true
 }
+
+
