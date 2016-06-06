@@ -87,7 +87,7 @@ extension NKWaitingController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        UIAlertManager.showAcitonSheet(items[indexPath.row])
+        UIAlertManager.showAcitonSheet( items[indexPath.row],state: .Waiting)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -125,8 +125,44 @@ extension NKWaitingController : CVCalendarViewDelegate {
         return false
     }
     
-    func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
-        
+    func supplementaryView(viewOnDayView dayView: DayView) -> UIView {
+        let π = M_PI
+
+        let ringSpacing: CGFloat = 3.0
+        let ringInsetWidth: CGFloat = 1.0
+        let ringVerticalOffset: CGFloat = 1.0
+        var ringLayer: CAShapeLayer!
+        let ringLineWidth: CGFloat = 3.0
+        let ringLineColour: UIColor = UIColor.flatRedColor()
+
+        let newView = UIView(frame: dayView.bounds)
+
+        let diameter: CGFloat = (newView.bounds.width) - ringSpacing - 22
+        let radius: CGFloat = diameter / 2.0
+
+        let rect = CGRectMake(newView.frame.midX-radius, newView.frame.midY-radius-ringVerticalOffset, diameter, diameter)
+
+        ringLayer = CAShapeLayer()
+        newView.layer.addSublayer(ringLayer)
+
+        ringLayer.fillColor = nil
+        ringLayer.lineWidth = ringLineWidth
+        ringLayer.strokeColor = ringLineColour.CGColor
+
+        let ringLineWidthInset: CGFloat = CGFloat(ringLineWidth/2.0) + ringInsetWidth
+        let ringRect: CGRect = CGRectInset(rect, ringLineWidthInset, ringLineWidthInset)
+        let centrePoint: CGPoint = CGPointMake(ringRect.midX, ringRect.midY)
+        let startAngle: CGFloat = CGFloat(-π/2.0)
+        let endAngle: CGFloat = CGFloat(π * 2.0) + startAngle
+        let ringPath: UIBezierPath = UIBezierPath(arcCenter: centrePoint, radius: ringRect.width/2.0, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+
+        ringLayer.path = ringPath.CGPath
+        ringLayer.frame = newView.layer.bounds
+
+        return newView
+    }
+
+    func supplementaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
         var show = false
         
         allWaitingItems.forEach { (item) in
@@ -139,19 +175,7 @@ extension NKWaitingController : CVCalendarViewDelegate {
         }
         
         return show
-        
-    }
-    
-    func dotMarker(colorOnDayView dayView: CVCalendarDayView) -> [UIColor] {
-        return [UIColor.flatRedColor()]
-    }
-    
-    func dotMarker(shouldMoveOnHighlightingOnDayView dayView: CVCalendarDayView) -> Bool {
-        return true
-    }
-    
-    func dotMarker(sizeOnDayView dayView: DayView) -> CGFloat {
-        return 15
+
     }
     
 }

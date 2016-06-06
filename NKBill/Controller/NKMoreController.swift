@@ -106,6 +106,9 @@ class NKMoreController: UITableViewController {
         if section == 0 {
             return "如果您要关闭或开启网贷笔记的消息通知,请在iPhone的\"设置\"-\"通知\"功能中,找到应用程序更改"
         }
+        if section == 1 {
+            return "如果您的手机支持Touch ID(指纹解锁),为方便使用,请在iPhone的\"设置\"-\"Touch ID与密码\"功能中打开"
+        }
         return nil
     }
     
@@ -117,7 +120,7 @@ class NKMoreController: UITableViewController {
             
         }
         
-        if (indexPath.section == 1) {
+        if (indexPath.section == 2) {
             if indexPath.row == 0 {
                 let s = String(format: "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1084361782&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8")
                 UIApplication.sharedApplication().openURL(NSURL(string:s)!)

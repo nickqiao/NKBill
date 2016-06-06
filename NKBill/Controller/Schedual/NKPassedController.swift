@@ -11,7 +11,7 @@ import UIKit
 class NKPassedController: NKBaseViewController {
     
     private lazy var tableView : NKBaseTableView = {
-        var tv = NKBaseTableView(frame: self.view.frame, style: .Grouped)
+        var tv = NKBaseTableView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.height - 64 - 44 - 30), style: .Grouped)
         tv.backgroundColor = Constant.Color.BGColor
         tv.delegate = self
         tv.dataSource = self
@@ -26,6 +26,12 @@ class NKPassedController: NKBaseViewController {
         // Do any additional setup after loading the view.
         self.view.addSubview(tableView)
         tableView.registerCellNib(NKScheduleCell)
+        
+        self.tableView.tableHeaderView = UIView(frame: CGRectMake(0, 0, 0, CGFloat.min ))
+        NKLibraryAPI.sharedInstance.updateUIWith(String(self)) { [unowned self]() -> Void in
+            self.tableView.reloadData()
+        }
+
     }
 
 }
@@ -48,10 +54,11 @@ extension NKPassedController : UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        UIAlertManager.showAcitonSheet(items[indexPath.row])
+        UIAlertManager.showAcitonSheet(items[indexPath.row] ,state: .Passed)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return NKScheduleCell.height()
     }
+    
 }

@@ -1,0 +1,34 @@
+/* 
+  PasscodeLock.strings
+  NKBill
+
+  Created by nick on 16/6/4.
+  Copyright © 2016年 NickChen. All rights reserved.
+*/
+
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "Touch Id或输入密码";
+"PasscodeLockEnterDescription" = "";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "设置密码";
+"PasscodeLockSetDescription" = "";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "确认密码";
+"PasscodeLockConfirmDescription" = "";
+
+/* Change Passcode State */
+"PasscodeLockChangeTitle" = "输入旧密码";
+"PasscodeLockChangeDescription" = "";
+
+/* Passcode Mismatch State */
+"PasscodeLockMismatchTitle" = "再试一次";
+"PasscodeLockMismatchDescription" = "";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "Authentication required to proceed";
+
+/* Touch ID Fallback Button */
+"PasscodeLockTouchIDButton" = "Enter Passcode";

@@ -35,7 +35,6 @@ class NKIndexController: NKBaseViewController {
         peizhiButton.backgroundColor = UIColor.flatYellowColor()
         tableView.registerNib(UINib(nibName: "NKIndexCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 64
-                
         header.backgroundColor = Constant.Color.ThemeBlueColor
         NKLibraryAPI.sharedInstance.updateUIWith(String(self)) {[unowned self] () -> Void in
             self.tableView.reloadData()

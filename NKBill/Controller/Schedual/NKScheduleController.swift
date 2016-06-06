@@ -28,6 +28,7 @@ class NKScheduleController : WMPageController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        navigationItem.title = "回款计划"
     }
 
     override func numbersOfChildControllersInPageController(pageController: WMPageController!) -> Int {

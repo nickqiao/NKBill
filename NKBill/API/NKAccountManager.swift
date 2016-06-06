@@ -172,7 +172,7 @@ extension NKAccountManager {
     }
     /// 逾期的item
     func getOverdueItems() -> Results<NKItem> {
-        return getAllItems().filter("state == %@",State.Overdue.rawValue).sorted("repayDate", ascending: true)
+        return getAllItems().filter("state != %@ AND repayDate < %@",State.Passed.rawValue,NSDate().NK_zeroMorning()).sorted("repayDate", ascending: true)
     }
     /// 所有的待还
     func getWaitingItems() -> Results<NKItem> {
@@ -198,8 +198,11 @@ extension NKAccountManager {
         return getAllItems().filter("repayDate <= %@ AND repayDate >= %@" , to,from)
     }
     
-    func getInterestSumAndItems(from from: NSDate  ,to: NSDate) -> (sum:Double,items:Results<NKItem>) {
-        return (getItems(from: from, to: to).sum("interest"),getItems(from: from, to: to))
+    func getInterestSumAndItems(from from: NSDate  ,to: NSDate) -> (passedSum : Double,sum:Double,items:Results<NKItem>) {
+        
+        return (getItems(from: from, to: to).filter("state == %@",State.Passed.rawValue).sum("interest"),
+            getItems(from: from, to: to).sum("interest"),
+            getItems(from: from, to: to))
     }
     
     /// 获得某年某月的item

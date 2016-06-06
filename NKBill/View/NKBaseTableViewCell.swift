@@ -20,7 +20,7 @@ public class NKBaseTableViewCell: UITableViewCell {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        layer.addSublayer(bottomDottedLine)
+//        layer.addSublayer(bottomDottedLine)
         setup()
     }
     
@@ -40,22 +40,22 @@ public class NKBaseTableViewCell: UITableViewCell {
         return 64
     }
     
-    public func setData(data: Any?) {
-        self.backgroundColor = UIColor(hexString: "F1F8E9")
-        self.textLabel?.font = UIFont.italicSystemFontOfSize(18)
-        self.textLabel?.textColor = UIColor(hexString: "9E9E9E")
-        if let menuText = data as? String {
-            self.textLabel?.text = menuText
-        }
-    }
+//    public func setData(data: Any?) {
+//        self.backgroundColor = UIColor(hexString: "F1F8E9")
+//        self.textLabel?.font = UIFont.italicSystemFontOfSize(18)
+//        self.textLabel?.textColor = UIColor(hexString: "9E9E9E")
+//        if let menuText = data as? String {
+//            self.textLabel?.text = menuText
+//        }
+//    }
     
-    override public func setHighlighted(highlighted: Bool, animated: Bool) {
-        if highlighted {
-            self.alpha = 0.4
-        } else {
-            self.alpha = 1.0
-        }
-    }
+//    override public func setHighlighted(highlighted: Bool, animated: Bool) {
+//        if highlighted {
+//            self.alpha = 0.4
+//        } else {
+//            self.alpha = 1.0
+//        }
+//    }
     
     // ignore the default handling
     override public func setSelected(selected: Bool, animated: Bool) {
@@ -63,16 +63,16 @@ public class NKBaseTableViewCell: UITableViewCell {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        let mdotteShapePath = CGPathCreateMutable()
-        bottomDottedLine.fillColor = UIColor.clearColor().CGColor
-        bottomDottedLine.strokeColor = UIColor.flatGrayColor().CGColor
-        bottomDottedLine.lineWidth = 1.0
-        CGPathMoveToPoint(mdotteShapePath, nil, 0, CGRectGetHeight(bounds) - 1)
-        CGPathAddLineToPoint(mdotteShapePath, nil, CGRectGetWidth(bounds), CGRectGetHeight(bounds) - 1)
-        bottomDottedLine.path = mdotteShapePath
-        let arr :NSArray = NSArray(array: [2,1])
-        bottomDottedLine.lineDashPhase = 1.0
-        bottomDottedLine.lineDashPattern = arr as? [NSNumber]
+//        let mdotteShapePath = CGPathCreateMutable()
+//        bottomDottedLine.fillColor = UIColor.clearColor().CGColor
+//        bottomDottedLine.strokeColor = UIColor.flatGrayColor().CGColor
+//        bottomDottedLine.lineWidth = 1.0
+//        CGPathMoveToPoint(mdotteShapePath, nil, 0, CGRectGetHeight(bounds) - 1)
+//        CGPathAddLineToPoint(mdotteShapePath, nil, CGRectGetWidth(bounds), CGRectGetHeight(bounds) - 1)
+//        bottomDottedLine.path = mdotteShapePath
+//        let arr :NSArray = NSArray(array: [2,1])
+//        bottomDottedLine.lineDashPhase = 1.0
+//        bottomDottedLine.lineDashPattern = arr as? [NSNumber]
     }
 
 }

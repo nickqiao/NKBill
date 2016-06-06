@@ -8,7 +8,7 @@
 
 import Foundation
 import PasscodeLock
-
+import LocalAuthentication
 class PasscodeVcManager {
     
     private init () {}
@@ -18,6 +18,21 @@ class PasscodeVcManager {
     private var configuration = PasscodeLockConfiguration(repository: UserDefaultsPasscodeRepository())
     
     private var passcodeVC : PasscodeLockViewController?
+    
+//    static func canUseTouchId() -> Bool {
+//        
+//        let context: LAContext! = LAContext()
+//        var errora: NSError?
+//        
+//        let os = NSProcessInfo().operatingSystemVersion
+//        if os.majorVersion < 8 {
+//            return false
+//        }
+//        
+//        return context.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error: &errora)
+//       
+//    }
+    
     
     func showSetcodeVc() {
         passcodeVC = PasscodeLockViewController(state: .SetPasscode, configuration: configuration)

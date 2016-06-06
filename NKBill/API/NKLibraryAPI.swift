@@ -150,9 +150,9 @@ extension NKLibraryAPI {
     
     
     /// 获得当前前后month个月,比如month传入12,获得当前日前后一年的数据
-    func getInterestAndItem(before before:Int, after:Int) -> [(date:NSDate,sum:Double,items:Results<NKItem>)] {
+    func getInterestAndItem(before before:Int, after:Int) -> [(date:NSDate,passedSum : Double,sum:Double,items:Results<NKItem>)] {
      
-        var empty: [(date:NSDate,sum:Double,items:Results<NKItem>)] = []
+        var empty: [(date:NSDate,passedSum : Double,sum:Double,items:Results<NKItem>)] = []
         
         for i in (-1 * before)...(after - 1) {
             
@@ -162,6 +162,7 @@ extension NKLibraryAPI {
             
             empty += [(
                 d,
+                accountManager.getInterestSumAndItems(from: d, to: d1).passedSum,
                 accountManager.getInterestSumAndItems(from: d, to: d1).sum,
                 accountManager.getInterestSumAndItems(from: d, to: d1).items
                 )]

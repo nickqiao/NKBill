@@ -10,7 +10,7 @@ import Foundation
 
 class UIAlertManager {
     
-    static func showAcitonSheet(item : NKItem) {
+    static func showAcitonSheet(item : NKItem ,state : State) {
         let sheet = UIAlertController(title: "处理该笔还款状态", message: nil, preferredStyle: .ActionSheet)
         
         let watingHandler = UIAlertAction(title: "未还", style: .Default){(_) -> Void in
@@ -31,9 +31,9 @@ class UIAlertManager {
         let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
         
         
-        switch item.state {
+        switch state {
             
-        case State.Waiting.rawValue:
+        case State.Waiting:
             if item.repayDate.timeIntervalSince1970 < NSDate().timeIntervalSince1970 {
                 sheet.addAction(passedHandler)
                 sheet.addAction(overDueHandler)
@@ -45,13 +45,13 @@ class UIAlertManager {
                 UIApplication.topViewController()!.presentViewController(sheet, animated: true, completion: nil)
                 
             }
-        case State.Passed.rawValue:
+        case State.Passed:
             sheet.addAction(watingHandler)
             sheet.addAction(overDueHandler)
             sheet.addAction(cancelAction)
             UIApplication.topViewController()!.presentViewController(sheet, animated: true, completion: nil)
-        case State.Overdue.rawValue:
-            sheet.addAction(watingHandler)
+        case State.Overdue:
+            //sheet.addAction(watingHandler)
             sheet.addAction(passedHandler)
             sheet.addAction(cancelAction)
             UIApplication.topViewController()!.presentViewController(sheet, animated: true, completion: nil)

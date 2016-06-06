@@ -21,7 +21,6 @@ class NKBaseTableView: UITableView {
     
     func setup() {
         self.backgroundColor = UIColor.clearColor()
-        self.separatorStyle = .None
     }
 
 }

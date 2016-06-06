@@ -17,7 +17,6 @@ class NKDetailController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.separatorStyle = .None
         NKLibraryAPI.sharedInstance.updateUIWith(String(self)) { [unowned self]() -> Void in
             self.tableView.reloadData()
         }

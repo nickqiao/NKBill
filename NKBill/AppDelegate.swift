@@ -30,7 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
+        
         passcodeLockPresenter.presentPasscodeLock()
+        
+        
             
         // 设置界面颜色
         customAppearce()
@@ -48,7 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
-        passcodeLockPresenter.presentPasscodeLock()
+       
+            passcodeLockPresenter.presentPasscodeLock()
+        
     }
     
     deinit {

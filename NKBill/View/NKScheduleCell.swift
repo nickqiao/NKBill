@@ -25,15 +25,9 @@ class NKScheduleCell: NKBaseTableViewCell {
             investLabel.text = item!.schedule_sum()
             principleLabel.text = item!.schedule_principal()
             interestLabel.text = item!.schedule_interest()
-            spanLabel.text = item?.schedule_progress()
+            spanLabel.text = item!.schedule_progress()
             platNameLabel.text = item!.schedule_platName()
-            
-            if item?.repayDate.isAfterToday() == false && item?.state == State.Waiting.rawValue {
-                unreadIcon.hidden = false
-            }else {
-                unreadIcon.hidden = true
-            }
-            
+            unreadIcon.hidden = true
         }
     }
     
@@ -43,10 +37,22 @@ class NKScheduleCell: NKBaseTableViewCell {
         repayDateLabel.textColor = Constant.Color.ThemeBlueColor
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+//    override func setData(data: Any?) {
+//        if let item = data as? NKItem {
+//            repayDateLabel.text = item.schedule_repayDate()
+//            investLabel.text = item.schedule_sum()
+//            principleLabel.text = item.schedule_principal()
+//            interestLabel.text = item.schedule_interest()
+//            spanLabel.text = item.schedule_progress()
+//            platNameLabel.text = item.schedule_platName()
+//            
+////            if item.repayDate.isAfterToday() == false && item.state == State.Waiting.rawValue {
+////                unreadIcon.hidden = false
+////            }else {
+//                unreadIcon.hidden = true
+//            //}
+//
+//        }
+//    }
     
 }

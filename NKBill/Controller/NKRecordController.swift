@@ -35,7 +35,6 @@ class NKRecordController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.separatorStyle = .None
         tableView.backgroundColor = Constant.Color.BGColor
         tableView.registerNib(UINib(nibName: "NKAccountCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         

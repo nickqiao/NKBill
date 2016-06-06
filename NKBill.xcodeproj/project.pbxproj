@@ -34,6 +34,7 @@
 		012745FB1D02F79D00DBA895 /* PasscodeLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012745FA1D02F79D00DBA895 /* PasscodeLock.framework */; };
 		012745FC1D02F79D00DBA895 /* PasscodeLock.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 012745FA1D02F79D00DBA895 /* PasscodeLock.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		012746001D03079D00DBA895 /* PasscodeVcManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012745FF1D03079D00DBA895 /* PasscodeVcManager.swift */; };
+		012746021D030C4300DBA895 /* PasscodeLock.strings in Resources */ = {isa = PBXBuildFile; fileRef = 012746011D030C4300DBA895 /* PasscodeLock.strings */; };
 		0136BDB41D01459700BFF1C5 /* CVAuxiliaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BD981D01459700BFF1C5 /* CVAuxiliaryView.swift */; };
 		0136BDB51D01459700BFF1C5 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BD991D01459700BFF1C5 /* CVCalendarContentViewController.swift */; };
 		0136BDB61D01459700BFF1C5 /* CVCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136BD9A1D01459700BFF1C5 /* CVCalendarDayView.swift */; };
@@ -162,6 +163,7 @@
 		012745F61D02F5EB00DBA895 /* UserDefaultsPasscodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsPasscodeRepository.swift; sourceTree = "<group>"; };
 		012745FA1D02F79D00DBA895 /* PasscodeLock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PasscodeLock.framework; path = Carthage/Build/iOS/PasscodeLock.framework; sourceTree = "<group>"; };
 		012745FF1D03079D00DBA895 /* PasscodeVcManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeVcManager.swift; sourceTree = "<group>"; };
+		012746011D030C4300DBA895 /* PasscodeLock.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PasscodeLock.strings; sourceTree = "<group>"; };
 		0136BD981D01459700BFF1C5 /* CVAuxiliaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVAuxiliaryView.swift; sourceTree = "<group>"; };
 		0136BD991D01459700BFF1C5 /* CVCalendarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentViewController.swift; sourceTree = "<group>"; };
 		0136BD9A1D01459700BFF1C5 /* CVCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarDayView.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 				0136BE051D01AAA800BFF1C5 /* NKBill-Bridging-Header.h */,
 				01E1C1CE1C5CBBBB00EF6B5A /* AppDelegate.swift */,
 				0136BE1E1D01ABF200BFF1C5 /* Constant.swift */,
+				012746011D030C4300DBA895 /* PasscodeLock.strings */,
 				011525041C60D38A000D9539 /* Main.storyboard */,
 				0136BD961D01459700BFF1C5 /* Third */,
 				011744521C69E78200CD0A7D /* Extension */,
@@ -564,6 +567,7 @@
 				011524FF1C60AECC000D9539 /* NKIndexCell.xib in Resources */,
 				0115250D1C61C3AD000D9539 /* NKScheduleCell.xib in Resources */,
 				01E1C2161C5CF6B900EF6B5A /* Cartfile in Resources */,
+				012746021D030C4300DBA895 /* PasscodeLock.strings in Resources */,
 				01E1C1D91C5CBBBB00EF6B5A /* LaunchScreen.storyboard in Resources */,
 				011525191C6205CB000D9539 /* NKDetailHeader.xib in Resources */,
 				460A142E1C6FAE290011C8E3 /* NKAccountCell.xib in Resources */,
