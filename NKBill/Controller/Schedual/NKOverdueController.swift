@@ -32,6 +32,10 @@ class NKOverdueController: NKBaseViewController {
         }
     }
     
+    deinit {
+        NKLibraryAPI.sharedInstance.removeClosure(String(self))
+    }
+    
 }
 
 extension NKOverdueController : UITableViewDataSource {

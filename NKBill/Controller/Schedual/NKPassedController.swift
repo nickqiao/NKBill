@@ -33,6 +33,10 @@ class NKPassedController: NKBaseViewController {
         }
 
     }
+    
+    deinit {
+        NKLibraryAPI.sharedInstance.removeClosure(String(self))
+    }
 
 }
 
